@@ -98,7 +98,7 @@ footer{margin-top:24px;color:var(--muted);font-size:13px}
 <body>
 <main>
 <h1>Catalyst Tracker 2027</h1>
-<p class="sub">หุ้นไทย + สหรัฐ 10 ตัว · ตัวจุดประกายปี 2027 จากเอกสารที่บริษัทยื่นเอง</p>
+<p class="sub">หุ้นไทย + สหรัฐ 10 ตัว และตัวสำรอง · ตัวจุดประกายปี 2027 จากเอกสารที่บริษัทยื่นเอง</p>
 <div class="note"><b>คะแนนวัดความแน่นของหลักฐาน ไม่ใช่การทำนายราคา และไม่ใช่คำแนะนำซื้อหรือขาย</b><br>
 กดที่หุ้นเพื่อดูหลักฐานหนุน/ค้านทีละแถว และลิงก์ไปเอกสารต้นทาง ตัวเลขที่ไม่มีในเอกสารเว้นว่างไว้ ไม่ได้เดา</div>
 <div class="controls">
@@ -177,7 +177,7 @@ function render() {
     const ev = (byTicker[s.ticker] || []).sort((a, b) => order[a.signal] - order[b.signal]);
     return `<article class="stock" id="s-${esc(s.ticker)}">
       <button class="head" aria-expanded="false">
-        <div class="tk">${esc(s.ticker)}<small>${s.market === 'TH' ? 'ไทย' : 'สหรัฐ'} · ${esc(s.theme)}</small></div>
+        <div class="tk">${esc(s.ticker)}<small>${s.market === 'TH' ? 'ไทย' : 'สหรัฐ'} · ${esc(s.theme)}</small>${s.status.startsWith('ตัวสำรอง') ? '<span class="tag neutral">ตัวสำรอง</span>' : ''}</div>
         <div class="cat"><b>${esc(s.catalyst)}</b><span>${esc(s.catalyst_timing)}</span></div>
         <div class="score"><div class="dots" aria-label="คะแนน ${n} จาก 5">${'●'.repeat(n)}${'○'.repeat(5 - n)}</div>
           <small>${n}/5 · หนุน ${esc(s.support_count)} · ค้าน ${esc(s.challenge_count)}</small></div>

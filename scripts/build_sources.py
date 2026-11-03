@@ -24,6 +24,11 @@ IDISC_INDEX = {
 }
 IDISC_DOWNLOAD = "https://market.sec.or.th/public/idisc/Download?FILEID={fid}"
 
+# FILEID ของ iDisc ที่หาจากหน้ารายการตามชื่อย่อไม่เจอ
+# GULF: หน้ารายการของ iDisc ชี้ไปที่บริษัทเดิมก่อนควบรวม ไฟล์ของ GULF DEVELOPMENT
+# หา FILEID จากลิงก์งบล่าสุดบนหน้าหุ้นของ set.or.th แล้วดาวน์โหลดผ่าน iDisc
+EXTRA_FILEIDS = {"GULF": ["dat/news/202608/2023FIN060820261731530042E.zip"]}
+
 # CIK ของหุ้นสหรัฐ ดูได้จากบรรทัดแรกที่ fetch_us.py พิมพ์ออกมา
 CIK = {"NVDA": 1045810, "MSFT": 789019, "NEE": 753308, "MAR": 1048286, "ISRG": 1035267}
 
@@ -75,6 +80,8 @@ def idisc_fileids(sym):
         html = urllib.request.urlopen(req, timeout=60).read().decode("utf-8", "ignore")
         for fid in re.findall(r"FILEID=([^\"'&<>\s]+\.zip)", html):
             ids[Path(fid).stem] = fid
+    for fid in EXTRA_FILEIDS.get(sym, []):
+        ids[Path(fid).stem] = fid
     return ids
 
 
