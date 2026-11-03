@@ -118,6 +118,8 @@ footer{margin-top:24px;color:var(--muted);font-size:13px}
 <tr><td>1</td><td>ไม่พบตัวจุดประกายที่ระบุปี 2027</td></tr>
 </table>
 <p>หัก 1 คะแนนถ้ามีหลักฐานค้านที่บริษัทเปิดเผยเอง ซึ่งทำให้ตัวจุดประกายอาจไม่เกิดหรือเลื่อนออกไป</p>
+<h2>ขนาดตัวจุดประกาย</h2>
+<p>ขนาดของสิ่งที่ตัวจุดประกายจะเพิ่มให้ คิดเป็น % ของฐานเดิมของบริษัท คำนวณจากตัวเลขในเอกสารเท่านั้น แต่ละตัวเทียบกับฐานต่างกันตามธุรกิจ (สินทรัพย์รวม จำนวนห้อง จำนวนเตียง หรือรายได้) จึงใช้ดูคร่าว ๆ ไม่ควรเทียบตรง ๆ ข้ามธุรกิจ ตัวที่เอกสารไม่มีตัวเลขพอจะเว้นว่าง ตัวเลขนี้ไม่ได้มาจากผลประกอบการย้อนหลัง</p>
 </section>
 <footer id="foot"></footer>
 </main>
@@ -151,7 +153,9 @@ function chips(id, key, options) {
 const scoreCount = n => D.stocks.filter(s => +s.evidence_score === n).length;
 chips('f-theme', 'theme', [[ALL, ALL], ...[...new Set(D.stocks.map(s => s.theme))].map(t => [t, t])]);
 chips('f-score', 'score', [[ALL, ALL], ...[5, 4, 3, 2, 1].map(n => [n, `${n} คะแนน · ${scoreCount(n)} ตัว`, !scoreCount(n)])]);
-chips('f-sort', 'sort', [['desc', 'คะแนนมาก → น้อย'], ['asc', 'คะแนนน้อย → มาก']]);
+chips('f-sort', 'sort', [['desc', 'คะแนนมาก → น้อย'], ['asc', 'คะแนนน้อย → มาก'], ['size', 'ขนาดตัวจุดประกาย มาก → น้อย']]);
+const size = s => s.catalyst_size_pct === '' ? null : +s.catalyst_size_pct;
+const sizeText = s => size(s) === null ? 'ขนาด: คำนวณไม่ได้' : `ขนาด: ${s.catalyst_size_pct}% ${s.catalyst_size_basis}`;
 
 function evItem(e) {
   const s = D.sources[e.doc_id] || {};
@@ -162,12 +166,16 @@ function evItem(e) {
 }
 
 function render() {
-  const dir = state.sort === 'desc' ? -1 : 1;
+  const dir = state.sort === 'asc' ? 1 : -1;
+  // เรียงตามขนาด: ตัวที่คำนวณไม่ได้อยู่ท้ายเสมอ
+  const bySize = (a, b) => (size(a) === null) - (size(b) === null) || (size(b) ?? 0) - (size(a) ?? 0);
   const rows = D.stocks
     .filter(s => state.theme === ALL || s.theme === state.theme)
     .filter(s => state.score === ALL || +s.evidence_score === state.score)
-    .sort((a, b) => dir * (a.evidence_score - b.evidence_score) || a.ticker.localeCompare(b.ticker));
-  document.getElementById('count').textContent = `แสดง ${rows.length} จาก ${D.stocks.length} ตัว`;
+    .sort((a, b) => (state.sort === 'size' ? bySize(a, b) : dir * (a.evidence_score - b.evidence_score))
+      || a.ticker.localeCompare(b.ticker));
+  document.getElementById('count').textContent = `แสดง ${rows.length} จาก ${D.stocks.length} ตัว` +
+    (state.sort === 'size' ? ' · ขนาดแต่ละตัวเทียบกับฐานต่างกัน (สินทรัพย์ ห้อง เตียง รายได้) ใช้ดูคร่าว ๆ อย่าเทียบตรง ๆ' : '');
   if (!rows.length) {
     document.getElementById('list').innerHTML = '<div class="empty">ไม่มีหุ้นที่ตรงกับตัวกรองนี้ ลองเลือกธีมหรือคะแนนอื่น</div>';
     return;
@@ -178,7 +186,7 @@ function render() {
     return `<article class="stock" id="s-${esc(s.ticker)}">
       <button class="head" aria-expanded="false">
         <div class="tk">${esc(s.ticker)}<small>${s.market === 'TH' ? 'ไทย' : 'สหรัฐ'} · ${esc(s.theme)}</small>${s.status.startsWith('ตัวสำรอง') ? '<span class="tag neutral">ตัวสำรอง</span>' : ''}</div>
-        <div class="cat"><b>${esc(s.catalyst)}</b><span>${esc(s.catalyst_timing)}</span></div>
+        <div class="cat"><b>${esc(s.catalyst)}</b><span>${esc(s.catalyst_timing)} · ${esc(sizeText(s))}</span></div>
         <div class="score"><div class="dots" aria-label="คะแนน ${n} จาก 5">${'●'.repeat(n)}${'○'.repeat(5 - n)}</div>
           <small>${n}/5 · หนุน ${esc(s.support_count)} · ค้าน ${esc(s.challenge_count)}</small></div>
       </button>
@@ -187,6 +195,7 @@ function render() {
           <div><dt>เงื่อนไขตัดทิ้ง</dt><dd>${esc(s.rejection_condition)}</dd></div>
           <div><dt>สถานะ</dt><dd>${esc(s.status)}</dd></div>
           <div style="grid-column:1/-1"><dt>เหตุผลของคะแนน</dt><dd>${esc(s.note)}</dd></div>
+          <div style="grid-column:1/-1"><dt>ขนาดตัวจุดประกาย: วิธีคำนวณ</dt><dd>${esc(s.catalyst_size_formula)}</dd></div>
         </dl>
         <ul class="ev">${ev.map(evItem).join('')}</ul>
       </div></article>`;
