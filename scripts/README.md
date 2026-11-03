@@ -9,6 +9,11 @@
 2. ถ้า extract.py แจ้งว่าแปลง .doc/.xls รุ่นเก่าไม่ได้ ให้รัน `powershell -ExecutionPolicy Bypass -File scripts/convert_legacy_office.ps1` แล้วรัน `extract.py` ซ้ำ
 3. หุ้นสหรัฐ: รัน `python scripts/htm_to_text.py data/raw/us/<TICKER>` เพราะ extract.py ไม่แปลงไฟล์ .htm ของ SEC
 4. รัน `python scripts/build_sources.py` เพื่อสร้าง `data/sources.csv` ใหม่ทั้งไฟล์
+5. หลังแก้ `output/data.csv` หรือ `output/stocks.csv` ให้รัน `python scripts/build_site.py` เพื่อสร้าง `output/index.html` ใหม่
+
+## build_site.py
+
+ฝังข้อมูลจาก `output/stocks.csv`, `output/data.csv` และ `data/sources.csv` (เฉพาะเอกสารที่หลักฐานอ้างถึง) ลงใน `output/index.html` เป็น JSON ทำให้เปิดไฟล์ได้ตรง ๆ โดยไม่ต้องมี server เพราะเบราว์เซอร์ไม่ยอมให้หน้าที่เปิดจาก `file://` อ่านไฟล์ CSV ข้าง ๆ ถ้ามี doc_id ใน `data.csv` ที่ไม่มีใน `sources.csv` สคริปต์จะหยุดและแจ้ง ห้ามแก้ `index.html` ตรง ๆ เพราะจะถูกเขียนทับ
 
 ## convert_legacy_office.ps1
 
