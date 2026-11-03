@@ -7,7 +7,8 @@
    - หุ้นไทย: `fetch_th.py <SYMBOL> --out ./data/raw/th/<SYMBOL>`
    - แล้วรัน `extract.py` กับโฟลเดอร์นั้น เพื่อแปลงเป็นข้อความและได้ `MANIFEST.md` (ต้องมี `pymupdf` จึงจะอ่าน PDF ได้)
 2. ถ้า extract.py แจ้งว่าแปลง .doc/.xls รุ่นเก่าไม่ได้ ให้รัน `powershell -ExecutionPolicy Bypass -File scripts/convert_legacy_office.ps1` แล้วรัน `extract.py` ซ้ำ
-3. รัน `python scripts/build_sources.py` เพื่อสร้าง `data/sources.csv` ใหม่ทั้งไฟล์
+3. หุ้นสหรัฐ: รัน `python scripts/htm_to_text.py data/raw/us/<TICKER>` เพราะ extract.py ไม่แปลงไฟล์ .htm ของ SEC
+4. รัน `python scripts/build_sources.py` เพื่อสร้าง `data/sources.csv` ใหม่ทั้งไฟล์
 
 ## convert_legacy_office.ps1
 
