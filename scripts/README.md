@@ -41,6 +41,10 @@
 4. รัน `python scripts/build_sources.py` เพื่อสร้าง `data/sources.csv` ใหม่ทั้งไฟล์
 5. หลังแก้ `output/data.csv` หรือ `output/stocks.csv` ให้รัน `python scripts/build_site.py` เพื่อสร้าง `output/index.html` ใหม่
 
+## check_secrets.py
+
+ตรวจ secret, อีเมล และไฟล์ที่ห้ามขึ้น ก่อน commit (`python scripts/check_secrets.py`) และก่อน push (`--unpushed`) รายละเอียด วิธีแก้ถ้าเจอ และสิ่งที่ตรวจไม่ได้ อยู่ใน [check_secrets.md](check_secrets.md)
+
 ## build_site.py
 
 ฝังข้อมูลจาก `output/stocks.csv`, `output/data.csv` และ `data/sources.csv` (เฉพาะเอกสารที่หลักฐานอ้างถึง) ลงใน `output/index.html` เป็น JSON ทำให้เปิดไฟล์ได้ตรง ๆ โดยไม่ต้องมี server เพราะเบราว์เซอร์ไม่ยอมให้หน้าที่เปิดจาก `file://` อ่านไฟล์ CSV ข้าง ๆ ถ้ามี doc_id ใน `data.csv` ที่ไม่มีใน `sources.csv` สคริปต์จะหยุดและแจ้ง ห้ามแก้ `index.html` ตรง ๆ เพราะจะถูกเขียนทับ
