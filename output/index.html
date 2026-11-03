@@ -15,9 +15,17 @@ main{max-width:1100px;margin:0 auto;padding:24px 16px 64px}
 h1{font-size:26px;margin:0 0 4px}
 .sub{color:var(--muted);margin:0 0 16px}
 .note{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--acc);border-radius:8px;padding:12px 14px;margin:0 0 20px}
-.controls{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}
-.controls button{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:6px 12px;cursor:pointer;font:inherit}
-.controls button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.controls{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:0 0 12px}
+.group{display:grid;grid-template-columns:110px 1fr;gap:8px;align-items:center;padding:6px 0}
+.group+.group{border-top:1px solid var(--line)}
+.group .label{font-size:13px;color:var(--muted);font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips button{border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:999px;padding:4px 12px;cursor:pointer;font:inherit;font-size:14px}
+.chips button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chips button:disabled{opacity:.35;cursor:default}
+.count{color:var(--muted);font-size:13px;margin:0 0 10px}
+.empty{color:var(--muted);padding:20px;text-align:center;background:var(--card);border:1px dashed var(--line);border-radius:10px}
+@media (max-width:560px){.group{grid-template-columns:1fr;gap:4px}}
 .stock{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:0 0 10px;overflow:hidden}
 .head{display:grid;grid-template-columns:72px 1fr auto;gap:12px;align-items:center;padding:12px 14px;cursor:pointer;width:100%;border:0;background:none;color:inherit;font:inherit;text-align:left}
 .tk{font-weight:700;font-size:17px}
@@ -55,7 +63,12 @@ footer{margin-top:24px;color:var(--muted);font-size:13px}
 <p class="sub">หุ้นไทย + สหรัฐ 10 ตัว · ตัวจุดประกายปี 2027 จากเอกสารที่บริษัทยื่นเอง</p>
 <div class="note"><b>คะแนนวัดความแน่นของหลักฐาน ไม่ใช่การทำนายราคา และไม่ใช่คำแนะนำซื้อหรือขาย</b><br>
 กดที่หุ้นเพื่อดูหลักฐานหนุน/ค้านทีละแถว และลิงก์ไปเอกสารต้นทาง ตัวเลขที่ไม่มีในเอกสารเว้นว่างไว้ ไม่ได้เดา</div>
-<div class="controls" id="filters"></div>
+<div class="controls">
+  <div class="group"><span class="label" id="lb-theme">ธีม</span><div class="chips" id="f-theme" role="group" aria-labelledby="lb-theme"></div></div>
+  <div class="group"><span class="label" id="lb-score">กรองตามคะแนน</span><div class="chips" id="f-score" role="group" aria-labelledby="lb-score"></div></div>
+  <div class="group"><span class="label" id="lb-sort">เรียงลำดับ</span><div class="chips" id="f-sort" role="group" aria-labelledby="lb-sort"></div></div>
+</div>
+<p class="count" id="count"></p>
 <div id="list"></div>
 <section class="legend">
 <h2>เกณฑ์คะแนน (1–5)</h2>
@@ -79,15 +92,28 @@ const byTicker = {};
 D.evidence.forEach(e => (byTicker[e.ticker] ||= []).push(e));
 const order = {support:0, challenge:1, neutral:2};
 
-const themes = ['ทั้งหมด', ...new Set(D.stocks.map(s => s.theme))];
-let theme = 'ทั้งหมด';
-const filters = document.getElementById('filters');
-themes.forEach(t => {
-  const b = document.createElement('button');
-  b.textContent = t; b.setAttribute('aria-pressed', t === theme);
-  b.onclick = () => { theme = t; [...filters.children].forEach(x => x.setAttribute('aria-pressed', x === b)); render(); };
-  filters.appendChild(b);
-});
+const ALL = 'ทั้งหมด';
+const state = {theme: ALL, score: ALL, sort: 'desc'};
+
+// สร้างปุ่มกลุ่มหนึ่ง: options = [[ค่า, ข้อความ, ปิดใช้ไหม]]
+function chips(id, key, options) {
+  const box = document.getElementById(id);
+  options.forEach(([value, label, disabled]) => {
+    const b = document.createElement('button');
+    b.textContent = label; b.disabled = !!disabled;
+    b.setAttribute('aria-pressed', state[key] === value);
+    b.onclick = () => {
+      state[key] = value;
+      [...box.children].forEach(x => x.setAttribute('aria-pressed', x === b));
+      render();
+    };
+    box.appendChild(b);
+  });
+}
+const scoreCount = n => D.stocks.filter(s => +s.evidence_score === n).length;
+chips('f-theme', 'theme', [[ALL, ALL], ...[...new Set(D.stocks.map(s => s.theme))].map(t => [t, t])]);
+chips('f-score', 'score', [[ALL, ALL], ...[5, 4, 3, 2, 1].map(n => [n, `${n} คะแนน · ${scoreCount(n)} ตัว`, !scoreCount(n)])]);
+chips('f-sort', 'sort', [['desc', 'คะแนนมาก → น้อย'], ['asc', 'คะแนนน้อย → มาก']]);
 
 function evItem(e) {
   const s = D.sources[e.doc_id] || {};
@@ -98,8 +124,16 @@ function evItem(e) {
 }
 
 function render() {
-  const rows = D.stocks.filter(s => theme === 'ทั้งหมด' || s.theme === theme)
-    .sort((a, b) => b.evidence_score - a.evidence_score || a.ticker.localeCompare(b.ticker));
+  const dir = state.sort === 'desc' ? -1 : 1;
+  const rows = D.stocks
+    .filter(s => state.theme === ALL || s.theme === state.theme)
+    .filter(s => state.score === ALL || +s.evidence_score === state.score)
+    .sort((a, b) => dir * (a.evidence_score - b.evidence_score) || a.ticker.localeCompare(b.ticker));
+  document.getElementById('count').textContent = `แสดง ${rows.length} จาก ${D.stocks.length} ตัว`;
+  if (!rows.length) {
+    document.getElementById('list').innerHTML = '<div class="empty">ไม่มีหุ้นที่ตรงกับตัวกรองนี้ ลองเลือกธีมหรือคะแนนอื่น</div>';
+    return;
+  }
   document.getElementById('list').innerHTML = rows.map(s => {
     const n = +s.evidence_score;
     const ev = (byTicker[s.ticker] || []).sort((a, b) => order[a.signal] - order[b.signal]);
