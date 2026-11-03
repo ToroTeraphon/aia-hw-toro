@@ -11,7 +11,7 @@
 3. **ลงทะเบียนเอกสาร:**
    - หุ้นสหรัฐ: เพิ่ม CIK ในตัวแปร `CIK` ของ `build_sources.py`
    - รัน `python scripts/build_sources.py` แล้วเทียบจำนวนแถวใหม่ใน `data/sources.csv` กับจำนวนไฟล์ต้นฉบับจริง
-4. **สกัดหลักฐานลง `output/data.csv`** แถวละชิ้น
+4. **สกัดหลักฐานลง `output/data.csv`** แถวละชิ้น (CSV ทุกไฟล์ต้องอ่านและเขียนด้วย `utf-8-sig` เพื่อให้ Excel แสดงภาษาไทยถูก และปิดไฟล์ใน Excel ก่อนสั่งงานที่แก้ CSV เพราะ Excel ล็อกไฟล์ที่เปิดอยู่)
    - คอลัมน์: evidence_id (`<TICKER>-E001`), ticker, finding, signal (support / challenge / neutral), doc_id, location, doc_date, fetched_at, note
    - หุ้นสหรัฐ: เปิดดู Item ของ 8-K ทุกฉบับก่อนอ่าน 10-Q
    - หาตัวจุดประกายปี 2027 หลักฐานหนุน หลักฐานค้าน และความเสี่ยงที่บริษัทเปิดเผยเอง

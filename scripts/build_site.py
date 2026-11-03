@@ -16,7 +16,7 @@ OUT = ROOT / "output" / "index.html"
 
 
 def read(path):
-    with open(ROOT / path, encoding="utf-8") as f:
+    with open(ROOT / path, encoding="utf-8-sig") as f:  # -sig: อ่านได้ทั้งแบบมีและไม่มี BOM
         return list(csv.DictReader(f))
 
 

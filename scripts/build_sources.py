@@ -123,7 +123,8 @@ def main():
                     ticker=folder.name, market=market,
                     fetched_at=fetched_at(p), file_path=p.relative_to(ROOT).as_posix(),
                     sha256=sha256(p), **r))
-    with open(OUT, "w", newline="", encoding="utf-8") as f:
+    # utf-8-sig: ใส่ BOM ให้ Excel บน Windows อ่านภาษาไทยได้ถูกต้องเมื่อดับเบิลคลิกเปิด
+    with open(OUT, "w", newline="", encoding="utf-8-sig") as f:
         w = csv.DictWriter(f, fieldnames=FIELDS)
         w.writeheader()
         w.writerows(rows)

@@ -1,4 +1,4 @@
-evidence_id,ticker,finding,signal,doc_id,location,doc_date,fetched_at,note
+﻿evidence_id,ticker,finding,signal,doc_id,location,doc_date,fetched_at,note
 BGRIM-E001,BGRIM,ร่วมทุนกับ Digital Edge ตั้ง Digital Edge B.Grimm (Thailand) สร้าง data center 96 MW ที่ชลบุรี (EEC) ระยะแรก 48 MW เป้าเริ่มให้บริการ Q4/2026,support,BGRIM-56-1-2026-03-30-ONEREPORTBGRIME,PDF หน้า 132,2026-03-30,2026-11-03,เป้าหมายของบริษัท ยังไม่เกิด ถ้าเริ่มได้ตามเป้า ปี 2027 จะเป็นปีเต็มปีแรก
 BGRIM-E002,BGRIM,ผู้บริหารระบุว่าโครงการ data center 96 MW จะแล้วเสร็จภายในปี 2027,support,BGRIM-56-1-2026-03-30-ONEREPORTBGRIME,PDF หน้า 13,2026-03-30,2026-11-03,เป้าหมายของผู้บริหาร
 BGRIM-E003,BGRIM,ลงทุนจริงแล้ว: Q2/2025 ซื้อหุ้น 40% ใน DEBTHH ต้นทุนรวม 638.16 ล้านบาท และ Q3/2025 จ่ายเพิ่มทุนอีก 6.87 ล้านบาท,support,BGRIM-56-1-2026-03-30-ONEREPORTBGRIME,PDF หน้า 417 (หมายเหตุประกอบงบปี 2025),2026-03-30,2026-11-03,หลักฐานแข็ง: เงินออกไปแล้วตามงบที่ผู้สอบบัญชีตรวจ
