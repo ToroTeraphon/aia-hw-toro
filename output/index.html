@@ -52,6 +52,9 @@ h1{font-size:26px;margin:0 0 4px}
 .src{font-size:13px;color:var(--muted);margin-top:4px}
 .src a{color:var(--acc)}
 .evnote{font-size:13px;margin-top:4px;color:var(--muted)}
+.docs{margin:0 0 12px;font-size:14px}
+.docs ul{margin:4px 0 0;padding-left:20px}
+.docs a{color:var(--acc)}
 .legend{margin-top:28px;font-size:14px}
 .legend table{border-collapse:collapse;width:100%;background:var(--card)}
 .legend td{border:1px solid var(--line);padding:6px 10px;vertical-align:top}
@@ -219,12 +222,20 @@ function grouped(rows) {
 function card(s) {
     const n = +s.evidence_score;
     const ev = (byTicker[s.ticker] || []).sort((a, b) => order[a.signal] - order[b.signal]);
+    // เอกสารไม่ซ้ำที่หลักฐานของหุ้นนี้อ้างถึง (หลายหลักฐานมักอ้างเอกสารฉบับเดียวกัน)
+    const docIds = [...new Set(ev.map(e => e.doc_id))];
+    const docLinks = docIds.map(id => {
+      const d = D.sources[id] || {};
+      const label = esc(d.title || id);
+      const a = d.url ? `<a href="${esc(d.url)}" target="_blank" rel="noopener">${label}</a>` : label;
+      return `<li>${a} · ${esc(d.doc_type || '')} · ยื่น ${esc(d.doc_date || '')}</li>`;
+    }).join('');
     return `<article class="stock" id="s-${esc(s.ticker)}">
       <button class="head" aria-expanded="false">
         <div class="tk">${esc(s.ticker)}<small>${s.market === 'TH' ? 'ไทย' : 'สหรัฐ'} · ${themesOf(s).map(esc).join(' + ')}</small>${s.status.startsWith('ตัวสำรอง') ? '<span class="tag neutral">ตัวสำรอง</span>' : ''}</div>
         <div class="cat"><b>${esc(s.catalyst)}</b><span>${esc(s.catalyst_timing)} · ${esc(sizeText(s))}</span></div>
         <div class="score"><div class="dots" aria-label="คะแนน ${n} จาก 5">${'●'.repeat(n)}${'○'.repeat(5 - n)}</div>
-          <small>${n}/5 · หนุน ${esc(s.support_count)} · ค้าน ${esc(s.challenge_count)}</small></div>
+          <small>${n}/5 · หนุน ${esc(s.support_count)} · ค้าน ${esc(s.challenge_count)} · จาก ${docIds.length} เอกสาร</small></div>
       </button>
       <div class="body">
         <dl class="meta">
@@ -233,6 +244,7 @@ function card(s) {
           <div style="grid-column:1/-1"><dt>เหตุผลของคะแนน</dt><dd>${esc(s.note)}</dd></div>
           <div style="grid-column:1/-1"><dt>ขนาด Catalyst: วิธีคำนวณ</dt><dd>${esc(s.catalyst_size_formula)}</dd></div>
         </dl>
+        <div class="docs"><b>เอกสารต้นทาง (${docIds.length} ฉบับ)</b><ul>${docLinks}</ul></div>
         <ul class="ev">${ev.map(evItem).join('')}</ul>
       </div></article>`;
 }
