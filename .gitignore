@@ -23,3 +23,6 @@ __pycache__/
 venv/
 node_modules/
 .claude/settings.local.json
+
+# Source documents: large, re-downloadable from URLs in data/sources.csv
+data/raw/
