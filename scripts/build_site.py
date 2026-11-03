@@ -151,7 +151,9 @@ function chips(id, key, options) {
   });
 }
 const scoreCount = n => D.stocks.filter(s => +s.evidence_score === n).length;
-chips('f-theme', 'theme', [[ALL, ALL], ...[...new Set(D.stocks.map(s => s.theme))].map(t => [t, t])]);
+// หุ้นหนึ่งตัวอยู่ได้หลายธีม คั่นด้วย | ใน stocks.csv
+const themesOf = s => s.theme.split('|');
+chips('f-theme', 'theme', [[ALL, ALL], ...[...new Set(D.stocks.flatMap(themesOf))].map(t => [t, t])]);
 chips('f-score', 'score', [[ALL, ALL], ...[5, 4, 3, 2, 1].map(n => [n, `${n} คะแนน · ${scoreCount(n)} ตัว`, !scoreCount(n)])]);
 chips('f-sort', 'sort', [['desc', 'คะแนนมาก → น้อย'], ['asc', 'คะแนนน้อย → มาก'], ['size', 'ขนาดตัวจุดประกาย มาก → น้อย']]);
 const size = s => s.catalyst_size_pct === '' ? null : +s.catalyst_size_pct;
@@ -170,7 +172,7 @@ function render() {
   // เรียงตามขนาด: ตัวที่คำนวณไม่ได้อยู่ท้ายเสมอ
   const bySize = (a, b) => (size(a) === null) - (size(b) === null) || (size(b) ?? 0) - (size(a) ?? 0);
   const rows = D.stocks
-    .filter(s => state.theme === ALL || s.theme === state.theme)
+    .filter(s => state.theme === ALL || themesOf(s).includes(state.theme))
     .filter(s => state.score === ALL || +s.evidence_score === state.score)
     .sort((a, b) => (state.sort === 'size' ? bySize(a, b) : dir * (a.evidence_score - b.evidence_score))
       || a.ticker.localeCompare(b.ticker));
@@ -185,7 +187,7 @@ function render() {
     const ev = (byTicker[s.ticker] || []).sort((a, b) => order[a.signal] - order[b.signal]);
     return `<article class="stock" id="s-${esc(s.ticker)}">
       <button class="head" aria-expanded="false">
-        <div class="tk">${esc(s.ticker)}<small>${s.market === 'TH' ? 'ไทย' : 'สหรัฐ'} · ${esc(s.theme)}</small>${s.status.startsWith('ตัวสำรอง') ? '<span class="tag neutral">ตัวสำรอง</span>' : ''}</div>
+        <div class="tk">${esc(s.ticker)}<small>${s.market === 'TH' ? 'ไทย' : 'สหรัฐ'} · ${themesOf(s).map(esc).join(' + ')}</small>${s.status.startsWith('ตัวสำรอง') ? '<span class="tag neutral">ตัวสำรอง</span>' : ''}</div>
         <div class="cat"><b>${esc(s.catalyst)}</b><span>${esc(s.catalyst_timing)} · ${esc(sizeText(s))}</span></div>
         <div class="score"><div class="dots" aria-label="คะแนน ${n} จาก 5">${'●'.repeat(n)}${'○'.repeat(5 - n)}</div>
           <small>${n}/5 · หนุน ${esc(s.support_count)} · ค้าน ${esc(s.challenge_count)}</small></div>
