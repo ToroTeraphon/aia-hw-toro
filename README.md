@@ -10,7 +10,7 @@
 | **ลิงก์ผลงาน** | https://toroteraphon.github.io/aia-hw-toro/output/ (GitHub Pages อัปเดตตามทุกครั้งที่ push · ไฟล์ต้นทาง [output/index.html](output/index.html) ข้อมูลอยู่ใน [output/stocks.csv](output/stocks.csv) และ [output/data.csv](output/data.csv)) |
 | **สถานะ** | ร่างแรก |
 
-**สรุปผลงาน:** หุ้น 10 ตัว (NVDA, MSFT, DELTA, NEE, BGRIM, MAR, AOT, CPN, ISRG, BDMS) และตัวสำรอง GULF มีหลักฐาน 105 แถวจากเอกสาร 23 ฉบับบน SEC EDGAR และ ก.ล.ต. iDisc ทุกแถวกดย้อนไปเอกสารต้นทางได้ หุ้นแต่ละตัวมีคะแนนความแน่นของหลักฐาน 1–5 เงื่อนไขตัดทิ้ง และขนาด Catalyst เทียบกับบริษัท
+**สรุปผลงาน:** หุ้น 11 ตัว (NVDA, MSFT, DELTA, NEE, BGRIM, GULF, MAR, AOT, CPN, ISRG, BDMS) มีหลักฐาน 105 แถวจากเอกสาร 23 ฉบับบน SEC EDGAR และ ก.ล.ต. iDisc ทุกแถวกดย้อนไปเอกสารต้นทางได้ หุ้นแต่ละตัวมีคะแนนความแน่นของหลักฐาน 1–5 เงื่อนไขตัดทิ้ง และขนาด Catalyst เทียบกับบริษัท
 
 ---
 
