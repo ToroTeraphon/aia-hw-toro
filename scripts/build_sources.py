@@ -1,0 +1,123 @@
+"""สร้าง data/sources.csv จากเอกสารใน data/raw/
+
+ไล่ทุกไฟล์ต้นฉบับ (ไม่นับ .txt ที่แปลงเอง และ MANIFEST.md) แล้วบันทึก
+URL ต้นทาง วันที่ยื่น วันที่ดึง และ sha256 ของไฟล์
+
+ใช้: python scripts/build_sources.py
+"""
+import csv
+import hashlib
+import re
+import urllib.request
+from datetime import datetime
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+RAW = ROOT / "data" / "raw"
+OUT = ROOT / "data" / "sources.csv"
+
+SEC_ARCHIVE = "https://www.sec.gov/Archives/edgar/data/{cik}/{acc}/"
+SEC_FACTS = "https://data.sec.gov/api/xbrl/companyfacts/CIK{cik:010d}.json"
+IDISC_INDEX = {
+    "FS": "https://market.sec.or.th/public/idisc/en/Viewmore/fs-full?searchSymbol={sym}",
+    "R561": "https://market.sec.or.th/public/idisc/en/Viewmore/fs-r561?searchSymbol={sym}",
+}
+IDISC_DOWNLOAD = "https://market.sec.or.th/public/idisc/Download?FILEID={fid}"
+
+# CIK ของหุ้นสหรัฐ ดูได้จากบรรทัดแรกที่ fetch_us.py พิมพ์ออกมา
+CIK = {"NVDA": 1045810}
+
+SKIP = {".txt", ".md"}
+FIELDS = ["doc_id", "ticker", "market", "doc_type", "title", "url",
+          "doc_date", "fetched_at", "file_path", "sha256"]
+
+
+def sha256(path):
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(1 << 20), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def fetched_at(path):
+    return datetime.fromtimestamp(path.stat().st_mtime).strftime("%Y-%m-%d")
+
+
+def us_rows(ticker, folder):
+    cik = CIK[ticker]
+    for p in sorted(folder.iterdir()):
+        if p.suffix.lower() in SKIP or not p.is_file():
+            continue
+        if p.name == "companyfacts.json":
+            yield dict(doc_id=f"{ticker}-companyfacts",
+                       doc_type="companyfacts", title=f"{ticker} XBRL company facts",
+                       url=SEC_FACTS.format(cik=cik), doc_date="", path=p)
+            continue
+        m = re.match(r"(.+)_(\d{4}-\d{2}-\d{2})_(\d{18})\.htm$", p.name)
+        if not m:
+            continue
+        form, date, acc = m.groups()
+        yield dict(doc_id=f"{ticker}-{acc}",
+                   doc_type=form, title=f"{ticker} {form} filed {date}",
+                   url=SEC_ARCHIVE.format(cik=cik, acc=acc), doc_date=date, path=p)
+
+
+def idisc_fileids(sym):
+    """คืน dict ชื่อไฟล์ zip -> FILEID เต็ม จากหน้ารายการของ iDisc"""
+    ids = {}
+    for url in IDISC_INDEX.values():
+        req = urllib.request.Request(url.format(sym=sym),
+                                     headers={"User-Agent": "aia-hw-toro/1.0 (homework)"})
+        html = urllib.request.urlopen(req, timeout=60).read().decode("utf-8", "ignore")
+        for fid in re.findall(r"FILEID=([^\"'&<>\s]+\.zip)", html):
+            ids[Path(fid).stem] = fid
+    return ids
+
+
+def th_rows(sym, folder):
+    ids = idisc_fileids(sym)
+    for sub in sorted(folder.iterdir()):
+        if not sub.is_dir():
+            continue
+        kind = "FS" if sub.name.startswith("FS_") else "56-1"
+        # ชื่อไฟล์ iDisc ฝังวันที่ยื่นไว้ เช่น 1339FIN13082026... = 13/08/2026
+        m = re.search(r"(\d{4}(?:FIN|ONE))(\d{2})(\d{2})(\d{4})", sub.name)
+        date = f"{m.group(4)}-{m.group(3)}-{m.group(2)}" if m else ""
+        fid = next((v for k, v in ids.items() if m and k.startswith(m.group(0))), "")
+        url = IDISC_DOWNLOAD.format(fid=fid) if fid else ""
+        for p in sorted(sub.iterdir()):
+            if p.suffix.lower() in SKIP:
+                continue
+            yield dict(doc_id=f"{sym}-{kind}-{date}-{p.stem}",
+                       doc_type=kind, title=f"{sym} {kind} filed {date} · {p.name}",
+                       url=url, doc_date=date, path=p)
+
+
+def main():
+    rows = []
+    for market, fn in (("US", us_rows), ("TH", th_rows)):
+        base = RAW / market.lower()
+        if not base.exists():
+            continue
+        for folder in sorted(base.iterdir()):
+            if not folder.is_dir():
+                continue
+            for r in fn(folder.name, folder):
+                p = r.pop("path")
+                rows.append(dict(
+                    ticker=folder.name, market=market,
+                    fetched_at=fetched_at(p), file_path=p.relative_to(ROOT).as_posix(),
+                    sha256=sha256(p), **r))
+    with open(OUT, "w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=FIELDS)
+        w.writeheader()
+        w.writerows(rows)
+    missing = [r["doc_id"] for r in rows if not r["url"]]
+    print(f"เขียน {len(rows)} แถวลง {OUT.relative_to(ROOT)}")
+    if missing:
+        print("ไม่มี URL:", ", ".join(missing))
+
+
+if __name__ == "__main__":
+    main()
