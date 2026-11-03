@@ -68,6 +68,7 @@ footer{margin-top:24px;color:var(--muted);font-size:13px}
 <div class="controls">
   <div class="group"><span class="label" id="lb-theme">ธีม</span><div class="chips" id="f-theme" role="group" aria-labelledby="lb-theme"></div></div>
   <div class="group"><span class="label" id="lb-score">กรองตามคะแนน</span><div class="chips" id="f-score" role="group" aria-labelledby="lb-score"></div></div>
+  <div class="group"><span class="label" id="lb-basis">ขนาด Catalyst เทียบกับ</span><div class="chips" id="f-basis" role="group" aria-labelledby="lb-basis"></div></div>
   <div class="group"><span class="label" id="lb-sort">เรียงลำดับ</span><div class="chips" id="f-sort" role="group" aria-labelledby="lb-sort"></div></div>
 </div>
 <p class="count" id="count"></p>
@@ -82,7 +83,7 @@ footer{margin-top:24px;color:var(--muted);font-size:13px}
 <tr><td>1</td><td>ไม่พบตัวจุดประกายที่ระบุปี 2027</td></tr>
 </table>
 <p>หัก 1 คะแนนถ้ามีหลักฐานค้านที่บริษัทเปิดเผยเอง ซึ่งทำให้ตัวจุดประกายอาจไม่เกิดหรือเลื่อนออกไป</p>
-<h2>ขนาดตัวจุดประกาย</h2>
+<h2>ขนาด Catalyst</h2>
 <p>ขนาดของสิ่งที่ตัวจุดประกายจะเพิ่มให้ คิดเป็น % ของฐานเดิมของบริษัท คำนวณจากตัวเลขในเอกสารเท่านั้น แต่ละตัวเทียบกับฐานต่างกันตามธุรกิจ (สินทรัพย์รวม จำนวนห้อง จำนวนเตียง หรือรายได้) จึงใช้ดูคร่าว ๆ ไม่ควรเทียบตรง ๆ ข้ามธุรกิจ ตัวที่เอกสารไม่มีตัวเลขพอจะเว้นว่าง ตัวเลขนี้ไม่ได้มาจากผลประกอบการย้อนหลัง</p>
 </section>
 <footer id="foot"></footer>
@@ -97,7 +98,8 @@ D.evidence.forEach(e => (byTicker[e.ticker] ||= []).push(e));
 const order = {support:0, challenge:1, neutral:2};
 
 const ALL = 'ทั้งหมด';
-const state = {theme: ALL, score: ALL, sort: 'desc'};
+const NONE = 'คำนวณไม่ได้';
+const state = {theme: ALL, score: ALL, basis: ALL, sort: 'desc'};
 
 // สร้างปุ่มกลุ่มหนึ่ง: options = [[ค่า, ข้อความ, ปิดใช้ไหม]]
 function chips(id, key, options) {
@@ -119,9 +121,15 @@ const scoreCount = n => D.stocks.filter(s => +s.evidence_score === n).length;
 const themesOf = s => s.theme.split('|');
 chips('f-theme', 'theme', [[ALL, ALL], ...[...new Set(D.stocks.flatMap(themesOf))].map(t => [t, t])]);
 chips('f-score', 'score', [[ALL, ALL], ...[5, 4, 3, 2, 1].map(n => [n, `${n} คะแนน · ${scoreCount(n)} ตัว`, !scoreCount(n)])]);
-chips('f-sort', 'sort', [['desc', 'คะแนนมาก → น้อย'], ['asc', 'คะแนนน้อย → มาก'], ['size', 'ขนาดตัวจุดประกาย มาก → น้อย']]);
+chips('f-sort', 'sort', [['desc', 'คะแนนมาก → น้อย'], ['asc', 'คะแนนน้อย → มาก'], ['size', 'ขนาด Catalyst มาก → น้อย']]);
 const size = s => s.catalyst_size_pct === '' ? null : +s.catalyst_size_pct;
-const sizeText = s => size(s) === null ? 'ขนาด: คำนวณไม่ได้' : `ขนาด: ${s.catalyst_size_pct}% ${s.catalyst_size_basis}`;
+const basisOf = s => size(s) === null ? NONE : s.catalyst_size_basis;
+const basisLabel = b => b === NONE ? NONE : b.replace(/^ของ/, '');
+const basisCount = b => D.stocks.filter(s => basisOf(s) === b).length;
+const bases = [...new Set(D.stocks.map(basisOf))]
+  .sort((a, b) => (a === NONE) - (b === NONE) || basisCount(b) - basisCount(a) || a.localeCompare(b));
+chips('f-basis', 'basis', [[ALL, ALL], ...bases.map(b => [b, `${basisLabel(b)} · ${basisCount(b)} ตัว`])]);
+const sizeText = s => size(s) === null ? 'ขนาด Catalyst: คำนวณไม่ได้' : `ขนาด Catalyst: ${s.catalyst_size_pct}% ${s.catalyst_size_basis}`;
 
 function evItem(e) {
   const s = D.sources[e.doc_id] || {};
@@ -138,6 +146,7 @@ function render() {
   const rows = D.stocks
     .filter(s => state.theme === ALL || themesOf(s).includes(state.theme))
     .filter(s => state.score === ALL || +s.evidence_score === state.score)
+    .filter(s => state.basis === ALL || basisOf(s) === state.basis)
     .sort((a, b) => (state.sort === 'size' ? bySize(a, b) : dir * (a.evidence_score - b.evidence_score))
       || a.ticker.localeCompare(b.ticker));
   document.getElementById('count').textContent = `แสดง ${rows.length} จาก ${D.stocks.length} ตัว` +
@@ -154,9 +163,8 @@ function render() {
 
 // ตอนเรียงตามขนาด: แยกกลุ่มตามฐาน กลุ่มที่มีหลายตัวขึ้นก่อน กลุ่มคำนวณไม่ได้อยู่ท้าย
 function grouped(rows) {
-  const NONE = 'คำนวณไม่ได้';
   const groups = {};
-  rows.forEach(s => (groups[size(s) === null ? NONE : s.catalyst_size_basis] ||= []).push(s));
+  rows.forEach(s => (groups[basisOf(s)] ||= []).push(s));
   const keys = Object.keys(groups).sort((a, b) =>
     (a === NONE) - (b === NONE) || groups[b].length - groups[a].length || a.localeCompare(b));
   return keys.map(k => {
@@ -183,7 +191,7 @@ function card(s) {
           <div><dt>เงื่อนไขตัดทิ้ง</dt><dd>${esc(s.rejection_condition)}</dd></div>
           <div><dt>สถานะ</dt><dd>${esc(s.status)}</dd></div>
           <div style="grid-column:1/-1"><dt>เหตุผลของคะแนน</dt><dd>${esc(s.note)}</dd></div>
-          <div style="grid-column:1/-1"><dt>ขนาดตัวจุดประกาย: วิธีคำนวณ</dt><dd>${esc(s.catalyst_size_formula)}</dd></div>
+          <div style="grid-column:1/-1"><dt>ขนาด Catalyst: วิธีคำนวณ</dt><dd>${esc(s.catalyst_size_formula)}</dd></div>
         </dl>
         <ul class="ev">${ev.map(evItem).join('')}</ul>
       </div></article>`;
