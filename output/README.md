@@ -10,6 +10,7 @@
 
 ## ลิงก์ผลงาน
 
+- เว็บออนไลน์: https://toroteraphon.github.io/aia-hw-toro/output/ (GitHub Pages อัปเดตตามทุกครั้งที่ push)
 - [index.html](index.html): เว็บ Catalyst Tracker 2027 ดาวน์โหลดแล้วเปิดในเบราว์เซอร์ได้เลย ไม่ต้องมี server
 - [stocks.csv](stocks.csv): สรุปรายหุ้น 10 ตัว (ตัวจุดประกาย คะแนน เงื่อนไขตัดทิ้ง สถานะ)
 - [data.csv](data.csv): หลักฐานทีละแถว อ้าง doc_id ใน [../data/sources.csv](../data/sources.csv)
