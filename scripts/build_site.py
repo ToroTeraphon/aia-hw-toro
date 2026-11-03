@@ -1,12 +1,17 @@
-"""สร้าง output/index.html จาก output/stocks.csv, output/data.csv และ data/sources.csv
+"""สร้าง output/index.html จาก output/data.json และ data/sources.json
 
-ฝังข้อมูลลงในหน้าเว็บเป็น JSON เพื่อให้เปิดไฟล์ได้ตรง ๆ โดยไม่ต้องมี server
-(เบราว์เซอร์ส่วนใหญ่ไม่ยอมให้หน้าที่เปิดจาก file:// อ่านไฟล์ CSV ข้าง ๆ)
-แก้ข้อมูลที่ CSV แล้วรันสคริปต์นี้ใหม่ทุกครั้ง อย่าแก้ index.html ตรง ๆ
+หน้าเว็บอ่านข้อมูลได้ 2 ทาง:
+  1. เปิดผ่านเว็บ (เช่น GitHub Pages): ดึง data.json และ ../data/sources.json ตอนเปิดหน้า
+     จึงเห็นหุ้นที่เพิ่มใน data.json ทันทีโดยไม่ต้องรันสคริปต์นี้
+  2. เปิดจากไฟล์ในเครื่อง (ดับเบิลคลิก): เบราว์เซอร์ไม่ยอมให้อ่านไฟล์ JSON ข้าง ๆ
+     จึงใช้สำเนาที่ฝังไว้ในหน้าเว็บแทน สำเนานี้สร้างโดยสคริปต์นี้ ต้องรันใหม่หลังแก้ข้อมูล
+     เพื่อให้สำเนาตรงกับ data.json
+
+สคริปต์นี้ยังตรวจข้อมูลก่อนสร้าง: doc_id ของหลักฐานทุกแถวต้องมีใน sources.json
+อย่าแก้ index.html ตรง ๆ เพราะจะถูกเขียนทับ
 
 ใช้: python scripts/build_site.py
 """
-import csv
 import json
 from datetime import date
 from pathlib import Path
@@ -16,24 +21,24 @@ OUT = ROOT / "output" / "index.html"
 
 
 def read(path):
-    with open(ROOT / path, encoding="utf-8-sig") as f:  # -sig: อ่านได้ทั้งแบบมีและไม่มี BOM
-        return list(csv.DictReader(f))
+    return json.loads((ROOT / path).read_text(encoding="utf-8-sig"))  # -sig: ทนต่อไฟล์ที่มี BOM
 
 
 def main():
-    stocks = read("output/stocks.csv")
-    evidence = read("output/data.csv")
-    used = {e["doc_id"] for e in evidence}
+    stocks = read("output/data.json")["stocks"]
+    used = {e["doc_id"] for s in stocks for e in s["evidence"]}
+    # ฝังเฉพาะเอกสารที่หลักฐานอ้างถึง เพื่อให้สำเนาที่ฝังไม่ใหญ่เกินจำเป็น
     sources = {s["doc_id"]: {k: s[k] for k in ("title", "url", "doc_type", "doc_date")}
-               for s in read("data/sources.csv") if s["doc_id"] in used}
+               for s in read("data/sources.json") if s["doc_id"] in used}
     missing = sorted(used - sources.keys())
     if missing:
-        raise SystemExit(f"doc_id ใน data.csv ที่ไม่มีใน sources.csv: {missing}")
+        raise SystemExit(f"doc_id ใน data.json ที่ไม่มีใน sources.json: {missing}")
 
-    payload = json.dumps({"stocks": stocks, "evidence": evidence, "sources": sources,
+    payload = json.dumps({"stocks": stocks, "sources": sources,
                           "built": date.today().isoformat()}, ensure_ascii=False)
     OUT.write_text(TEMPLATE.replace("__DATA__", payload.replace("</", "<\\/")), "utf-8")
-    print(f"เขียน {OUT.relative_to(ROOT)} · หุ้น {len(stocks)} ตัว · หลักฐาน {len(evidence)} แถว · เอกสาร {len(sources)} ฉบับ")
+    n_ev = sum(len(s["evidence"]) for s in stocks)
+    print(f"เขียน {OUT.relative_to(ROOT)} · หุ้น {len(stocks)} ตัว · หลักฐาน {n_ev} แถว · เอกสาร {len(sources)} ฉบับ")
 
 
 TEMPLATE = r"""<!doctype html>
@@ -128,11 +133,41 @@ footer{margin-top:24px;color:var(--muted);font-size:13px}
 </main>
 <script id="data" type="application/json">__DATA__</script>
 <script>
-const D = JSON.parse(document.getElementById('data').textContent);
+const EMBEDDED = JSON.parse(document.getElementById('data').textContent);
+
+// หุ้นหนึ่งตัวใน data.json ซ้อนหลักฐานไว้ใน evidence: แปลงเป็นรายการแบนที่ UI ใช้ และนับหนุน/ค้านเอง
+function shape(stocks, sources, built) {
+  const evidence = [];
+  const flat = stocks.map(s => {
+    const ev = s.evidence || [];
+    ev.forEach(e => evidence.push({ticker: s.ticker, ...e}));
+    const n = sig => ev.filter(e => e.signal === sig).length;
+    return {...s, theme: s.themes.join('|'),
+      catalyst_size_pct: s.catalyst_size_pct ?? '', catalyst_size_basis: s.catalyst_size_basis ?? '',
+      support_count: n('support'), challenge_count: n('challenge')};
+  });
+  return {stocks: flat, evidence, sources, built};
+}
+
+// เปิดผ่านเว็บ: ดึงไฟล์ล่าสุด · เปิดจากไฟล์ในเครื่อง (fetch ถูกบล็อก) หรือโหลดไม่ได้: ใช้สำเนาที่ฝังไว้
+async function loadData() {
+  try {
+    const get = u => fetch(u, {cache: 'no-cache'}).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); });
+    const [d, all] = await Promise.all([get('data.json'), get('../data/sources.json')]);
+    const used = new Set(d.stocks.flatMap(s => s.evidence.map(e => e.doc_id)));
+    const sources = {};
+    all.filter(x => used.has(x.doc_id)).forEach(x => sources[x.doc_id] = {title: x.title, url: x.url, doc_type: x.doc_type, doc_date: x.doc_date});
+    return {...shape(d.stocks, sources, ''), live: true};
+  } catch (err) {
+    return {...shape(EMBEDDED.stocks, EMBEDDED.sources, EMBEDDED.built), live: false};
+  }
+}
+
+let D, byTicker;
+loadData().then(d => { D = d; start(); });
+
 const SIG = {support:'หนุน', challenge:'ค้าน', neutral:'กลาง'};
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const byTicker = {};
-D.evidence.forEach(e => (byTicker[e.ticker] ||= []).push(e));
 const order = {support:0, challenge:1, neutral:2};
 
 const ALL = 'ทั้งหมด';
@@ -155,18 +190,28 @@ function chips(id, key, options) {
   });
 }
 const scoreCount = n => D.stocks.filter(s => +s.evidence_score === n).length;
-// หุ้นหนึ่งตัวอยู่ได้หลายธีม คั่นด้วย | ใน stocks.csv
+// หุ้นหนึ่งตัวอยู่ได้หลายธีม (themes เป็นรายการใน data.json)
 const themesOf = s => s.theme.split('|');
-chips('f-theme', 'theme', [[ALL, ALL], ...[...new Set(D.stocks.flatMap(themesOf))].map(t => [t, t])]);
-chips('f-score', 'score', [[ALL, ALL], ...[5, 4, 3, 2, 1].map(n => [n, `${n} คะแนน · ${scoreCount(n)} ตัว`, !scoreCount(n)])]);
-chips('f-sort', 'sort', [['desc', 'คะแนนมาก → น้อย'], ['asc', 'คะแนนน้อย → มาก'], ['size', 'ขนาด Catalyst มาก → น้อย']]);
 const size = s => s.catalyst_size_pct === '' ? null : +s.catalyst_size_pct;
 const basisOf = s => size(s) === null ? NONE : s.catalyst_size_basis;
 const basisLabel = b => b === NONE ? NONE : b.replace(/^ของ/, '');
 const basisCount = b => D.stocks.filter(s => basisOf(s) === b).length;
-const bases = [...new Set(D.stocks.map(basisOf))]
-  .sort((a, b) => (a === NONE) - (b === NONE) || basisCount(b) - basisCount(a) || a.localeCompare(b));
-chips('f-basis', 'basis', [[ALL, ALL], ...bases.map(b => [b, `${basisLabel(b)} · ${basisCount(b)} ตัว`])]);
+
+// สร้างปุ่มตัวกรองจากข้อมูล เรียกครั้งเดียวหลังโหลดข้อมูลเสร็จ
+function start() {
+  byTicker = {};
+  D.evidence.forEach(e => (byTicker[e.ticker] ||= []).push(e));
+  chips('f-theme', 'theme', [[ALL, ALL], ...[...new Set(D.stocks.flatMap(themesOf))].map(t => [t, t])]);
+  chips('f-score', 'score', [[ALL, ALL], ...[5, 4, 3, 2, 1].map(n => [n, `${n} คะแนน · ${scoreCount(n)} ตัว`, !scoreCount(n)])]);
+  chips('f-sort', 'sort', [['desc', 'คะแนนมาก → น้อย'], ['asc', 'คะแนนน้อย → มาก'], ['size', 'ขนาด Catalyst มาก → น้อย']]);
+  const bases = [...new Set(D.stocks.map(basisOf))]
+    .sort((a, b) => (a === NONE) - (b === NONE) || basisCount(b) - basisCount(a) || a.localeCompare(b));
+  chips('f-basis', 'basis', [[ALL, ALL], ...bases.map(b => [b, `${basisLabel(b)} · ${basisCount(b)} ตัว`])]);
+  render();
+  document.getElementById('foot').textContent =
+    `ข้อมูลจาก output/data.json และ data/sources.json (${D.live ? 'ดึงสดจากเว็บ' : 'สำเนาที่ฝังไว้ สร้างเมื่อ ' + D.built}) · ` +
+    `หุ้น ${D.stocks.length} ตัว · หลักฐาน ${D.evidence.length} แถว · เอกสารที่อ้างถึง ${Object.keys(D.sources).length} ฉบับ`;
+}
 const sizeText = s => size(s) === null ? 'ขนาด Catalyst: คำนวณไม่ได้' : `ขนาด Catalyst: ${s.catalyst_size_pct}% ${s.catalyst_size_basis}`;
 
 function evItem(e) {
@@ -234,9 +279,6 @@ function card(s) {
         <ul class="ev">${ev.map(evItem).join('')}</ul>
       </div></article>`;
 }
-render();
-document.getElementById('foot').textContent =
-  `สร้างจาก output/stocks.csv, output/data.csv และ data/sources.csv เมื่อ ${D.built} · หลักฐาน ${D.evidence.length} แถว จากเอกสาร ${Object.keys(D.sources).length} ฉบับ`;
 </script>
 </body>
 </html>

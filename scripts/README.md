@@ -10,9 +10,9 @@
    - หุ้นไทย: หลังรัน extract.py ตรวจขนาดไฟล์ .txt ของ PDF ถ้าเล็กผิดปกติแปลว่าแปลงไม่สำเร็จ
 3. **ลงทะเบียนเอกสาร:**
    - หุ้นสหรัฐ: เพิ่ม CIK ในตัวแปร `CIK` ของ `build_sources.py`
-   - รัน `python scripts/build_sources.py` แล้วเทียบจำนวนแถวใหม่ใน `data/sources.csv` กับจำนวนไฟล์ต้นฉบับจริง
-4. **สกัดหลักฐานลง `output/data.csv`** แถวละชิ้น (CSV ทุกไฟล์ต้องอ่านและเขียนด้วย `utf-8-sig` เพื่อให้ Excel แสดงภาษาไทยถูก และปิดไฟล์ใน Excel ก่อนสั่งงานที่แก้ CSV เพราะ Excel ล็อกไฟล์ที่เปิดอยู่)
-   - คอลัมน์: evidence_id (`<TICKER>-E001`), ticker, finding, signal (support / challenge / neutral), doc_id, location, doc_date, fetched_at, note
+   - รัน `python scripts/build_sources.py` แล้วเทียบจำนวนรายการใหม่ใน `data/sources.json` กับจำนวนไฟล์ต้นฉบับจริง
+4. **สกัดหลักฐานลง `output/data.json`** หลักฐานแต่ละชิ้นเป็น 1 รายการใน `evidence` ของหุ้นตัวนั้น (ไม่ต้องมีช่อง ticker เพราะอยู่ใต้หุ้นแล้ว) แก้ไฟล์ด้วยมือได้ (ระวังเครื่องหมายจุลภาคและเครื่องหมายคำพูด) หรือให้ AI เขียนด้วยสคริปต์ ไฟล์เป็น UTF-8 และ build_site.py จะแจ้งถ้า JSON ผิดรูปแบบ
+   - ฟิลด์: evidence_id (`<TICKER>-E001`), finding, signal (support / challenge / neutral), doc_id, location, doc_date, fetched_at, note
    - หุ้นสหรัฐ: เปิดดู Item ของ 8-K ทุกฉบับก่อนอ่าน 10-Q
    - หาตัวจุดประกายปี 2027 หลักฐานหนุน หลักฐานค้าน และความเสี่ยงที่บริษัทเปิดเผยเอง
    - location: 56-1 ใช้ "PDF หน้า N" จาก `[[หน้า N]]` ในไฟล์ .txt ถ้าอ้าง Note ต้องค้นหัวข้อจริง ห้ามเดาเลข
@@ -20,12 +20,12 @@
    - หุ้นสหรัฐ: ตัวเลขงบต้องเทียบกับ `companyfacts.json` ถ้าเทียบไม่ได้ให้เขียนว่ายังไม่ได้ตรวจ
    - ก่อนสรุปว่าเอกสาร "ไม่มี" เรื่องใด ให้ค้นแบบนับจำนวนก่อน
    - ทวน note ทุกแถวเทียบกับเอกสารอีกรอบก่อนไปขั้นต่อไป
-5. **สรุปลง `output/stocks.csv`** หุ้นละ 1 แถว
-   - theme: ถ้ามีหลายธีมให้คั่นด้วย `|`
-   - evidence_score: ให้ตามเกณฑ์ใน `spec.md` และเขียนเหตุผลพร้อมเลขหลักฐานใน note
+5. **สรุปหุ้นใน `output/data.json`** หุ้น 1 ตัวเป็น 1 รายการใน `stocks` (หลักฐานตามข้อ 4 อยู่ใน `evidence` ของรายการนี้)
+   - themes: รายการของธีม ใส่ได้หลายธีม เช่น `["พลังงานและไฟฟ้า", "AI / Data center"]`
+   - evidence_score: จำนวนเต็ม 1–5 ให้ตามเกณฑ์ใน `spec.md` และเขียนเหตุผลพร้อมเลขหลักฐานใน note
    - rejection_condition: เงื่อนไขที่ถ้าเกิดขึ้นถือว่า thesis ผิด
-   - support_count, challenge_count: นับจาก `data.csv`
-   - catalyst_size_pct, catalyst_size_basis, catalyst_size_formula: ขนาด Catalyst เทียบกับฐานเดิมของบริษัท ถ้าคำนวณไม่ได้ให้เว้น pct กับ basis ว่าง และเขียนเหตุผลใน formula
+   - ไม่ต้องกรอกจำนวนหนุน/ค้าน เว็บนับจาก `evidence` เอง
+   - catalyst_size_pct, catalyst_size_basis, catalyst_size_formula: ขนาด Catalyst เทียบกับฐานเดิมของบริษัท pct เป็นตัวเลข ถ้าคำนวณไม่ได้ให้ใส่ `null` ทั้ง pct และ basis แล้วเขียนเหตุผลใน formula
    - status: "พร้อมศึกษาต่อ" ถ้ามีหลักฐานหนุนอย่างน้อย 2 แถวและมีเงื่อนไขตัดทิ้ง ถ้าเป็นตัวสำรองให้ขึ้นต้นด้วย "ตัวสำรอง"
 6. **สร้างเว็บใหม่:** รัน `python scripts/build_site.py` แล้วเปิด `output/index.html` ตรวจว่าหุ้นใหม่ขึ้นครบ กดดูหลักฐานได้ และลิงก์ไปเอกสารได้
 7. **บันทึก:** พิมพ์ `/save`
@@ -38,8 +38,8 @@
    - แล้วรัน `extract.py` กับโฟลเดอร์นั้น เพื่อแปลงเป็นข้อความและได้ `MANIFEST.md` (ต้องมี `pymupdf` จึงจะอ่าน PDF ได้)
 2. ถ้า extract.py แจ้งว่าแปลง .doc/.xls รุ่นเก่าไม่ได้ ให้รัน `powershell -ExecutionPolicy Bypass -File scripts/convert_legacy_office.ps1` แล้วรัน `extract.py` ซ้ำ
 3. หุ้นสหรัฐ: รัน `python scripts/htm_to_text.py data/raw/us/<TICKER>` เพราะ extract.py ไม่แปลงไฟล์ .htm ของ SEC
-4. รัน `python scripts/build_sources.py` เพื่อสร้าง `data/sources.csv` ใหม่ทั้งไฟล์
-5. หลังแก้ `output/data.csv` หรือ `output/stocks.csv` ให้รัน `python scripts/build_site.py` เพื่อสร้าง `output/index.html` ใหม่
+4. รัน `python scripts/build_sources.py` เพื่อสร้าง `data/sources.json` ใหม่ทั้งไฟล์
+5. หลังแก้ `output/data.json` ให้รัน `python scripts/build_site.py` เพื่อตรวจข้อมูลและสร้าง `output/index.html` ใหม่ (เปิดผ่านเว็บจะเห็นข้อมูลล่าสุดอยู่แล้วโดยไม่ต้องรัน แต่สำเนาที่ฝังไว้สำหรับเปิดจากไฟล์ในเครื่องจะเก่า)
 
 ## check_secrets.py
 
@@ -47,7 +47,12 @@
 
 ## build_site.py
 
-ฝังข้อมูลจาก `output/stocks.csv`, `output/data.csv` และ `data/sources.csv` (เฉพาะเอกสารที่หลักฐานอ้างถึง) ลงใน `output/index.html` เป็น JSON ทำให้เปิดไฟล์ได้ตรง ๆ โดยไม่ต้องมี server เพราะเบราว์เซอร์ไม่ยอมให้หน้าที่เปิดจาก `file://` อ่านไฟล์ CSV ข้าง ๆ ถ้ามี doc_id ใน `data.csv` ที่ไม่มีใน `sources.csv` สคริปต์จะหยุดและแจ้ง ห้ามแก้ `index.html` ตรง ๆ เพราะจะถูกเขียนทับ
+หน้าเว็บอ่านข้อมูลได้ 2 ทาง
+
+- **เปิดผ่านเว็บ (เช่น GitHub Pages):** ดึง `output/data.json` และ `data/sources.json` ตอนเปิดหน้า จึงเห็นหุ้นที่เพิ่มใน `data.json` ทันทีโดยไม่ต้องรันสคริปต์
+- **เปิดจากไฟล์ในเครื่อง (ดับเบิลคลิก):** เบราว์เซอร์ไม่ยอมให้หน้าที่เปิดจาก `file://` อ่านไฟล์ JSON ข้าง ๆ จึงใช้สำเนาที่ฝังไว้ในหน้าเว็บ (เฉพาะเอกสารที่หลักฐานอ้างถึง) สำเนานี้สร้างโดย `build_site.py` ต้องรันใหม่หลังแก้ข้อมูลเพื่อให้ตรงกับ `data.json`
+
+สคริปต์ตรวจก่อนสร้างว่า doc_id ของหลักฐานทุกชิ้นมีใน `sources.json` ถ้าไม่มีจะหยุดและแจ้ง ห้ามแก้ `index.html` ตรง ๆ เพราะจะถูกเขียนทับ
 
 ## convert_legacy_office.ps1
 
@@ -63,4 +68,4 @@
 
 - หุ้นสหรัฐ: URL ชี้ไปที่โฟลเดอร์ของ filing บน SEC EDGAR สร้างจากเลข accession ในชื่อไฟล์ ต้องเพิ่ม CIK ของหุ้นใหม่ในตัวแปร `CIK`
 - หุ้นไทย: URL เป็นลิงก์ดาวน์โหลด zip จาก iDisc ซึ่งสคริปต์หาจากหน้ารายการของ iDisc ส่วน sha256 คิดจากไฟล์ที่แตกออกจาก zip แล้ว
-- doc_id สร้างจากตัวเอกสารเอง (หุ้นสหรัฐใช้เลข accession หุ้นไทยใช้ประเภท + วันที่ยื่น + ชื่อไฟล์) จึงไม่เปลี่ยนเมื่อดึงเอกสารเพิ่ม หลักฐานใน `output/data.csv` ที่อ้าง doc_id ไว้จึงไม่หลุด
+- doc_id สร้างจากตัวเอกสารเอง (หุ้นสหรัฐใช้เลข accession หุ้นไทยใช้ประเภท + วันที่ยื่น + ชื่อไฟล์) จึงไม่เปลี่ยนเมื่อดึงเอกสารเพิ่ม หลักฐานใน `output/data.json` ที่อ้าง doc_id ไว้จึงไม่หลุด

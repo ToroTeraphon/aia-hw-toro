@@ -1,12 +1,12 @@
-"""สร้าง data/sources.csv จากเอกสารใน data/raw/
+"""สร้าง data/sources.json จากเอกสารใน data/raw/
 
 ไล่ทุกไฟล์ต้นฉบับ (ไม่นับ .txt ที่แปลงเอง และ MANIFEST.md) แล้วบันทึก
 URL ต้นทาง วันที่ยื่น วันที่ดึง และ sha256 ของไฟล์
 
 ใช้: python scripts/build_sources.py
 """
-import csv
 import hashlib
+import json
 import re
 import urllib.request
 from datetime import datetime
@@ -14,7 +14,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 RAW = ROOT / "data" / "raw"
-OUT = ROOT / "data" / "sources.csv"
+OUT = ROOT / "data" / "sources.json"
 
 SEC_ARCHIVE = "https://www.sec.gov/Archives/edgar/data/{cik}/{acc}/"
 SEC_FACTS = "https://data.sec.gov/api/xbrl/companyfacts/CIK{cik:010d}.json"
@@ -123,13 +123,11 @@ def main():
                     ticker=folder.name, market=market,
                     fetched_at=fetched_at(p), file_path=p.relative_to(ROOT).as_posix(),
                     sha256=sha256(p), **r))
-    # utf-8-sig: ใส่ BOM ให้ Excel บน Windows อ่านภาษาไทยได้ถูกต้องเมื่อดับเบิลคลิกเปิด
-    with open(OUT, "w", newline="", encoding="utf-8-sig") as f:
-        w = csv.DictWriter(f, fieldnames=FIELDS)
-        w.writeheader()
-        w.writerows(rows)
+    # ลำดับคีย์ตาม FIELDS เพื่อให้ diff อ่านง่าย
+    rows = [{k: r[k] for k in FIELDS} for r in rows]
+    OUT.write_text(json.dumps(rows, ensure_ascii=False, indent=1) + "\n", encoding="utf-8", newline="\n")
     missing = [r["doc_id"] for r in rows if not r["url"]]
-    print(f"เขียน {len(rows)} แถวลง {OUT.relative_to(ROOT)}")
+    print(f"เขียน {len(rows)} เอกสารลง {OUT.relative_to(ROOT)}")
     if missing:
         print("ไม่มี URL:", ", ".join(missing))
 
