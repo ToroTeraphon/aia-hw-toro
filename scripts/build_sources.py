@@ -25,7 +25,7 @@ IDISC_INDEX = {
 IDISC_DOWNLOAD = "https://market.sec.or.th/public/idisc/Download?FILEID={fid}"
 
 # CIK ของหุ้นสหรัฐ ดูได้จากบรรทัดแรกที่ fetch_us.py พิมพ์ออกมา
-CIK = {"NVDA": 1045810}
+CIK = {"NVDA": 1045810, "MSFT": 789019, "NEE": 753308, "MAR": 1048286, "ISRG": 1035267}
 
 SKIP = {".txt", ".md"}
 FIELDS = ["doc_id", "ticker", "market", "doc_type", "title", "url",
@@ -54,12 +54,15 @@ def us_rows(ticker, folder):
                        doc_type="companyfacts", title=f"{ticker} XBRL company facts",
                        url=SEC_FACTS.format(cik=cik), doc_date="", path=p)
             continue
-        m = re.match(r"(.+)_(\d{4}-\d{2}-\d{2})_(\d{18})\.htm$", p.name)
+        # ใบแนบของ 8-K (เช่น ข่าวผลประกอบการ) มีส่วนท้ายชื่อไฟล์ เช่น _TEXTGIF
+        m = re.match(r"(.+?)_(\d{4}-\d{2}-\d{2})_(\d{18})(?:_(\w+))?\.htm$", p.name)
         if not m:
             continue
-        form, date, acc = m.groups()
-        yield dict(doc_id=f"{ticker}-{acc}",
-                   doc_type=form, title=f"{ticker} {form} filed {date}",
+        form, date, acc, part = m.groups()
+        suffix = f"-{part}" if part else ""
+        label = f" ({part})" if part else ""
+        yield dict(doc_id=f"{ticker}-{acc}{suffix}",
+                   doc_type=form, title=f"{ticker} {form} filed {date}{label}",
                    url=SEC_ARCHIVE.format(cik=cik, acc=acc), doc_date=date, path=p)
 
 
@@ -82,12 +85,14 @@ def th_rows(sym, folder):
             continue
         kind = "FS" if sub.name.startswith("FS_") else "56-1"
         # ชื่อไฟล์ iDisc ฝังวันที่ยื่นไว้ เช่น 1339FIN13082026... = 13/08/2026
-        m = re.search(r"(\d{4}(?:FIN|ONE))(\d{2})(\d{2})(\d{4})", sub.name)
+        # รหัสประเภทมีหลายแบบ เช่น FIN, ONE, E1N
+        m = re.search(r"(\d{4}[A-Z][A-Z0-9]{2})(\d{2})(\d{2})(\d{4})", sub.name)
         date = f"{m.group(4)}-{m.group(3)}-{m.group(2)}" if m else ""
         fid = next((v for k, v in ids.items() if m and k.startswith(m.group(0))), "")
         url = IDISC_DOWNLOAD.format(fid=fid) if fid else ""
         for p in sorted(sub.iterdir()):
-            if p.suffix.lower() in SKIP:
+            # .converted. คือไฟล์ที่ convert_legacy_office.ps1 แปลงเอง ไม่ใช่เอกสารต้นทาง
+            if p.suffix.lower() in SKIP or ".converted." in p.name:
                 continue
             yield dict(doc_id=f"{sym}-{kind}-{date}-{p.stem}",
                        doc_type=kind, title=f"{sym} {kind} filed {date} · {p.name}",
