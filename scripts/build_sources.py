@@ -26,8 +26,10 @@ IDISC_DOWNLOAD = "https://market.sec.or.th/public/idisc/Download?FILEID={fid}"
 
 # FILEID ของ iDisc ที่หาจากหน้ารายการตามชื่อย่อไม่เจอ
 # GULF: หน้ารายการของ iDisc ชี้ไปที่บริษัทเดิมก่อนควบรวม ไฟล์ของ GULF DEVELOPMENT
-# หา FILEID จากลิงก์งบล่าสุดบนหน้าหุ้นของ set.or.th แล้วดาวน์โหลดผ่าน iDisc
-EXTRA_FILEIDS = {"GULF": ["dat/news/202608/2023FIN060820261731530042E.zip"]}
+# หา FILEID จากลิงก์บนหน้าหุ้นของ set.or.th (งบ: หน้างบการเงิน · 56-1: หน้าข้อมูลบริษัทภาษาไทย)
+# แล้วดาวน์โหลดผ่าน iDisc 56-1 ฉบับนี้มีแต่ภาษาไทย (T)
+EXTRA_FILEIDS = {"GULF": ["dat/news/202608/2023FIN060820261731530042E.zip",
+                          "dat/f56/2023ONE050320261956340770T.zip"]}
 
 # CIK ของหุ้นสหรัฐ ดูได้จากบรรทัดแรกที่ fetch_us.py พิมพ์ออกมา
 CIK = {"NVDA": 1045810, "MSFT": 789019, "NEE": 753308, "MAR": 1048286, "ISRG": 1035267}

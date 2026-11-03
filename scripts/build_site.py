@@ -62,6 +62,8 @@ h1{font-size:26px;margin:0 0 4px}
 .chips button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .chips button:disabled{opacity:.35;cursor:default}
 .count{color:var(--muted);font-size:13px;margin:0 0 10px}
+.grp{font-size:15px;margin:18px 0 8px;padding-bottom:4px;border-bottom:2px solid var(--line)}
+.grp small{display:block;font-weight:400;font-size:13px;color:var(--muted)}
 .empty{color:var(--muted);padding:20px;text-align:center;background:var(--card);border:1px dashed var(--line);border-radius:10px}
 @media (max-width:560px){.group{grid-template-columns:1fr;gap:4px}}
 .stock{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:0 0 10px;overflow:hidden}
@@ -177,12 +179,34 @@ function render() {
     .sort((a, b) => (state.sort === 'size' ? bySize(a, b) : dir * (a.evidence_score - b.evidence_score))
       || a.ticker.localeCompare(b.ticker));
   document.getElementById('count').textContent = `แสดง ${rows.length} จาก ${D.stocks.length} ตัว` +
-    (state.sort === 'size' ? ' · ขนาดแต่ละตัวเทียบกับฐานต่างกัน (สินทรัพย์ ห้อง เตียง รายได้) ใช้ดูคร่าว ๆ อย่าเทียบตรง ๆ' : '');
+    (state.sort === 'size' ? ' · แยกกลุ่มตามฐานที่ใช้เทียบ เทียบขนาดกันได้เฉพาะในกลุ่มเดียวกัน' : '');
   if (!rows.length) {
     document.getElementById('list').innerHTML = '<div class="empty">ไม่มีหุ้นที่ตรงกับตัวกรองนี้ ลองเลือกธีมหรือคะแนนอื่น</div>';
     return;
   }
-  document.getElementById('list').innerHTML = rows.map(s => {
+  document.getElementById('list').innerHTML = state.sort === 'size' ? grouped(rows) : rows.map(card).join('');
+  document.querySelectorAll('.head').forEach(h => h.onclick = () => {
+    const a = h.parentElement.classList.toggle('open'); h.setAttribute('aria-expanded', a);
+  });
+}
+
+// ตอนเรียงตามขนาด: แยกกลุ่มตามฐาน กลุ่มที่มีหลายตัวขึ้นก่อน กลุ่มคำนวณไม่ได้อยู่ท้าย
+function grouped(rows) {
+  const NONE = 'คำนวณไม่ได้';
+  const groups = {};
+  rows.forEach(s => (groups[size(s) === null ? NONE : s.catalyst_size_basis] ||= []).push(s));
+  const keys = Object.keys(groups).sort((a, b) =>
+    (a === NONE) - (b === NONE) || groups[b].length - groups[a].length || a.localeCompare(b));
+  return keys.map(k => {
+    const n = groups[k].length;
+    const hint = k === NONE ? 'เอกสารไม่มีตัวเลขพอให้คำนวณ ดูเหตุผลในรายละเอียดของแต่ละตัว'
+      : n === 1 ? 'มีตัวเดียวในกลุ่มนี้ จึงไม่มีตัวให้เทียบ' : 'เทียบขนาดกันได้ในกลุ่มนี้';
+    return `<h3 class="grp">${k === NONE ? NONE : 'เทียบ' + esc(k.replace(/^ของ/, 'กับ'))} · ${n} ตัว<small>${hint}</small></h3>` +
+      groups[k].map(card).join('');
+  }).join('');
+}
+
+function card(s) {
     const n = +s.evidence_score;
     const ev = (byTicker[s.ticker] || []).sort((a, b) => order[a.signal] - order[b.signal]);
     return `<article class="stock" id="s-${esc(s.ticker)}">
@@ -201,10 +225,6 @@ function render() {
         </dl>
         <ul class="ev">${ev.map(evItem).join('')}</ul>
       </div></article>`;
-  }).join('');
-  document.querySelectorAll('.head').forEach(h => h.onclick = () => {
-    const a = h.parentElement.classList.toggle('open'); h.setAttribute('aria-expanded', a);
-  });
 }
 render();
 document.getElementById('foot').textContent =
