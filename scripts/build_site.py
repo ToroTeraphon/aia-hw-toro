@@ -24,8 +24,39 @@ def read(path):
     return json.loads((ROOT / path).read_text(encoding="utf-8-sig"))  # -sig: ทนต่อไฟล์ที่มี BOM
 
 
+MIN_SCORE_T1 = 4   # T1 ต้องได้คะแนนอย่างน้อยเท่านี้
+MIN_DOCS_T1 = 2    # และอ้างเอกสารอย่างน้อยกี่ฉบับ (หลักฐานหลายแถวจากเอกสารฉบับเดียวไม่นับเป็นหลายแหล่ง)
+MAX_SCORE_T3 = 2   # คะแนนไม่เกินนี้ = T3
+
+
+def tier_numbers(s):
+    ev = s["evidence"]
+    n = lambda sig: sum(e["signal"] == sig for e in ev)
+    return s["evidence_score"], len({e["doc_id"] for e in ev}), n("support"), n("challenge")
+
+
+def derive_tier(s):
+    """T1 = ผ่านทั้ง 3 เกณฑ์ (คะแนน, จำนวนเอกสาร, ค้านไม่เกินหนุน) · T3 = คะแนนต่ำ · T2 = ที่เหลือ"""
+    score, docs, sup, ch = tier_numbers(s)
+    if score <= MAX_SCORE_T3:
+        return "T3"
+    return "T1" if score >= MIN_SCORE_T1 and docs >= MIN_DOCS_T1 and ch <= sup else "T2"
+
+
+def tier_reason(s):
+    score, docs, sup, ch = tier_numbers(s)
+    ok = lambda b: "ผ่าน" if b else "ไม่ผ่าน"
+    return (f"คะแนน {score} (เกณฑ์ ≥{MIN_SCORE_T1}: {ok(score >= MIN_SCORE_T1)}) · "
+            f"อ้างเอกสาร {docs} ฉบับ (เกณฑ์ ≥{MIN_DOCS_T1}: {ok(docs >= MIN_DOCS_T1)}) · "
+            f"หนุน {sup} ค้าน {ch} (ค้านไม่เกินหนุน: {ok(ch <= sup)})")
+
+
 def main():
     stocks = read("output/data.json")["stocks"]
+    wrong = [f"{s['ticker']}: ใน data.json เป็น {s.get('tier')} แต่เกณฑ์ให้ {derive_tier(s)}"
+             for s in stocks if s.get("tier") != derive_tier(s)]
+    if wrong:
+        raise SystemExit("tier ไม่ตรงกับเกณฑ์ (แก้ช่อง tier และ tier_reason ใน data.json):\n  " + "\n  ".join(wrong))
     used = {e["doc_id"] for s in stocks for e in s["evidence"]}
     # ฝังเฉพาะเอกสารที่หลักฐานอ้างถึง เพื่อให้สำเนาที่ฝังไม่ใหญ่เกินจำเป็น
     sources = {s["doc_id"]: {k: s[k] for k in ("title", "url", "doc_type", "doc_date")}
@@ -98,6 +129,7 @@ h1{font-size:26px;margin:0 0 4px}
 .docs{margin:0 0 12px;font-size:14px}
 .docs ul{margin:4px 0 0;padding-left:20px}
 .docs a{color:var(--acc)}
+.tier{margin-left:4px}
 .legend{margin-top:28px;font-size:14px}
 .legend table{border-collapse:collapse;width:100%;background:var(--card)}
 .legend td{border:1px solid var(--line);padding:6px 10px;vertical-align:top}
@@ -112,6 +144,7 @@ footer{margin-top:24px;color:var(--muted);font-size:13px}
 <div class="note"><b>คะแนนวัดความแน่นของหลักฐาน ไม่ใช่การทำนายราคา และไม่ใช่คำแนะนำซื้อหรือขาย</b><br>
 กดที่หุ้นเพื่อดูหลักฐานหนุน/ค้านทีละแถว และลิงก์ไปเอกสารต้นทาง ตัวเลขที่ไม่มีในเอกสารเว้นว่างไว้ ไม่ได้เดา</div>
 <div class="controls">
+  <div class="group"><span class="label" id="lb-tier">Watchlist</span><div class="chips" id="f-tier" role="group" aria-labelledby="lb-tier"></div></div>
   <div class="group"><span class="label" id="lb-theme">ธีม</span><div class="chips" id="f-theme" role="group" aria-labelledby="lb-theme"></div></div>
   <div class="group"><span class="label" id="lb-score">กรองตามคะแนน</span><div class="chips" id="f-score" role="group" aria-labelledby="lb-score"></div></div>
   <div class="group"><span class="label" id="lb-basis">ขนาด Catalyst เทียบกับ</span><div class="chips" id="f-basis" role="group" aria-labelledby="lb-basis"></div></div>
@@ -120,6 +153,13 @@ footer{margin-top:24px;color:var(--muted);font-size:13px}
 <p class="count" id="count"></p>
 <div id="list"></div>
 <section class="legend">
+<h2>Watchlist (T1–T3)</h2>
+<table>
+<tr><td>T1 · ติด Watchlist</td><td>ผ่านทั้ง 3 ข้อ: คะแนน ≥4 · อ้างเอกสารอย่างน้อย 2 ฉบับ · จำนวนหลักฐานค้านไม่เกินหลักฐานหนุน</td></tr>
+<tr><td>T2 · รอข้อมูล</td><td>คะแนน ≥3 แต่ไม่ผ่านอย่างน้อย 1 ข้อข้างบน</td></tr>
+<tr><td>T3 · ยังไม่ติด</td><td>คะแนน ≤2</td></tr>
+</table>
+<p>T คือระดับของหลักฐาน ไม่ใช่ระดับความน่าลงทุน ใช้เรียงลำดับว่าจะทำ Deep Dive ตัวไหนก่อน: เริ่มจาก T1 ถ้าหมดแล้วค่อยทำ T2 ส่วน T3 ยังไม่ทำ จำนวนหนุน/ค้านนับเป็นแถว ไม่ได้ถ่วงน้ำหนักว่าหลักฐานแถวไหนสำคัญกว่า</p>
 <h2>เกณฑ์คะแนน (1–5)</h2>
 <table>
 <tr><td>5</td><td>ตัวจุดประกายมีผลแล้ว หรือมีสัญญาผูกพันกับลูกค้าแล้ว</td></tr>
@@ -131,6 +171,7 @@ footer{margin-top:24px;color:var(--muted);font-size:13px}
 <p>หัก 1 คะแนนถ้ามีหลักฐานค้านที่บริษัทเปิดเผยเอง ซึ่งทำให้ตัวจุดประกายอาจไม่เกิดหรือเลื่อนออกไป</p>
 <h2>ขนาด Catalyst</h2>
 <p>ขนาดของสิ่งที่ตัวจุดประกายจะเพิ่มให้ คิดเป็น % ของฐานเดิมของบริษัท คำนวณจากตัวเลขในเอกสารเท่านั้น แต่ละตัวเทียบกับฐานต่างกันตามธุรกิจ (สินทรัพย์รวม จำนวนห้อง จำนวนเตียง หรือรายได้) จึงใช้ดูคร่าว ๆ ไม่ควรเทียบตรง ๆ ข้ามธุรกิจ ตัวที่เอกสารไม่มีตัวเลขพอจะเว้นว่าง ตัวเลขนี้ไม่ได้มาจากผลประกอบการย้อนหลัง</p>
+<p>ตัวเลขนี้เป็นเพียงตัวบอกขนาดคร่าว ๆ (scale proxy) ไม่ใช่รายได้หรือกำไรที่จะเพิ่มขึ้น เช่น MSFT เทียบรายได้ตามสัญญาที่รอรับรู้ภายใน 12 เดือนกับรายได้ทั้งปีที่ผ่านมา ซึ่งไม่ได้บอกว่ารายได้จะโต 61% และไม่ได้บอกผลต่อกำไรต่อหุ้นหรือกระแสเงินสด</p>
 </section>
 <footer id="foot"></footer>
 </main>
@@ -175,7 +216,9 @@ const order = {support:0, challenge:1, neutral:2};
 
 const ALL = 'ทั้งหมด';
 const NONE = 'คำนวณไม่ได้';
-const state = {theme: ALL, score: ALL, basis: ALL, sort: 'desc'};
+const state = {tier: ALL, theme: ALL, score: ALL, basis: ALL, sort: 'desc'};
+const TIERS = {T1: 'ติด Watchlist', T2: 'รอข้อมูล', T3: 'ยังไม่ติด'};
+const tierCount = t => D.stocks.filter(s => s.tier === t).length;
 
 // สร้างปุ่มกลุ่มหนึ่ง: options = [[ค่า, ข้อความ, ปิดใช้ไหม]]
 function chips(id, key, options) {
@@ -204,6 +247,7 @@ const basisCount = b => D.stocks.filter(s => basisOf(s) === b).length;
 function start() {
   byTicker = {};
   D.evidence.forEach(e => (byTicker[e.ticker] ||= []).push(e));
+  chips('f-tier', 'tier', [[ALL, ALL], ...Object.entries(TIERS).map(([t, label]) => [t, `${t} · ${label} · ${tierCount(t)} ตัว`, !tierCount(t)])]);
   chips('f-theme', 'theme', [[ALL, ALL], ...[...new Set(D.stocks.flatMap(themesOf))].map(t => [t, t])]);
   chips('f-score', 'score', [[ALL, ALL], ...[5, 4, 3, 2, 1].map(n => [n, `${n} คะแนน · ${scoreCount(n)} ตัว`, !scoreCount(n)])]);
   chips('f-sort', 'sort', [['desc', 'คะแนนมาก → น้อย'], ['asc', 'คะแนนน้อย → มาก'], ['size', 'ขนาด Catalyst มาก → น้อย']]);
@@ -212,10 +256,10 @@ function start() {
   chips('f-basis', 'basis', [[ALL, ALL], ...bases.map(b => [b, `${basisLabel(b)} · ${basisCount(b)} ตัว`])]);
   render();
   document.getElementById('foot').textContent =
-    `ข้อมูลจาก output/data.json และ data/sources.json (${D.live ? 'ดึงสดจากเว็บ' : 'สำเนาที่ฝังไว้ สร้างเมื่อ ' + D.built}) · ` +
+    `ข้อมูลจาก output/data.json และ data/sources.json${D.live ? '' : ' (สำเนาที่ฝังไว้ สร้างเมื่อ ' + D.built + ')'} · ` +
     `หุ้น ${D.stocks.length} ตัว · หลักฐาน ${D.evidence.length} แถว · เอกสารที่อ้างถึง ${Object.keys(D.sources).length} ฉบับ`;
 }
-const sizeText = s => size(s) === null ? 'ขนาด Catalyst: คำนวณไม่ได้' : `ขนาด Catalyst: ${s.catalyst_size_pct}% ${s.catalyst_size_basis}`;
+const sizeText = s => size(s) === null ? 'ขนาด Catalyst: คำนวณไม่ได้' : `ขนาด Catalyst: ${s.catalyst_size_pct}% ${s.catalyst_size_basis} (สัดส่วนต่อฐาน ไม่ใช่กำไรหรือรายได้ที่เพิ่มขึ้น)`;
 
 function evItem(e) {
   const s = D.sources[e.doc_id] || {};
@@ -230,6 +274,7 @@ function render() {
   // เรียงตามขนาด: ตัวที่คำนวณไม่ได้อยู่ท้ายเสมอ
   const bySize = (a, b) => (size(a) === null) - (size(b) === null) || (size(b) ?? 0) - (size(a) ?? 0);
   const rows = D.stocks
+    .filter(s => state.tier === ALL || s.tier === state.tier)
     .filter(s => state.theme === ALL || themesOf(s).includes(state.theme))
     .filter(s => state.score === ALL || +s.evidence_score === state.score)
     .filter(s => state.basis === ALL || basisOf(s) === state.basis)
@@ -275,7 +320,7 @@ function card(s) {
     }).join('');
     return `<article class="stock" id="s-${esc(s.ticker)}">
       <button class="head" aria-expanded="false">
-        <div class="tk">${esc(s.ticker)}<small>${s.market === 'TH' ? 'ไทย' : 'สหรัฐ'} · ${themesOf(s).map(esc).join(' + ')}</small>${s.status.startsWith('ตัวสำรอง') ? '<span class="tag neutral">ตัวสำรอง</span>' : ''}</div>
+        <div class="tk">${esc(s.ticker)}<small>${s.market === 'TH' ? 'ไทย' : 'สหรัฐ'} · ${themesOf(s).map(esc).join(' + ')}</small>${s.status.startsWith('ตัวสำรอง') ? '<span class="tag neutral">ตัวสำรอง</span>' : ''}<span class="tag tier ${s.tier === 'T1' ? 'support' : 'neutral'}" title="${esc(TIERS[s.tier])}">${esc(s.tier)}</span></div>
         <div class="cat"><b>${esc(s.catalyst)}</b><span>${esc(s.catalyst_timing)} · ${esc(sizeText(s))}</span></div>
         <div class="score"><div class="dots" aria-label="คะแนน ${n} จาก 5">${'●'.repeat(n)}${'○'.repeat(5 - n)}</div>
           <small>${n}/5 · หนุน ${esc(s.support_count)} · ค้าน ${esc(s.challenge_count)} · จาก ${docIds.length} เอกสาร</small></div>
@@ -283,6 +328,7 @@ function card(s) {
       <div class="body">
         <dl class="meta">
           <div><dt>เงื่อนไขตัดทิ้ง</dt><dd>${esc(s.rejection_condition)}</dd></div>
+          <div><dt>Watchlist</dt><dd><b>${esc(s.tier)} · ${esc(TIERS[s.tier])}</b><br>${esc(s.tier_reason)}</dd></div>
           <div><dt>สถานะ</dt><dd>${esc(s.status)}</dd></div>
           <div style="grid-column:1/-1"><dt>เหตุผลของคะแนน</dt><dd>${esc(s.note)}</dd></div>
           <div style="grid-column:1/-1"><dt>ขนาด Catalyst: วิธีคำนวณ</dt><dd>${esc(s.catalyst_size_formula)}</dd></div>
