@@ -35,6 +35,12 @@ h1{font-size:26px;margin:0 0 4px}
 .cat{min-width:0}
 .cat b{display:block}
 .cat span{color:var(--muted);font-size:13px}
+.cat .size{display:flex;flex-wrap:wrap;gap:4px 8px;align-items:baseline;margin-top:6px;padding:4px 10px;background:var(--bg);border-left:3px solid var(--acc);border-radius:6px}
+.cat .size .lab{font-size:12px;font-weight:600}
+.cat .size .pct{font-size:18px;font-weight:700;color:var(--acc)}
+.cat .size .of{color:var(--ink)}
+.cat .size.none{border-left-color:var(--line)}
+.cat .size .tag{margin:0}
 .score{text-align:center}
 .dots{letter-spacing:2px;font-size:14px;color:var(--acc)}
 .score small{display:block;color:var(--muted);font-size:12px}
@@ -195,7 +201,12 @@ function start() {
     `ข้อมูลจาก output/data.json และ data/sources.json${D.live ? '' : ' (สำเนาที่ฝังไว้ สร้างเมื่อ ' + D.built + ')'} · ` +
     `หุ้น ${D.stocks.length} ตัว · หลักฐาน ${D.evidence.length} แถว · เอกสารที่อ้างถึง ${Object.keys(D.sources).length} ฉบับ`;
 }
-const sizeText = s => size(s) === null ? 'ขนาด Catalyst: คำนวณไม่ได้' : `ขนาด Catalyst: ${s.catalyst_size_pct}% ${s.catalyst_size_basis} (กลุ่มฐาน ${typeLabel(s.catalyst_size_type)} · สัดส่วนต่อฐาน ไม่ใช่กำไรหรือรายได้ที่เพิ่มขึ้น)`;
+// แถวขนาด Catalyst ในการ์ด: ตัวเลขเด่น + ฐานที่เทียบ + ป้ายกลุ่ม (กลุ่มกำไรและความคืบหน้าติดป้ายเตือนว่าไม่ใช่ขนาดโดยตรง)
+const sizeRow = s => size(s) === null
+  ? '<div class="size none"><span class="lab">ขนาด Catalyst</span><span>คำนวณไม่ได้ ดูเหตุผลในรายละเอียด</span></div>'
+  : `<div class="size"><span class="lab">ขนาด Catalyst</span><span class="pct">${esc(s.catalyst_size_pct)}%</span>
+      <span class="of">${esc(s.catalyst_size_basis)}</span><span class="tag neutral">${esc(typeLabel(s.catalyst_size_type))}</span>
+      ${TYPE_HINT[s.catalyst_size_type] && s.catalyst_size_type !== 'revenue' ? '<span class="tag challenge">ไม่ใช่ขนาดโดยตรง</span>' : ''}</div>`;
 
 function evItem(e) {
   const s = D.sources[e.doc_id] || {};
@@ -257,7 +268,7 @@ function card(s) {
     return `<article class="stock" id="s-${esc(s.ticker)}">
       <button class="head" aria-expanded="false">
         <div class="tk">${esc(s.ticker)}<small>${s.market === 'TH' ? 'ไทย' : 'สหรัฐ'} · ${themesOf(s).map(esc).join(' + ')}</small>${s.status.startsWith('ตัวสำรอง') ? '<span class="tag neutral">ตัวสำรอง</span>' : ''}<span class="tag tier ${s.tier === 'T1' ? 'support' : 'neutral'}" title="${esc(TIERS[s.tier])}">${esc(s.tier)}</span></div>
-        <div class="cat"><b>${esc(s.catalyst)}</b><span>${esc(s.catalyst_timing)} · ${esc(sizeText(s))}</span></div>
+        <div class="cat"><b>${esc(s.catalyst)}</b><span>${esc(s.catalyst_timing)}</span>${sizeRow(s)}</div>
         <div class="score"><div class="dots" aria-label="คะแนน ${n} จาก 5">${'●'.repeat(n)}${'○'.repeat(5 - n)}</div>
           <small>${n}/5 · หนุน ${esc(s.support_count)} · ค้าน ${esc(s.challenge_count)} · จาก ${docIds.length} เอกสาร</small></div>
       </button>
@@ -267,7 +278,7 @@ function card(s) {
           <div><dt>Watchlist</dt><dd><b>${esc(s.tier)} · ${esc(TIERS[s.tier])}</b><br>${esc(s.tier_reason)}</dd></div>
           <div><dt>สถานะ</dt><dd>${esc(s.status)}</dd></div>
           <div style="grid-column:1/-1"><dt>เหตุผลของคะแนน</dt><dd>${esc(s.note)}</dd></div>
-          <div style="grid-column:1/-1"><dt>ขนาด Catalyst: วิธีคำนวณ</dt><dd>${esc(s.catalyst_size_formula)}</dd></div>
+          <div style="grid-column:1/-1"><dt>ขนาด Catalyst: วิธีคำนวณ</dt><dd>${esc(s.catalyst_size_formula)}<br><small class="evnote">เป็นสัดส่วนต่อฐานเดิม ไม่ใช่กำไรหรือรายได้ที่จะเพิ่มขึ้น เทียบขนาดกันได้เฉพาะในกลุ่มฐานเดียวกัน</small></dd></div>
         </dl>
         <div class="docs"><b>เอกสารต้นทาง (${docIds.length} ฉบับ)</b><ul>${docLinks}</ul></div>
         <ul class="ev">${ev.map(evItem).join('')}</ul>
