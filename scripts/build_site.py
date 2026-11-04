@@ -140,7 +140,7 @@ footer{margin-top:24px;color:var(--muted);font-size:13px}
 <body>
 <main>
 <h1>Catalyst Tracker 2027</h1>
-<p class="sub">หุ้นไทย + สหรัฐ 11 ตัว · ตัวจุดประกายปี 2027 จากเอกสารที่บริษัทยื่นเอง</p>
+<p class="sub" id="sub">หุ้นไทย + สหรัฐ · ตัวจุดประกายปี 2027 จากเอกสารที่บริษัทยื่นเอง</p>
 <div class="note"><b>คะแนนวัดความแน่นของหลักฐาน ไม่ใช่การทำนายราคา และไม่ใช่คำแนะนำซื้อหรือขาย</b><br>
 กดที่หุ้นเพื่อดูหลักฐานหนุน/ค้านทีละแถว และลิงก์ไปเอกสารต้นทาง ตัวเลขที่ไม่มีในเอกสารเว้นว่างไว้ ไม่ได้เดา</div>
 <div class="controls">
@@ -255,6 +255,7 @@ function start() {
     .sort((a, b) => (a === NONE) - (b === NONE) || basisCount(b) - basisCount(a) || a.localeCompare(b));
   chips('f-basis', 'basis', [[ALL, ALL], ...bases.map(b => [b, `${basisLabel(b)} · ${basisCount(b)} ตัว`])]);
   render();
+  document.getElementById('sub').textContent = `หุ้นไทย + สหรัฐ ${D.stocks.length} ตัว · ตัวจุดประกายปี 2027 จากเอกสารที่บริษัทยื่นเอง`;
   document.getElementById('foot').textContent =
     `ข้อมูลจาก output/data.json และ data/sources.json${D.live ? '' : ' (สำเนาที่ฝังไว้ สร้างเมื่อ ' + D.built + ')'} · ` +
     `หุ้น ${D.stocks.length} ตัว · หลักฐาน ${D.evidence.length} แถว · เอกสารที่อ้างถึง ${Object.keys(D.sources).length} ฉบับ`;

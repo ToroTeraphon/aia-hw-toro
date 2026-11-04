@@ -28,6 +28,7 @@
    - tier และ tier_reason: ระดับ Watchlist (T1–T3) ตามเกณฑ์ใน `spec.md` ให้ใช้ `derive_tier(s)` และ `tier_reason(s)` ใน `build_site.py` หาค่า (ต้องเพิ่มหลักฐานของหุ้นก่อน) แล้วใส่ใน data.json ถ้าแก้หลักฐานหรือคะแนนภายหลัง ต้องอัปเดตสองช่องนี้ด้วย build_site.py จะหยุดและแจ้งถ้า tier ไม่ตรงกับเกณฑ์ (tier_reason ไม่ถูกตรวจ ต้องอัปเดตเอง)
    - catalyst_size_pct, catalyst_size_basis, catalyst_size_formula: ขนาด Catalyst เทียบกับฐานเดิมของบริษัท pct เป็นตัวเลข ถ้าคำนวณไม่ได้ให้ใส่ `null` ทั้ง pct และ basis แล้วเขียนเหตุผลใน formula
    - status: "พร้อมศึกษาต่อ" ถ้ามีหลักฐานหนุนอย่างน้อย 2 แถวและมีเงื่อนไขตัดทิ้ง ถ้าเป็นตัวสำรองให้ขึ้นต้นด้วย "ตัวสำรอง"
+   - **ทางลัดสำหรับข้อ 4–5:** เขียนหุ้นกับหลักฐานเป็นไฟล์ JSON เดียว (ไม่ต้องใส่ status, tier, tier_reason) แล้วรัน `python scripts/add_stock.py <ไฟล์.json>` สคริปต์ตรวจช่อง doc_id และเลข evidence_id คำนวณ tier ให้ แล้วเพิ่มลง data.json (ใช้ `--replace` ถ้าตั้งใจแทนที่หุ้นเดิม)
 6. **สร้างเว็บใหม่:** รัน `python scripts/build_site.py` แล้วเปิด `output/index.html` ตรวจว่าหุ้นใหม่ขึ้นครบ กดดูหลักฐานได้ และลิงก์ไปเอกสารได้
 7. **บันทึก:** พิมพ์ `/save`
 
