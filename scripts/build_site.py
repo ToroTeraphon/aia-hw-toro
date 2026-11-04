@@ -29,6 +29,11 @@ MIN_DOCS_T1 = 2    # และอ้างเอกสารอย่างน�
 MAX_SCORE_T3 = 2   # คะแนนไม่เกินนี้ = T3
 
 
+# ประเภทฐานที่ใช้เทียบขนาด Catalyst (ค่าที่ catalyst_size_type ใช้ได้) · หน้าเว็บมีตารางป้ายชื่อชุดเดียวกัน
+SIZE_TYPES = ["revenue", "assets", "units_rooms", "units_beds", "units_mw", "units_aircraft",
+              "units_sites", "profit", "progress"]
+
+
 def tier_numbers(s):
     ev = s["evidence"]
     n = lambda sig: sum(e["signal"] == sig for e in ev)
@@ -57,6 +62,11 @@ def main():
              for s in stocks if s.get("tier") != derive_tier(s)]
     if wrong:
         raise SystemExit("tier ไม่ตรงกับเกณฑ์ (แก้ช่อง tier และ tier_reason ใน data.json):\n  " + "\n  ".join(wrong))
+    bad_type = [f"{s['ticker']}: catalyst_size_type = {s.get('catalyst_size_type')!r}" for s in stocks
+                if (s.get("catalyst_size_type") is None) != (s.get("catalyst_size_basis") is None)
+                or (s.get("catalyst_size_type") is not None and s["catalyst_size_type"] not in SIZE_TYPES)]
+    if bad_type:
+        raise SystemExit(f"catalyst_size_type ต้องเป็น null พร้อม basis หรือเป็นหนึ่งใน {SIZE_TYPES}:\n  " + "\n  ".join(bad_type))
     used = {e["doc_id"] for s in stocks for e in s["evidence"]}
     # ฝังเฉพาะเอกสารที่หลักฐานอ้างถึง เพื่อให้สำเนาที่ฝังไม่ใหญ่เกินจำเป็น
     sources = {s["doc_id"]: {k: s[k] for k in ("title", "url", "doc_type", "doc_date")}
@@ -170,7 +180,7 @@ footer{margin-top:24px;color:var(--muted);font-size:13px}
 </table>
 <p>หัก 1 คะแนนถ้ามีหลักฐานค้านที่บริษัทเปิดเผยเอง ซึ่งทำให้ตัวจุดประกายอาจไม่เกิดหรือเลื่อนออกไป</p>
 <h2>ขนาด Catalyst</h2>
-<p>ขนาดของสิ่งที่ตัวจุดประกายจะเพิ่มให้ คิดเป็น % ของฐานเดิมของบริษัท คำนวณจากตัวเลขในเอกสารเท่านั้น แต่ละตัวเทียบกับฐานต่างกันตามธุรกิจ (สินทรัพย์รวม จำนวนห้อง จำนวนเตียง หรือรายได้) จึงใช้ดูคร่าว ๆ ไม่ควรเทียบตรง ๆ ข้ามธุรกิจ ตัวที่เอกสารไม่มีตัวเลขพอจะเว้นว่าง ตัวเลขนี้ไม่ได้มาจากผลประกอบการย้อนหลัง</p>
+<p>ขนาดของสิ่งที่ตัวจุดประกายจะเพิ่มให้ คิดเป็น % ของฐานเดิมของบริษัท คำนวณจากตัวเลขในเอกสารเท่านั้น แต่ละตัวเทียบกับฐานต่างกันตามธุรกิจ แบ่งเป็น 5 กลุ่มคือ รายได้/ยอดขาย · สินทรัพย์รวม · จำนวนหน่วยที่สร้างรายได้ (ห้อง เตียง MW เครื่องบิน สาขา) · กำไร/EBITDA/ปันผล · ความคืบหน้าโครงการ เทียบขนาดกันได้เฉพาะในกลุ่มเดียวกัน ไม่ควรเทียบข้ามกลุ่ม กลุ่มกำไรและความคืบหน้าวัดสิ่งอื่นที่ไม่ใช่ขนาดของ Catalyst โดยตรง ตัวที่เอกสารไม่มีตัวเลขพอจะเว้นว่าง ตัวเลขนี้ไม่ได้มาจากผลประกอบการย้อนหลัง</p>
 <p>ตัวเลขนี้เป็นเพียงตัวบอกขนาดคร่าว ๆ (scale proxy) ไม่ใช่รายได้หรือกำไรที่จะเพิ่มขึ้น เช่น MSFT เทียบรายได้ตามสัญญาที่รอรับรู้ภายใน 12 เดือนกับรายได้ทั้งปีที่ผ่านมา ซึ่งไม่ได้บอกว่ารายได้จะโต 61% และไม่ได้บอกผลต่อกำไรต่อหุ้นหรือกระแสเงินสด</p>
 </section>
 <footer id="foot"></footer>
@@ -188,6 +198,7 @@ function shape(stocks, sources, built) {
     const n = sig => ev.filter(e => e.signal === sig).length;
     return {...s, theme: s.themes.join('|'),
       catalyst_size_pct: s.catalyst_size_pct ?? '', catalyst_size_basis: s.catalyst_size_basis ?? '',
+      catalyst_size_type: s.catalyst_size_type ?? '',
       support_count: n('support'), challenge_count: n('challenge')};
   });
   return {stocks: flat, evidence, sources, built};
@@ -216,7 +227,7 @@ const order = {support:0, challenge:1, neutral:2};
 
 const ALL = 'ทั้งหมด';
 const NONE = 'คำนวณไม่ได้';
-const state = {tier: ALL, theme: ALL, score: ALL, basis: ALL, sort: 'desc'};
+const state = {tier: ALL, theme: ALL, score: ALL, type: ALL, sort: 'desc'};
 const TIERS = {T1: 'ติด Watchlist', T2: 'รอข้อมูล', T3: 'ยังไม่ติด'};
 const tierCount = t => D.stocks.filter(s => s.tier === t).length;
 
@@ -239,9 +250,19 @@ const scoreCount = n => D.stocks.filter(s => +s.evidence_score === n).length;
 // หุ้นหนึ่งตัวอยู่ได้หลายธีม (themes เป็นรายการใน data.json)
 const themesOf = s => s.theme.split('|');
 const size = s => s.catalyst_size_pct === '' ? null : +s.catalyst_size_pct;
-const basisOf = s => size(s) === null ? NONE : s.catalyst_size_basis;
-const basisLabel = b => b === NONE ? NONE : b.replace(/^ของ/, '');
-const basisCount = b => D.stocks.filter(s => basisOf(s) === b).length;
+// ประเภทฐานที่ใช้เทียบ (ชุดเดียวกับ SIZE_TYPES ใน build_site.py) · ฐานจริงของแต่ละตัวอยู่ในข้อความ catalyst_size_basis
+const TYPES = {
+  revenue: 'รายได้ / ยอดขาย', assets: 'สินทรัพย์รวม',
+  units_rooms: 'หน่วย: ห้องพัก', units_beds: 'หน่วย: เตียง', units_mw: 'หน่วย: กำลังผลิต (MW)',
+  units_aircraft: 'หน่วย: เครื่องบิน / ที่นั่ง', units_sites: 'หน่วย: จำนวนสาขา',
+  profit: 'กำไร / EBITDA / ปันผล', progress: 'ความคืบหน้าโครงการ'};
+const TYPE_HINT = {
+  revenue: 'ช่วงเวลาของฐานต่างกัน (ทั้งปี ไตรมาส ครึ่งปี) ดูฐานของแต่ละตัวก่อนเทียบ',
+  profit: 'ไม่ใช่ขนาดของ Catalyst โดยตรง วัดผลต่อกำไรหรือผู้ถือหุ้น เทียบกับกลุ่มอื่นไม่ได้',
+  progress: 'ไม่ใช่ขนาดของ Catalyst วัดว่าโครงการคืบหน้าไปแค่ไหน เทียบกับกลุ่มอื่นไม่ได้'};
+const typeOf = s => size(s) === null ? NONE : s.catalyst_size_type;
+const typeLabel = t => t === NONE ? NONE : TYPES[t] || t;
+const typeCount = t => D.stocks.filter(s => typeOf(s) === t).length;
 
 // สร้างปุ่มตัวกรองจากข้อมูล เรียกครั้งเดียวหลังโหลดข้อมูลเสร็จ
 function start() {
@@ -251,16 +272,14 @@ function start() {
   chips('f-theme', 'theme', [[ALL, ALL], ...[...new Set(D.stocks.flatMap(themesOf))].map(t => [t, t])]);
   chips('f-score', 'score', [[ALL, ALL], ...[5, 4, 3, 2, 1].map(n => [n, `${n} คะแนน · ${scoreCount(n)} ตัว`, !scoreCount(n)])]);
   chips('f-sort', 'sort', [['desc', 'คะแนนมาก → น้อย'], ['asc', 'คะแนนน้อย → มาก'], ['size', 'ขนาด Catalyst มาก → น้อย']]);
-  const bases = [...new Set(D.stocks.map(basisOf))]
-    .sort((a, b) => (a === NONE) - (b === NONE) || basisCount(b) - basisCount(a) || a.localeCompare(b));
-  chips('f-basis', 'basis', [[ALL, ALL], ...bases.map(b => [b, `${basisLabel(b)} · ${basisCount(b)} ตัว`])]);
+  chips('f-basis', 'type', [[ALL, ALL], ...[...Object.keys(TYPES), NONE].map(t => [t, `${typeLabel(t)} · ${typeCount(t)} ตัว`, !typeCount(t)])]);
   render();
   document.getElementById('sub').textContent = `หุ้นไทย + สหรัฐ ${D.stocks.length} ตัว · ตัวจุดประกายปี 2027 จากเอกสารที่บริษัทยื่นเอง`;
   document.getElementById('foot').textContent =
     `ข้อมูลจาก output/data.json และ data/sources.json${D.live ? '' : ' (สำเนาที่ฝังไว้ สร้างเมื่อ ' + D.built + ')'} · ` +
     `หุ้น ${D.stocks.length} ตัว · หลักฐาน ${D.evidence.length} แถว · เอกสารที่อ้างถึง ${Object.keys(D.sources).length} ฉบับ`;
 }
-const sizeText = s => size(s) === null ? 'ขนาด Catalyst: คำนวณไม่ได้' : `ขนาด Catalyst: ${s.catalyst_size_pct}% ${s.catalyst_size_basis} (สัดส่วนต่อฐาน ไม่ใช่กำไรหรือรายได้ที่เพิ่มขึ้น)`;
+const sizeText = s => size(s) === null ? 'ขนาด Catalyst: คำนวณไม่ได้' : `ขนาด Catalyst: ${s.catalyst_size_pct}% ${s.catalyst_size_basis} (กลุ่มฐาน ${typeLabel(s.catalyst_size_type)} · สัดส่วนต่อฐาน ไม่ใช่กำไรหรือรายได้ที่เพิ่มขึ้น)`;
 
 function evItem(e) {
   const s = D.sources[e.doc_id] || {};
@@ -278,7 +297,7 @@ function render() {
     .filter(s => state.tier === ALL || s.tier === state.tier)
     .filter(s => state.theme === ALL || themesOf(s).includes(state.theme))
     .filter(s => state.score === ALL || +s.evidence_score === state.score)
-    .filter(s => state.basis === ALL || basisOf(s) === state.basis)
+    .filter(s => state.type === ALL || typeOf(s) === state.type)
     .sort((a, b) => (state.sort === 'size' ? bySize(a, b) : dir * (a.evidence_score - b.evidence_score))
       || a.ticker.localeCompare(b.ticker));
   document.getElementById('count').textContent = `แสดง ${rows.length} จาก ${D.stocks.length} ตัว` +
@@ -296,14 +315,14 @@ function render() {
 // ตอนเรียงตามขนาด: แยกกลุ่มตามฐาน กลุ่มที่มีหลายตัวขึ้นก่อน กลุ่มคำนวณไม่ได้อยู่ท้าย
 function grouped(rows) {
   const groups = {};
-  rows.forEach(s => (groups[basisOf(s)] ||= []).push(s));
+  rows.forEach(s => (groups[typeOf(s)] ||= []).push(s));
   const keys = Object.keys(groups).sort((a, b) =>
     (a === NONE) - (b === NONE) || groups[b].length - groups[a].length || a.localeCompare(b));
   return keys.map(k => {
     const n = groups[k].length;
     const hint = k === NONE ? 'เอกสารไม่มีตัวเลขพอให้คำนวณ ดูเหตุผลในรายละเอียดของแต่ละตัว'
-      : n === 1 ? 'มีตัวเดียวในกลุ่มนี้ จึงไม่มีตัวให้เทียบ' : 'เทียบขนาดกันได้ในกลุ่มนี้';
-    return `<h3 class="grp">${k === NONE ? NONE : 'เทียบ' + esc(k.replace(/^ของ/, 'กับ'))} · ${n} ตัว<small>${hint}</small></h3>` +
+      : n === 1 ? 'มีตัวเดียวในกลุ่มนี้ จึงไม่มีตัวให้เทียบ' : (TYPE_HINT[k] || 'เทียบขนาดกันได้ในกลุ่มนี้');
+    return `<h3 class="grp">${k === NONE ? NONE : 'เทียบกับ ' + esc(typeLabel(k))} · ${n} ตัว<small>${hint}</small></h3>` +
       groups[k].map(card).join('');
   }).join('');
 }

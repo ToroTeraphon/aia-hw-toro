@@ -19,7 +19,7 @@ import build_site  # noqa: E402  (ใช้เกณฑ์ tier ที่เด�
 ROOT = build_site.ROOT
 DATA = ROOT / "output" / "data.json"
 STOCK_KEYS = ["ticker", "market", "themes", "catalyst", "catalyst_timing", "evidence_score",
-              "catalyst_size_pct", "catalyst_size_basis", "catalyst_size_formula",
+              "catalyst_size_pct", "catalyst_size_basis", "catalyst_size_type", "catalyst_size_formula",
               "rejection_condition", "status", "tier", "tier_reason", "note", "evidence"]
 EVIDENCE_KEYS = ["evidence_id", "finding", "signal", "doc_id", "location", "doc_date", "fetched_at", "note"]
 
@@ -37,6 +37,10 @@ def check(stock, sources):
         errors.append("evidence_score ต้องเป็นจำนวนเต็ม 1–5")
     if (stock["catalyst_size_pct"] is None) != (stock["catalyst_size_basis"] is None):
         errors.append("catalyst_size_pct และ catalyst_size_basis ต้องเป็น null พร้อมกัน")
+    if (stock["catalyst_size_type"] is None) != (stock["catalyst_size_basis"] is None):
+        errors.append("catalyst_size_type ต้องเป็น null พร้อม catalyst_size_basis")
+    elif stock["catalyst_size_type"] is not None and stock["catalyst_size_type"] not in build_site.SIZE_TYPES:
+        errors.append(f"catalyst_size_type ต้องเป็นหนึ่งใน {build_site.SIZE_TYPES}")
     for i, e in enumerate(stock["evidence"], 1):
         miss = [k for k in EVIDENCE_KEYS if k not in e]
         if miss:
