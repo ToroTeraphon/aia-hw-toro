@@ -3132,6 +3132,30 @@
   "sha256": "18b0b8fe7195498e1252ea70b8e3f23f1490012b7405dc58937f5c872af49687"
  },
  {
+  "doc_id": "BCH-56-1-2025-03-31-package",
+  "ticker": "BCH",
+  "market": "TH",
+  "doc_type": "56-1",
+  "title": "BCH 56-1 filed 2025-03-31 · package.zip",
+  "url": "https://market.sec.or.th/public/idisc/Download?FILEID=dat/f56/0808E1N310320252151590954E.zip",
+  "doc_date": "2025-03-31",
+  "fetched_at": "2026-11-04",
+  "file_path": "data/raw/th/BCH/R561_0808E1N310320252151590954E_zip/package.zip",
+  "sha256": "8c57e23d88b5b296dc6d9ad39db5829c0ac06398d0ee1b21c5bd503e677a1528"
+ },
+ {
+  "doc_id": "BCH-56-1-2026-03-31-E_ONE_REPORT_BCHE",
+  "ticker": "BCH",
+  "market": "TH",
+  "doc_type": "56-1",
+  "title": "BCH 56-1 filed 2026-03-31 · E_ONE_REPORT_BCHE.PDF",
+  "url": "https://market.sec.or.th/public/idisc/Download?FILEID=dat/f56/0808E1N310320262124400978E.zip",
+  "doc_date": "2026-03-31",
+  "fetched_at": "2026-11-04",
+  "file_path": "data/raw/th/BCH/R561_0808E1N310320262124400978E_zip/E_ONE_REPORT_BCHE.PDF",
+  "sha256": "9d5faeec874e0e1415c75bd803d7450b656c4beaf87530cd77e3677eb2315f01"
+ },
+ {
   "doc_id": "BDMS-FS-2025-05-14-AUDITOR_REPORT",
   "ticker": "BDMS",
   "market": "TH",

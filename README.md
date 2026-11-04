@@ -10,7 +10,7 @@
 | **ลิงก์ผลงาน** | https://toroteraphon.github.io/aia-hw-toro/output/ (GitHub Pages อัปเดตตามทุกครั้งที่ push · ไฟล์ต้นทาง [output/index.html](output/index.html) ข้อมูลอยู่ใน [output/data.json](output/data.json)) |
 | **สถานะ** | พร้อมตรวจ |
 
-**สรุปผลงาน:** หุ้น 11 ตัว (NVDA, MSFT, DELTA, NEE, BGRIM, GULF, MAR, AOT, CPN, ISRG, BDMS) มีหลักฐาน 105 แถวจากเอกสาร 23 ฉบับบน SEC EDGAR และ ก.ล.ต. iDisc ทุกแถวกดย้อนไปเอกสารต้นทางได้ หุ้นแต่ละตัวมีคะแนนความแน่นของหลักฐาน 1–5 เงื่อนไขตัดทิ้ง และขนาด Catalyst เทียบกับบริษัท
+**สรุปผลงาน:** หุ้น 26 ตัว (ชุดแรก 11 ตัว: NVDA, MSFT, DELTA, NEE, BGRIM, GULF, MAR, AOT, CPN, ISRG, BDMS และเพิ่มอีก 15 ตัวเมื่อ 4 พ.ย. 2026: AVGO, VRT, ANET, CEG, VST, GEV, HLT, SYK, ADVANC, GPSC, RATCH, MINT, CENTEL, BH, BCH) มีหลักฐาน 227 แถวจากเอกสาร 68 ฉบับบน SEC EDGAR และ ก.ล.ต. iDisc ทุกแถวกดย้อนไปเอกสารต้นทางได้ หุ้นแต่ละตัวมีคะแนนความแน่นของหลักฐาน 1–5 เงื่อนไขตัดทิ้ง และขนาด Catalyst เทียบกับบริษัท จัดเป็น Watchlist T1 8 ตัว · T2 13 ตัว · T3 5 ตัว (T1: AOT, BGRIM, GULF, AVGO, VRT, VST, GEV, BH)
 
 **เป้าหมาย 3 ขั้น**
 
