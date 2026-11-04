@@ -42,7 +42,7 @@ def main():
             continue
         base = f"https://www.sec.gov/Archives/edgar/data/{cik}/{acc}/"
         items = json.loads(get(base + "index.json", contact))["directory"]["item"]
-        names = [i["name"] for i in items if re.search(r"(ex|exhibit)[-_]?99", i["name"], re.I) and i["name"].endswith(".htm")]
+        names = [i["name"] for i in items if re.search(r"(ex|exhibit)[-_]?99|99[-_.]?1\.htm$", i["name"], re.I) and i["name"].endswith(".htm")]
         if not names:
             print(f"{f.name}: ไม่พบไฟล์ Exhibit 99 ในโฟลเดอร์ filing")
             continue
