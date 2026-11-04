@@ -33,7 +33,7 @@ EXTRA_FILEIDS = {"GULF": ["dat/news/202608/2023FIN060820261731530042E.zip",
 
 # CIK ของหุ้นสหรัฐ ดูได้จากบรรทัดแรกที่ fetch_us.py พิมพ์ออกมา
 CIK = {"NVDA": 1045810, "MSFT": 789019, "NEE": 753308, "MAR": 1048286, "ISRG": 1035267,
-       "AVGO": 1730168, "VRT": 1674101, "ANET": 1596532, "CEG": 1868275, "VST": 1692819, "GEV": 1996810}
+       "AVGO": 1730168, "VRT": 1674101, "ANET": 1596532, "CEG": 1868275, "VST": 1692819, "GEV": 1996810, "HLT": 1585689}
 
 SKIP = {".txt", ".md"}
 FIELDS = ["doc_id", "ticker", "market", "doc_type", "title", "url",
