@@ -51,7 +51,7 @@ updated: 2026-11-04
 
 ## 4. Output · หน้าตาผลงานที่ต้องการ
 
-เว็บ 1 หน้า: ตารางหุ้นทุกตัวใน `data.json` (เดิม 11 ตัว ตอนนี้ 76 ตัว ไทย + สหรัฐ) แต่ละแถวมี
+เว็บ 1 หน้า: ตารางหุ้นทุกตัวใน `data.json` (เดิม 11 ตัว ตอนนี้ 84 ตัว ไทย + สหรัฐ) แต่ละแถวมี
 - ตัวจุดประกายและช่วงเวลาที่คาด
 - คะแนนความแน่นของหลักฐาน (1–5)
 - เงื่อนไขตัดทิ้ง (อะไรจะทำให้ thesis ผิด)
@@ -187,7 +187,7 @@ GULF: ค้นชื่อย่อ GULF ใน ก.ล.ต. iDisc แล้ว
 | 7 | หุ้นไทย EA, BCPG, AAV, BA, ERW, SHR, DUSIT, MAJOR, CHG, RJH |
 | 8 | หุ้นไทย PRINC, VIBHA, THG, EKH |
 
-ความคืบหน้า: ชุดที่ 1 เสร็จเมื่อ 2026-11-04 (AMD, MU, MRVL, DELL, SMCI, ORCL, EQIX, DLR, ETN, APH) ชุดที่ 2 เสร็จเมื่อ 2026-11-04 (CIEN, COHR, CLS, AMZN, GOOGL, DUK, SO, D, AEP, XEL) ชุดที่ 3 เสร็จเมื่อ 2026-11-04 (SRE, NRG, TLN, ETR, PCG, BE, FSLR, OKLO, CCJ, LEU) ชุดที่ 4 เสร็จเมื่อ 2026-11-04 (BKNG, ABNB, EXPE, RCL, CCL, NCLH, H, DAL, UAL, LVS) ชุดที่ 5 เสร็จเมื่อ 2026-11-04 (WYNN, BSX, ABT, MDT, EW, DXCM, PODD, BDX, ZBH, HCA) รวมเป็น 76 ตัว T1 30 · T2 35 · T3 11 ยังเหลือชุดที่ 6–8
+ความคืบหน้า: ชุดที่ 1 เสร็จเมื่อ 2026-11-04 (AMD, MU, MRVL, DELL, SMCI, ORCL, EQIX, DLR, ETN, APH) ชุดที่ 2 เสร็จเมื่อ 2026-11-04 (CIEN, COHR, CLS, AMZN, GOOGL, DUK, SO, D, AEP, XEL) ชุดที่ 3 เสร็จเมื่อ 2026-11-04 (SRE, NRG, TLN, ETR, PCG, BE, FSLR, OKLO, CCJ, LEU) ชุดที่ 4 เสร็จเมื่อ 2026-11-04 (BKNG, ABNB, EXPE, RCL, CCL, NCLH, H, DAL, UAL, LVS) ชุดที่ 5 เสร็จเมื่อ 2026-11-04 (WYNN, BSX, ABT, MDT, EW, DXCM, PODD, BDX, ZBH, HCA) ชุดที่ 6 เสร็จเมื่อ 2026-11-04 (UHS, LLY, TRUE, KCE, HANA, SVI, EGCO, GUNKUL) INTUCH และ BPP ถูกตัดออกเพราะ iDisc ระบุว่ายกเลิกการใช้งานเนื่องจากควบรวมกิจการ รวมเป็น 84 ตัว T1 33 · T2 38 · T3 13 ยังเหลือชุดที่ 7–8 (14 ตัว) จะได้ 98 ตัว ต้องหาเพิ่มอีก 2 ตัวให้ครบ 100
 
 ## ที่มาของแนวคิด
 
