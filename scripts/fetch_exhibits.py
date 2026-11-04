@@ -44,6 +44,12 @@ def main():
         items = json.loads(get(base + "index.json", contact))["directory"]["item"]
         names = [i["name"] for i in items if re.search(r"(ex|exhibit)[-_]?99|99[-_.]?1\.htm$", i["name"], re.I) and i["name"].endswith(".htm")]
         if not names:
+            # บางบริษัทตั้งชื่อไฟล์ข่าวเอง (เช่น xxx-20260630xearningsre.htm) ใช้ไฟล์ .htm ที่ใหญ่ที่สุด
+            # ที่ไม่ใช่หน้าหลักของ 8-K (ชื่อลงท้ายด้วยวันที่ 8 หลัก) และไม่ใช่ไฟล์ R<เลข>.htm ของ XBRL
+            others = [i for i in items if i["name"].endswith(".htm")
+                      and not re.match(r"R\d+\.htm$", i["name"]) and not re.search(r"-\d{8}\.htm$", i["name"])]
+            names = [i["name"] for i in sorted(others, key=lambda i: -int(i.get("size") or 0))][:1]
+        if not names:
             print(f"{f.name}: ไม่พบไฟล์ Exhibit 99 ในโฟลเดอร์ filing")
             continue
         target.write_bytes(get(base + names[0], contact))
