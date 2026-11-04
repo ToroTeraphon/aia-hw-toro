@@ -39,7 +39,8 @@
    - หุ้นไทย: `fetch_th.py <SYMBOL> --out ./data/raw/th/<SYMBOL>`
    - แล้วรัน `extract.py` กับโฟลเดอร์นั้น เพื่อแปลงเป็นข้อความและได้ `MANIFEST.md` (ต้องมี `pymupdf` จึงจะอ่าน PDF ได้)
 2. ถ้า extract.py แจ้งว่าแปลง .doc/.xls รุ่นเก่าไม่ได้ ให้รัน `powershell -ExecutionPolicy Bypass -File scripts/convert_legacy_office.ps1` แล้วรัน `extract.py` ซ้ำ
-3. หุ้นสหรัฐ: รัน `python scripts/htm_to_text.py data/raw/us/<TICKER>` เพราะ extract.py ไม่แปลงไฟล์ .htm ของ SEC
+3. หุ้นสหรัฐ: ถ้า 8-K ผลประกอบการ (Item 2.02) ไม่มีไฟล์ข่าวมาด้วย (ไม่มี `*_TEXTGIF.htm` คู่กัน) ให้รัน `SEC_CONTACT="ชื่อ อีเมล" python scripts/fetch_exhibits.py <TICKER>` เพื่อโหลด Exhibit 99 จาก sec.gov มาตั้งชื่อให้ถูก (อย่าเขียนอีเมลลงไฟล์)
+   - แล้วรัน `python scripts/htm_to_text.py data/raw/us/<TICKER>` เพราะ extract.py ไม่แปลงไฟล์ .htm ของ SEC
 4. รัน `python scripts/build_sources.py` เพื่อสร้าง `data/sources.json` ใหม่ทั้งไฟล์
 5. หลังแก้ `output/data.json` ให้รัน `python scripts/build_site.py` เพื่อตรวจข้อมูลและสร้าง `output/index.html` ใหม่ (เปิดผ่านเว็บจะเห็นข้อมูลล่าสุดอยู่แล้วโดยไม่ต้องรัน แต่สำเนาที่ฝังไว้สำหรับเปิดจากไฟล์ในเครื่องจะเก่า)
 
