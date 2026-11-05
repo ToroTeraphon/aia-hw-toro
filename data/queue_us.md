@@ -131,21 +131,21 @@
 | 9 | 118 | APA | APA Corporation | Energy | ยังไม่มี | ทำแล้ว |
 | 9 | 119 | BKR | Baker Hughes | Energy | ยังไม่มี | ทำแล้ว |
 | 9 | 120 | DVN | Devon Energy | Energy | ยังไม่มี | ทำแล้ว |
-| 10 | 121 | EOG | EOG Resources | Energy | ยังไม่มี | รอ |
-| 10 | 122 | EQT | EQT Corporation | Energy | ยังไม่มี | รอ |
-| 10 | 123 | EXE | Expand Energy | Energy | ยังไม่มี | รอ |
-| 10 | 124 | FANG | Diamondback Energy | Energy | ยังไม่มี | รอ |
-| 10 | 125 | HAL | Halliburton | Energy | ยังไม่มี | รอ |
-| 10 | 126 | KMI | Kinder Morgan | Energy | ยังไม่มี | รอ |
-| 10 | 127 | MPC | Marathon Petroleum | Energy | ยังไม่มี | รอ |
-| 10 | 128 | OKE | Oneok | Energy | ยังไม่มี | รอ |
-| 10 | 129 | OXY | Occidental Petroleum | Energy | ยังไม่มี | รอ |
-| 10 | 130 | PSX | Phillips 66 | Energy | ยังไม่มี | รอ |
-| 10 | 131 | SLB | Schlumberger | Energy | ยังไม่มี | รอ |
-| 10 | 132 | TPL | Texas Pacific Land Corporation | Energy | ยังไม่มี | รอ |
-| 10 | 133 | TRGP | Targa Resources | Energy | ยังไม่มี | รอ |
-| 10 | 134 | VLO | Valero Energy | Energy | ยังไม่มี | รอ |
-| 10 | 135 | WMB | Williams Companies | Energy | ยังไม่มี | รอ |
+| 10 | 121 | EOG | EOG Resources | Energy | ยังไม่มี | ทำแล้ว |
+| 10 | 122 | EQT | EQT Corporation | Energy | ยังไม่มี | ทำแล้ว |
+| 10 | 123 | EXE | Expand Energy | Energy | ยังไม่มี | ทำแล้ว |
+| 10 | 124 | FANG | Diamondback Energy | Energy | ยังไม่มี | ทำแล้ว |
+| 10 | 125 | HAL | Halliburton | Energy | ยังไม่มี | ทำแล้ว |
+| 10 | 126 | KMI | Kinder Morgan | Energy | ยังไม่มี | ทำแล้ว |
+| 10 | 127 | MPC | Marathon Petroleum | Energy | ยังไม่มี | ทำแล้ว |
+| 10 | 128 | OKE | Oneok | Energy | ยังไม่มี | ทำแล้ว |
+| 10 | 129 | OXY | Occidental Petroleum | Energy | ยังไม่มี | ทำแล้ว |
+| 10 | 130 | PSX | Phillips 66 | Energy | ยังไม่มี | ทำแล้ว |
+| 10 | 131 | SLB | Schlumberger | Energy | ยังไม่มี | ทำแล้ว |
+| 10 | 132 | TPL | Texas Pacific Land Corporation | Energy | ยังไม่มี | ทำแล้ว |
+| 10 | 133 | TRGP | Targa Resources | Energy | ยังไม่มี | ทำแล้ว |
+| 10 | 134 | VLO | Valero Energy | Energy | ยังไม่มี | ทำแล้ว |
+| 10 | 135 | WMB | Williams Companies | Energy | ยังไม่มี | ทำแล้ว |
 | 11 | 136 | ACGL | Arch Capital Group | Financials | ยังไม่มี | รอ |
 | 11 | 137 | AFL | Aflac | Financials | ยังไม่มี | รอ |
 | 11 | 138 | AIG | American International Group | Financials | ยังไม่มี | รอ |

@@ -51,3 +51,4 @@
 | 72 | 2026-11-06 | 73 | 30 | 127,319 | 60,151 | 187,470 | +7% | หลัง compact | 0 | หุ้นสหรัฐชุดที่ 7 (LOW LULU MGM NKE NVR ORLY PHM RL ROST SBUX TPR TSCO ULTA WSM YUM) เป็น 200 ตัว ต้นทุน ~0.5% ของโควต้าต่อตัว |
 | 73 | 2026-11-06 | 82 | 31 | 66,147 | 60,151 | 126,298 | +9% | หลัง compact | 0 | หุ้นสหรัฐชุดที่ 8 (ADM BF.B BG CASY CHD CL CLX DG DLTR EL GIS HRL HSY KDP KHC) เป็น 215 ตัว ต้นทุน ~0.6% ของโควต้าต่อตัว |
 | 74 | 2026-11-06 | 88 | 32 | 163,904 | 60,151 | 224,055 | +6% | +97,757 | 0 | หุ้นสหรัฐชุดที่ 9 (KMB KR MDLZ MKC MNST MO SJM STZ SYY TGT TSN APA BKR DVN) เป็น 229 ตัว ต้นทุน ~0.4% ของโควต้าต่อตัว |
+| 75 | 2026-11-06 | 6 | 33 | 130,166 | 64,065 | 194,231 | หน้าต่าง 5 ชม. รีเซ็ตแล้ว | หลัง compact | +3,914 | หุ้นสหรัฐชุดที่ 10 (EOG EQT EXE FANG HAL KMI MPC OKE OXY PSX SLB TPL TRGP VLO WMB) เป็น 244 ตัว |
