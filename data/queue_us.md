@@ -206,21 +206,21 @@
 | 14 | 193 | STT | State Street Corporation | Financials | ยังไม่มี | ทำแล้ว |
 | 14 | 194 | SYF | Synchrony Financial | Financials | ยังไม่มี | ทำแล้ว |
 | 14 | 195 | TFC | Truist Financial | Financials | ยังไม่มี | ทำแล้ว |
-| 15 | 196 | TROW | T. Rowe Price | Financials | ยังไม่มี | รอ |
-| 15 | 197 | TRV | Travelers Companies (The) | Financials | ยังไม่มี | รอ |
-| 15 | 198 | USB | U.S. Bancorp | Financials | ยังไม่มี | รอ |
-| 15 | 199 | WRB | W. R. Berkley Corporation | Financials | ยังไม่มี | รอ |
-| 15 | 200 | WTW | Willis Towers Watson | Financials | ยังไม่มี | รอ |
-| 15 | 201 | XYZ | Block, Inc. | Financials | ยังไม่มี | รอ |
-| 15 | 202 | A | Agilent Technologies | Health Care | ยังไม่มี | รอ |
-| 15 | 203 | ALGN | Align Technology | Health Care | ยังไม่มี | รอ |
-| 15 | 204 | BAX | Baxter International | Health Care | ยังไม่มี | รอ |
-| 15 | 205 | BIIB | Biogen | Health Care | ยังไม่มี | รอ |
-| 15 | 206 | BMY | Bristol Myers Squibb | Health Care | ยังไม่มี | รอ |
-| 15 | 207 | CAH | Cardinal Health | Health Care | ยังไม่มี | รอ |
-| 15 | 208 | CI | Cigna | Health Care | ยังไม่มี | รอ |
-| 15 | 209 | CNC | Centene Corporation | Health Care | ยังไม่มี | รอ |
-| 15 | 210 | COO | Cooper Companies (The) | Health Care | ยังไม่มี | รอ |
+| 15 | 196 | TROW | T. Rowe Price | Financials | ยังไม่มี | ทำแล้ว |
+| 15 | 197 | TRV | Travelers Companies (The) | Financials | ยังไม่มี | ทำแล้ว |
+| 15 | 198 | USB | U.S. Bancorp | Financials | ยังไม่มี | ทำแล้ว |
+| 15 | 199 | WRB | W. R. Berkley Corporation | Financials | ยังไม่มี | ทำแล้ว |
+| 15 | 200 | WTW | Willis Towers Watson | Financials | ยังไม่มี | ทำแล้ว |
+| 15 | 201 | XYZ | Block, Inc. | Financials | ยังไม่มี | ทำแล้ว |
+| 15 | 202 | A | Agilent Technologies | Health Care | ยังไม่มี | ทำแล้ว |
+| 15 | 203 | ALGN | Align Technology | Health Care | ยังไม่มี | ทำแล้ว |
+| 15 | 204 | BAX | Baxter International | Health Care | ยังไม่มี | ทำแล้ว |
+| 15 | 205 | BIIB | Biogen | Health Care | ยังไม่มี | ทำแล้ว |
+| 15 | 206 | BMY | Bristol Myers Squibb | Health Care | ยังไม่มี | ทำแล้ว |
+| 15 | 207 | CAH | Cardinal Health | Health Care | ยังไม่มี | ทำแล้ว |
+| 15 | 208 | CI | Cigna | Health Care | ยังไม่มี | ทำแล้ว |
+| 15 | 209 | CNC | Centene Corporation | Health Care | ยังไม่มี | ทำแล้ว |
+| 15 | 210 | COO | Cooper Companies (The) | Health Care | ยังไม่มี | ทำแล้ว |
 | 16 | 211 | COR | Cencora | Health Care | ยังไม่มี | รอ |
 | 16 | 212 | CRL | Charles River Laboratories | Health Care | ยังไม่มี | รอ |
 | 16 | 213 | CVS | CVS Health | Health Care | ยังไม่มี | รอ |
