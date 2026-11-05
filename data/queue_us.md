@@ -86,21 +86,21 @@
 | 6 | 73 | GRMN | Garmin | Consumer Discretionary | ยังไม่มี | ทำแล้ว |
 | 6 | 74 | HAS | Hasbro | Consumer Discretionary | ยังไม่มี | ทำแล้ว |
 | 6 | 75 | LEN | Lennar | Consumer Discretionary | ยังไม่มี | ทำแล้ว |
-| 7 | 76 | LOW | Lowe's | Consumer Discretionary | ยังไม่มี | รอ |
-| 7 | 77 | LULU | Lululemon Athletica | Consumer Discretionary | ยังไม่มี | รอ |
-| 7 | 78 | MGM | MGM Resorts | Consumer Discretionary | ยังไม่มี | รอ |
-| 7 | 79 | NKE | Nike, Inc. | Consumer Discretionary | ยังไม่มี | รอ |
-| 7 | 80 | NVR | NVR, Inc. | Consumer Discretionary | ยังไม่มี | รอ |
-| 7 | 81 | ORLY | O'Reilly Automotive | Consumer Discretionary | ยังไม่มี | รอ |
-| 7 | 82 | PHM | PulteGroup | Consumer Discretionary | ยังไม่มี | รอ |
-| 7 | 83 | RL | Ralph Lauren Corporation | Consumer Discretionary | ยังไม่มี | รอ |
-| 7 | 84 | ROST | Ross Stores | Consumer Discretionary | ยังไม่มี | รอ |
-| 7 | 85 | SBUX | Starbucks | Consumer Discretionary | ยังไม่มี | รอ |
-| 7 | 86 | TPR | Tapestry, Inc. | Consumer Discretionary | ยังไม่มี | รอ |
-| 7 | 87 | TSCO | Tractor Supply | Consumer Discretionary | ยังไม่มี | รอ |
-| 7 | 88 | ULTA | Ulta Beauty | Consumer Discretionary | ยังไม่มี | รอ |
-| 7 | 89 | WSM | Williams-Sonoma, Inc. | Consumer Discretionary | ยังไม่มี | รอ |
-| 7 | 90 | YUM | Yum! Brands | Consumer Discretionary | ยังไม่มี | รอ |
+| 7 | 76 | LOW | Lowe's | Consumer Discretionary | ยังไม่มี | ทำแล้ว |
+| 7 | 77 | LULU | Lululemon Athletica | Consumer Discretionary | ยังไม่มี | ทำแล้ว |
+| 7 | 78 | MGM | MGM Resorts | Consumer Discretionary | ยังไม่มี | ทำแล้ว |
+| 7 | 79 | NKE | Nike, Inc. | Consumer Discretionary | ยังไม่มี | ทำแล้ว |
+| 7 | 80 | NVR | NVR, Inc. | Consumer Discretionary | ยังไม่มี | ทำแล้ว |
+| 7 | 81 | ORLY | O'Reilly Automotive | Consumer Discretionary | ยังไม่มี | ทำแล้ว |
+| 7 | 82 | PHM | PulteGroup | Consumer Discretionary | ยังไม่มี | ทำแล้ว |
+| 7 | 83 | RL | Ralph Lauren Corporation | Consumer Discretionary | ยังไม่มี | ทำแล้ว |
+| 7 | 84 | ROST | Ross Stores | Consumer Discretionary | ยังไม่มี | ทำแล้ว |
+| 7 | 85 | SBUX | Starbucks | Consumer Discretionary | ยังไม่มี | ทำแล้ว |
+| 7 | 86 | TPR | Tapestry, Inc. | Consumer Discretionary | ยังไม่มี | ทำแล้ว |
+| 7 | 87 | TSCO | Tractor Supply | Consumer Discretionary | ยังไม่มี | ทำแล้ว |
+| 7 | 88 | ULTA | Ulta Beauty | Consumer Discretionary | ยังไม่มี | ทำแล้ว |
+| 7 | 89 | WSM | Williams-Sonoma, Inc. | Consumer Discretionary | ยังไม่มี | ทำแล้ว |
+| 7 | 90 | YUM | Yum! Brands | Consumer Discretionary | ยังไม่มี | ทำแล้ว |
 | 8 | 91 | ADM | Archer Daniels Midland | Consumer Staples | ยังไม่มี | รอ |
 | 8 | 92 | BF.B | Brown–Forman | Consumer Staples | ยังไม่มี | รอ |
 | 8 | 93 | BG | Bunge Global | Consumer Staples | ยังไม่มี | รอ |
