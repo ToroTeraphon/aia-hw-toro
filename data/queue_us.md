@@ -71,21 +71,21 @@
 | 5 | 58 | TTWO | Take-Two Interactive | Communication Services | ยังไม่มี | ทำแล้ว |
 | 5 | 59 | APTV | Aptiv | Consumer Discretionary | ยังไม่มี | ทำแล้ว |
 | 5 | 60 | AZO | AutoZone | Consumer Discretionary | ยังไม่มี | ทำแล้ว |
-| 6 | 61 | BBY | Best Buy | Consumer Discretionary | ยังไม่มี | รอ |
-| 6 | 62 | CMG | Chipotle Mexican Grill | Consumer Discretionary | ยังไม่มี | รอ |
-| 6 | 63 | CVNA | Carvana | Consumer Discretionary | ยังไม่มี | รอ |
-| 6 | 64 | DASH | DoorDash | Consumer Discretionary | ยังไม่มี | รอ |
-| 6 | 65 | DECK | Deckers Brands | Consumer Discretionary | ยังไม่มี | รอ |
-| 6 | 66 | DHI | D. R. Horton | Consumer Discretionary | ยังไม่มี | รอ |
-| 6 | 67 | DPZ | Domino's | Consumer Discretionary | ยังไม่มี | รอ |
-| 6 | 68 | DRI | Darden Restaurants | Consumer Discretionary | ยังไม่มี | รอ |
-| 6 | 69 | EBAY | eBay Inc. | Consumer Discretionary | ยังไม่มี | รอ |
-| 6 | 70 | F | Ford Motor Company | Consumer Discretionary | ยังไม่มี | รอ |
-| 6 | 71 | GM | General Motors | Consumer Discretionary | ยังไม่มี | รอ |
-| 6 | 72 | GPC | Genuine Parts Company | Consumer Discretionary | ยังไม่มี | รอ |
-| 6 | 73 | GRMN | Garmin | Consumer Discretionary | ยังไม่มี | รอ |
-| 6 | 74 | HAS | Hasbro | Consumer Discretionary | ยังไม่มี | รอ |
-| 6 | 75 | LEN | Lennar | Consumer Discretionary | ยังไม่มี | รอ |
+| 6 | 61 | BBY | Best Buy | Consumer Discretionary | ยังไม่มี | ทำแล้ว |
+| 6 | 62 | CMG | Chipotle Mexican Grill | Consumer Discretionary | ยังไม่มี | ทำแล้ว |
+| 6 | 63 | CVNA | Carvana | Consumer Discretionary | ยังไม่มี | ทำแล้ว |
+| 6 | 64 | DASH | DoorDash | Consumer Discretionary | ยังไม่มี | ทำแล้ว |
+| 6 | 65 | DECK | Deckers Brands | Consumer Discretionary | ยังไม่มี | ทำแล้ว |
+| 6 | 66 | DHI | D. R. Horton | Consumer Discretionary | ยังไม่มี | ทำแล้ว |
+| 6 | 67 | DPZ | Domino's | Consumer Discretionary | ยังไม่มี | ทำแล้ว |
+| 6 | 68 | DRI | Darden Restaurants | Consumer Discretionary | ยังไม่มี | ทำแล้ว |
+| 6 | 69 | EBAY | eBay Inc. | Consumer Discretionary | ยังไม่มี | ทำแล้ว |
+| 6 | 70 | F | Ford Motor Company | Consumer Discretionary | ยังไม่มี | ทำแล้ว |
+| 6 | 71 | GM | General Motors | Consumer Discretionary | ยังไม่มี | ทำแล้ว |
+| 6 | 72 | GPC | Genuine Parts Company | Consumer Discretionary | ยังไม่มี | ทำแล้ว |
+| 6 | 73 | GRMN | Garmin | Consumer Discretionary | ยังไม่มี | ทำแล้ว |
+| 6 | 74 | HAS | Hasbro | Consumer Discretionary | ยังไม่มี | ทำแล้ว |
+| 6 | 75 | LEN | Lennar | Consumer Discretionary | ยังไม่มี | ทำแล้ว |
 | 7 | 76 | LOW | Lowe's | Consumer Discretionary | ยังไม่มี | รอ |
 | 7 | 77 | LULU | Lululemon Athletica | Consumer Discretionary | ยังไม่มี | รอ |
 | 7 | 78 | MGM | MGM Resorts | Consumer Discretionary | ยังไม่มี | รอ |
