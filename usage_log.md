@@ -49,3 +49,4 @@
 | 70 | 2026-11-05 | 59 | 28 | 107,281 | 60,151 | 167,432 | +7% | หลัง compact | 0 | หุ้นสหรัฐชุดที่ 5 (LMT APP CHTR CMCSA ECHO FOXA LYV NWSA OMC RDDT SKYD TKO TTWO APTV AZO) เป็น 170 ตัว ต้นทุน ~0.5% ของโควต้าต่อตัว |
 | 71 | 2026-11-05 | 66 | 29 | 196,013 | 60,151 | 256,164 | +7% | +88,732 | 0 | หุ้นสหรัฐชุดที่ 6 (BBY CMG CVNA DASH DECK DHI DPZ DRI EBAY F GM GPC GRMN HAS LEN) เป็น 185 ตัว ต้นทุน ~0.5% ของโควต้าต่อตัว |
 | 72 | 2026-11-06 | 73 | 30 | 127,319 | 60,151 | 187,470 | +7% | หลัง compact | 0 | หุ้นสหรัฐชุดที่ 7 (LOW LULU MGM NKE NVR ORLY PHM RL ROST SBUX TPR TSCO ULTA WSM YUM) เป็น 200 ตัว ต้นทุน ~0.5% ของโควต้าต่อตัว |
+| 73 | 2026-11-06 | 82 | 31 | 66,147 | 60,151 | 126,298 | +9% | หลัง compact | 0 | หุ้นสหรัฐชุดที่ 8 (ADM BF.B BG CASY CHD CL CLX DG DLTR EL GIS HRL HSY KDP KHC) เป็น 215 ตัว ต้นทุน ~0.6% ของโควต้าต่อตัว |

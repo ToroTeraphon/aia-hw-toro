@@ -101,21 +101,21 @@
 | 7 | 88 | ULTA | Ulta Beauty | Consumer Discretionary | ยังไม่มี | ทำแล้ว |
 | 7 | 89 | WSM | Williams-Sonoma, Inc. | Consumer Discretionary | ยังไม่มี | ทำแล้ว |
 | 7 | 90 | YUM | Yum! Brands | Consumer Discretionary | ยังไม่มี | ทำแล้ว |
-| 8 | 91 | ADM | Archer Daniels Midland | Consumer Staples | ยังไม่มี | รอ |
-| 8 | 92 | BF.B | Brown–Forman | Consumer Staples | ยังไม่มี | รอ |
-| 8 | 93 | BG | Bunge Global | Consumer Staples | ยังไม่มี | รอ |
-| 8 | 94 | CASY | Casey's | Consumer Staples | ยังไม่มี | รอ |
-| 8 | 95 | CHD | Church & Dwight | Consumer Staples | ยังไม่มี | รอ |
-| 8 | 96 | CL | Colgate-Palmolive | Consumer Staples | ยังไม่มี | รอ |
-| 8 | 97 | CLX | Clorox | Consumer Staples | ยังไม่มี | รอ |
-| 8 | 98 | DG | Dollar General | Consumer Staples | ยังไม่มี | รอ |
-| 8 | 99 | DLTR | Dollar Tree | Consumer Staples | ยังไม่มี | รอ |
-| 8 | 100 | EL | Estée Lauder Companies (The) | Consumer Staples | ยังไม่มี | รอ |
-| 8 | 101 | GIS | General Mills | Consumer Staples | ยังไม่มี | รอ |
-| 8 | 102 | HRL | Hormel Foods | Consumer Staples | ยังไม่มี | รอ |
-| 8 | 103 | HSY | Hershey Company (The) | Consumer Staples | ยังไม่มี | รอ |
-| 8 | 104 | KDP | Keurig Dr Pepper | Consumer Staples | ยังไม่มี | รอ |
-| 8 | 105 | KHC | Kraft Heinz | Consumer Staples | ยังไม่มี | รอ |
+| 8 | 91 | ADM | Archer Daniels Midland | Consumer Staples | ยังไม่มี | ทำแล้ว |
+| 8 | 92 | BF.B | Brown–Forman | Consumer Staples | ยังไม่มี | ทำแล้ว |
+| 8 | 93 | BG | Bunge Global | Consumer Staples | ยังไม่มี | ทำแล้ว |
+| 8 | 94 | CASY | Casey's | Consumer Staples | ยังไม่มี | ทำแล้ว |
+| 8 | 95 | CHD | Church & Dwight | Consumer Staples | ยังไม่มี | ทำแล้ว |
+| 8 | 96 | CL | Colgate-Palmolive | Consumer Staples | ยังไม่มี | ทำแล้ว |
+| 8 | 97 | CLX | Clorox | Consumer Staples | ยังไม่มี | ทำแล้ว |
+| 8 | 98 | DG | Dollar General | Consumer Staples | ยังไม่มี | ทำแล้ว |
+| 8 | 99 | DLTR | Dollar Tree | Consumer Staples | ยังไม่มี | ทำแล้ว |
+| 8 | 100 | EL | Estée Lauder Companies (The) | Consumer Staples | ยังไม่มี | ทำแล้ว |
+| 8 | 101 | GIS | General Mills | Consumer Staples | ยังไม่มี | ทำแล้ว |
+| 8 | 102 | HRL | Hormel Foods | Consumer Staples | ยังไม่มี | ทำแล้ว |
+| 8 | 103 | HSY | Hershey Company (The) | Consumer Staples | ยังไม่มี | ทำแล้ว |
+| 8 | 104 | KDP | Keurig Dr Pepper | Consumer Staples | ยังไม่มี | ทำแล้ว |
+| 8 | 105 | KHC | Kraft Heinz | Consumer Staples | ยังไม่มี | ทำแล้ว |
 | 9 | 106 | KMB | Kimberly-Clark | Consumer Staples | ยังไม่มี | รอ |
 | 9 | 107 | KR | Kroger | Consumer Staples | ยังไม่มี | รอ |
 | 9 | 108 | MDLZ | Mondelez International | Consumer Staples | ยังไม่มี | รอ |
