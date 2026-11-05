@@ -41,21 +41,21 @@
 | 3 | 28 | LIN | Linde plc | Materials | จาก CSV | ทำแล้ว |
 | 3 | 29 | AXP | American Express | Financials | จาก CSV | ทำแล้ว |
 | 3 | 30 | GILD | Gilead Sciences | Health Care | จาก CSV | ทำแล้ว |
-| 4 | 31 | C | Citigroup | Financials | จาก CSV | รอ |
-| 4 | 32 | DIS | Walt Disney Company (The) | Communication Services | จาก CSV | รอ |
-| 4 | 33 | MCD | McDonald's | Consumer Discretionary | จาก CSV | รอ |
-| 4 | 34 | PEP | PepsiCo | Consumer Staples | จาก CSV | รอ |
-| 4 | 35 | VZ | Verizon | Communication Services | จาก CSV | รอ |
-| 4 | 36 | CRM | Salesforce | Information Technology | จาก CSV | รอ |
-| 4 | 37 | UNP | Union Pacific Corporation | Industrials | จาก CSV | รอ |
-| 4 | 38 | DE | Deere & Company | Industrials | จาก CSV | รอ |
-| 4 | 39 | WELL | Welltower | Real Estate | จาก CSV | รอ |
-| 4 | 40 | TMUS | T-Mobile US | Communication Services | จาก CSV | รอ |
-| 4 | 41 | COP | ConocoPhillips | Energy | จาก CSV | รอ |
-| 4 | 42 | TJX | TJX Companies | Consumer Discretionary | จาก CSV | รอ |
-| 4 | 43 | T | AT&T | Communication Services | จาก CSV | รอ |
-| 4 | 44 | UBER | Uber | Industrials | จาก CSV | รอ |
-| 4 | 45 | BA.US | Boeing (US:BA) | Industrials | จาก CSV | รอ |
+| 4 | 31 | C | Citigroup | Financials | จาก CSV | ทำแล้ว |
+| 4 | 32 | DIS | Walt Disney Company (The) | Communication Services | จาก CSV | ทำแล้ว |
+| 4 | 33 | MCD | McDonald's | Consumer Discretionary | จาก CSV | ทำแล้ว |
+| 4 | 34 | PEP | PepsiCo | Consumer Staples | จาก CSV | ทำแล้ว |
+| 4 | 35 | VZ | Verizon | Communication Services | จาก CSV | ทำแล้ว |
+| 4 | 36 | CRM | Salesforce | Information Technology | จาก CSV | ทำแล้ว |
+| 4 | 37 | UNP | Union Pacific Corporation | Industrials | จาก CSV | ทำแล้ว |
+| 4 | 38 | DE | Deere & Company | Industrials | จาก CSV | ทำแล้ว |
+| 4 | 39 | WELL | Welltower | Real Estate | จาก CSV | ทำแล้ว |
+| 4 | 40 | TMUS | T-Mobile US | Communication Services | จาก CSV | ทำแล้ว |
+| 4 | 41 | COP | ConocoPhillips | Energy | จาก CSV | ทำแล้ว |
+| 4 | 42 | TJX | TJX Companies | Consumer Discretionary | จาก CSV | ทำแล้ว |
+| 4 | 43 | T | AT&T | Communication Services | จาก CSV | ทำแล้ว |
+| 4 | 44 | UBER | Uber | Industrials | จาก CSV | ทำแล้ว |
+| 4 | 45 | BA.US | Boeing (US:BA) | Industrials | จาก CSV | ทำแล้ว |
 | 5 | 46 | LMT | Lockheed Martin | Industrials | จาก CSV | รอ |
 | 5 | 47 | APP | AppLovin | Communication Services | ยังไม่มี | รอ |
 | 5 | 48 | CHTR | Charter Communications | Communication Services | ยังไม่มี | รอ |
