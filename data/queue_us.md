@@ -26,21 +26,21 @@
 | 2 | 13 | PM | Philip Morris International | Consumer Staples | จาก CSV | ทำแล้ว |
 | 2 | 14 | INTC | Intel | Information Technology | จาก CSV | ทำแล้ว |
 | 2 | 15 | MS | Morgan Stanley | Financials | จาก CSV | ทำแล้ว |
-| 3 | 16 | AMAT | Applied Materials | Information Technology | จาก CSV | รอ |
-| 3 | 17 | PANW | Palo Alto Networks | Information Technology | จาก CSV | รอ |
-| 3 | 18 | TXN | Texas Instruments | Information Technology | จาก CSV | รอ |
-| 3 | 19 | LRCX | Lam Research | Information Technology | จาก CSV | รอ |
-| 3 | 20 | NFLX | Netflix | Communication Services | จาก CSV | รอ |
-| 3 | 21 | CAT | Caterpillar Inc. | Industrials | จาก CSV | รอ |
-| 3 | 22 | GS | Goldman Sachs | Financials | จาก CSV | รอ |
-| 3 | 23 | RTX | RTX Corporation | Industrials | จาก CSV | รอ |
-| 3 | 24 | WFC | Wells Fargo | Financials | จาก CSV | รอ |
-| 3 | 25 | TMO | Thermo Fisher Scientific | Health Care | จาก CSV | รอ |
-| 3 | 26 | AMGN | Amgen | Health Care | จาก CSV | รอ |
-| 3 | 27 | CRWD | CrowdStrike | Information Technology | จาก CSV | รอ |
-| 3 | 28 | LIN | Linde plc | Materials | จาก CSV | รอ |
-| 3 | 29 | AXP | American Express | Financials | จาก CSV | รอ |
-| 3 | 30 | GILD | Gilead Sciences | Health Care | จาก CSV | รอ |
+| 3 | 16 | AMAT | Applied Materials | Information Technology | จาก CSV | ทำแล้ว |
+| 3 | 17 | PANW | Palo Alto Networks | Information Technology | จาก CSV | ทำแล้ว |
+| 3 | 18 | TXN | Texas Instruments | Information Technology | จาก CSV | ทำแล้ว |
+| 3 | 19 | LRCX | Lam Research | Information Technology | จาก CSV | ทำแล้ว |
+| 3 | 20 | NFLX | Netflix | Communication Services | จาก CSV | ทำแล้ว |
+| 3 | 21 | CAT | Caterpillar Inc. | Industrials | จาก CSV | ทำแล้ว |
+| 3 | 22 | GS | Goldman Sachs | Financials | จาก CSV | ทำแล้ว |
+| 3 | 23 | RTX | RTX Corporation | Industrials | จาก CSV | ทำแล้ว |
+| 3 | 24 | WFC | Wells Fargo | Financials | จาก CSV | ทำแล้ว |
+| 3 | 25 | TMO | Thermo Fisher Scientific | Health Care | จาก CSV | ทำแล้ว |
+| 3 | 26 | AMGN | Amgen | Health Care | จาก CSV | ทำแล้ว |
+| 3 | 27 | CRWD | CrowdStrike | Information Technology | จาก CSV | ทำแล้ว |
+| 3 | 28 | LIN | Linde plc | Materials | จาก CSV | ทำแล้ว |
+| 3 | 29 | AXP | American Express | Financials | จาก CSV | ทำแล้ว |
+| 3 | 30 | GILD | Gilead Sciences | Health Care | จาก CSV | ทำแล้ว |
 | 4 | 31 | C | Citigroup | Financials | จาก CSV | รอ |
 | 4 | 32 | DIS | Walt Disney Company (The) | Communication Services | จาก CSV | รอ |
 | 4 | 33 | MCD | McDonald's | Consumer Discretionary | จาก CSV | รอ |
