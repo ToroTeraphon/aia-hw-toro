@@ -176,21 +176,21 @@
 | 12 | 163 | FISV | Fiserv | Financials | ยังไม่มี | ทำแล้ว |
 | 12 | 164 | FITB | Fifth Third Bancorp | Financials | ยังไม่มี | ทำแล้ว |
 | 12 | 165 | GL | Globe Life | Financials | ยังไม่มี | ทำแล้ว |
-| 13 | 166 | GPN | Global Payments | Financials | ยังไม่มี | รอ |
-| 13 | 167 | HBAN | Huntington Bancshares | Financials | ยังไม่มี | รอ |
-| 13 | 168 | HIG | Hartford (The) | Financials | ยังไม่มี | รอ |
-| 13 | 169 | HOOD | Robinhood Markets | Financials | ยังไม่มี | รอ |
-| 13 | 170 | IBKR | Interactive Brokers | Financials | ยังไม่มี | รอ |
-| 13 | 171 | ICE | Intercontinental Exchange | Financials | ยังไม่มี | รอ |
-| 13 | 172 | IVZ | Invesco | Financials | ยังไม่มี | รอ |
-| 13 | 173 | JKHY | Jack Henry & Associates | Financials | ยังไม่มี | รอ |
-| 13 | 174 | KEY | KeyCorp | Financials | ยังไม่มี | รอ |
-| 13 | 175 | KKR | KKR & Co. | Financials | ยังไม่มี | รอ |
-| 13 | 176 | L | Loews Corporation | Financials | ยังไม่มี | รอ |
-| 13 | 177 | MCO | Moody's Corporation | Financials | ยังไม่มี | รอ |
-| 13 | 178 | MET | MetLife | Financials | ยังไม่มี | รอ |
-| 13 | 179 | MRSH | Marsh McLennan | Financials | ยังไม่มี | รอ |
-| 13 | 180 | MSCI | MSCI | Financials | ยังไม่มี | รอ |
+| 13 | 166 | GPN | Global Payments | Financials | ยังไม่มี | ทำแล้ว |
+| 13 | 167 | HBAN | Huntington Bancshares | Financials | ยังไม่มี | ทำแล้ว |
+| 13 | 168 | HIG | Hartford (The) | Financials | ยังไม่มี | ทำแล้ว |
+| 13 | 169 | HOOD | Robinhood Markets | Financials | ยังไม่มี | ทำแล้ว |
+| 13 | 170 | IBKR | Interactive Brokers | Financials | ยังไม่มี | ทำแล้ว |
+| 13 | 171 | ICE | Intercontinental Exchange | Financials | ยังไม่มี | ทำแล้ว |
+| 13 | 172 | IVZ | Invesco | Financials | ยังไม่มี | ทำแล้ว |
+| 13 | 173 | JKHY | Jack Henry & Associates | Financials | ยังไม่มี | ทำแล้ว |
+| 13 | 174 | KEY | KeyCorp | Financials | ยังไม่มี | ทำแล้ว |
+| 13 | 175 | KKR | KKR & Co. | Financials | ยังไม่มี | ทำแล้ว |
+| 13 | 176 | L | Loews Corporation | Financials | ยังไม่มี | ทำแล้ว |
+| 13 | 177 | MCO | Moody's Corporation | Financials | ยังไม่มี | ทำแล้ว |
+| 13 | 178 | MET | MetLife | Financials | ยังไม่มี | ทำแล้ว |
+| 13 | 179 | MRSH | Marsh McLennan | Financials | ยังไม่มี | ทำแล้ว |
+| 13 | 180 | MSCI | MSCI | Financials | ยังไม่มี | ทำแล้ว |
 | 14 | 181 | MTB | M&T Bank | Financials | ยังไม่มี | รอ |
 | 14 | 182 | NDAQ | Nasdaq, Inc. | Financials | ยังไม่มี | รอ |
 | 14 | 183 | NTRS | Northern Trust | Financials | ยังไม่มี | รอ |
