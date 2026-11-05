@@ -59,3 +59,4 @@
 | 80 | 2026-11-06 | 3 | 36 | 126,932 | 60,301 | 187,233 | โควต้ารีเซ็ตแล้ว เทียบไม่ได้ | +50,515 | 0 | หุ้นสหรัฐชุดที่ 15 (TROW TRV USB WRB WTW XYZ A ALGN BAX BIIB BMY CAH CI CNC COO) เป็น 319 ตัว |
 | 81 | 2026-11-06 | 5 | 36 | 171,312 | 60,301 | 231,613 | +2% | +44,380 | 0 | หุ้นสหรัฐชุดที่ 16 (COR CRL CVS DGX DHR DVA ELV GEHC HSIC HUM IDXX ILMN INCY IQV LH) เป็น 334 ตัว |
 | 82 | 2026-11-06 | 9 | 36 | 67,819 | 60,301 | 128,120 | +4% | หลัง compact | 0 | หุ้นสหรัฐชุดที่ 17 (MCK MRNA MTD PFE REGN RMD RVTY SOLV STE TECH VEEV VRTX VTRS WAT WST) เป็น 349 ตัว |
+| 83 | 2026-11-06 | 12 | 37 | 130,279 | 60,301 | 190,580 | +3% | +62,460 | 0 | หุ้นสหรัฐชุดที่ 18 (ZTS ADP ALLE AME AOS AXON BR CARR CHRW CMI CPRT CSX CTAS DD DOV) เป็น 364 ตัว |

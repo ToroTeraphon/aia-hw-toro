@@ -251,21 +251,21 @@
 | 17 | 238 | VTRS | Viatris | Health Care | ยังไม่มี | ทำแล้ว |
 | 17 | 239 | WAT | Waters Corporation | Health Care | ยังไม่มี | ทำแล้ว |
 | 17 | 240 | WST | West Pharmaceutical Services | Health Care | ยังไม่มี | ทำแล้ว |
-| 18 | 241 | ZTS | Zoetis | Health Care | ยังไม่มี | รอ |
-| 18 | 242 | ADP | Automatic Data Processing | Industrials | ยังไม่มี | รอ |
-| 18 | 243 | ALLE | Allegion | Industrials | ยังไม่มี | รอ |
-| 18 | 244 | AME | Ametek | Industrials | ยังไม่มี | รอ |
-| 18 | 245 | AOS | A. O. Smith | Industrials | ยังไม่มี | รอ |
-| 18 | 246 | AXON | Axon Enterprise | Industrials | ยังไม่มี | รอ |
-| 18 | 247 | BR | Broadridge Financial Solutions | Industrials | ยังไม่มี | รอ |
-| 18 | 248 | CARR | Carrier Global | Industrials | ยังไม่มี | รอ |
-| 18 | 249 | CHRW | C.H. Robinson | Industrials | ยังไม่มี | รอ |
-| 18 | 250 | CMI | Cummins | Industrials | ยังไม่มี | รอ |
-| 18 | 251 | CPRT | Copart | Industrials | ยังไม่มี | รอ |
-| 18 | 252 | CSX | CSX Corporation | Industrials | ยังไม่มี | รอ |
-| 18 | 253 | CTAS | Cintas | Industrials | ยังไม่มี | รอ |
-| 18 | 254 | DD | DuPont | Industrials | ยังไม่มี | รอ |
-| 18 | 255 | DOV | Dover Corporation | Industrials | ยังไม่มี | รอ |
+| 18 | 241 | ZTS | Zoetis | Health Care | ยังไม่มี | ทำแล้ว |
+| 18 | 242 | ADP | Automatic Data Processing | Industrials | ยังไม่มี | ทำแล้ว |
+| 18 | 243 | ALLE | Allegion | Industrials | ยังไม่มี | ทำแล้ว |
+| 18 | 244 | AME | Ametek | Industrials | ยังไม่มี | ทำแล้ว |
+| 18 | 245 | AOS | A. O. Smith | Industrials | ยังไม่มี | ทำแล้ว |
+| 18 | 246 | AXON | Axon Enterprise | Industrials | ยังไม่มี | ทำแล้ว |
+| 18 | 247 | BR | Broadridge Financial Solutions | Industrials | ยังไม่มี | ทำแล้ว |
+| 18 | 248 | CARR | Carrier Global | Industrials | ยังไม่มี | ทำแล้ว |
+| 18 | 249 | CHRW | C.H. Robinson | Industrials | ยังไม่มี | ทำแล้ว |
+| 18 | 250 | CMI | Cummins | Industrials | ยังไม่มี | ทำแล้ว |
+| 18 | 251 | CPRT | Copart | Industrials | ยังไม่มี | ทำแล้ว |
+| 18 | 252 | CSX | CSX Corporation | Industrials | ยังไม่มี | ทำแล้ว |
+| 18 | 253 | CTAS | Cintas | Industrials | ยังไม่มี | ทำแล้ว |
+| 18 | 254 | DD | DuPont | Industrials | ยังไม่มี | ทำแล้ว |
+| 18 | 255 | DOV | Dover Corporation | Industrials | ยังไม่มี | ทำแล้ว |
 | 19 | 256 | EFX | Equifax | Industrials | ยังไม่มี | รอ |
 | 19 | 257 | EME | Emcor | Industrials | ยังไม่มี | รอ |
 | 19 | 258 | EMR | Emerson Electric | Industrials | ยังไม่มี | รอ |
