@@ -161,21 +161,21 @@
 | 11 | 148 | BNY | BNY Mellon | Financials | ยังไม่มี | ทำแล้ว |
 | 11 | 149 | BRO | Brown & Brown | Financials | ยังไม่มี | ทำแล้ว |
 | 11 | 150 | BX | Blackstone Inc. | Financials | ยังไม่มี | ทำแล้ว |
-| 12 | 151 | CB | Chubb Limited | Financials | ยังไม่มี | รอ |
-| 12 | 152 | CBOE | Cboe Global Markets | Financials | ยังไม่มี | รอ |
-| 12 | 153 | CFG | Citizens Financial Group | Financials | ยังไม่มี | รอ |
-| 12 | 154 | CINF | Cincinnati Financial | Financials | ยังไม่มี | รอ |
-| 12 | 155 | CME | CME Group | Financials | ยังไม่มี | รอ |
-| 12 | 156 | COF | Capital One | Financials | ยังไม่มี | รอ |
-| 12 | 157 | COIN | Coinbase | Financials | ยังไม่มี | รอ |
-| 12 | 158 | CPAY | Corpay | Financials | ยังไม่มี | รอ |
-| 12 | 159 | EG | Everest Group | Financials | ยังไม่มี | รอ |
-| 12 | 160 | ERIE | Erie Indemnity | Financials | ยังไม่มี | รอ |
-| 12 | 161 | FDS | FactSet | Financials | ยังไม่มี | รอ |
-| 12 | 162 | FIS | Fidelity National Information Services | Financials | ยังไม่มี | รอ |
-| 12 | 163 | FISV | Fiserv | Financials | ยังไม่มี | รอ |
-| 12 | 164 | FITB | Fifth Third Bancorp | Financials | ยังไม่มี | รอ |
-| 12 | 165 | GL | Globe Life | Financials | ยังไม่มี | รอ |
+| 12 | 151 | CB | Chubb Limited | Financials | ยังไม่มี | ทำแล้ว |
+| 12 | 152 | CBOE | Cboe Global Markets | Financials | ยังไม่มี | ทำแล้ว |
+| 12 | 153 | CFG | Citizens Financial Group | Financials | ยังไม่มี | ทำแล้ว |
+| 12 | 154 | CINF | Cincinnati Financial | Financials | ยังไม่มี | ทำแล้ว |
+| 12 | 155 | CME | CME Group | Financials | ยังไม่มี | ทำแล้ว |
+| 12 | 156 | COF | Capital One | Financials | ยังไม่มี | ทำแล้ว |
+| 12 | 157 | COIN | Coinbase | Financials | ยังไม่มี | ทำแล้ว |
+| 12 | 158 | CPAY | Corpay | Financials | ยังไม่มี | ทำแล้ว |
+| 12 | 159 | EG | Everest Group | Financials | ยังไม่มี | ทำแล้ว |
+| 12 | 160 | ERIE | Erie Indemnity | Financials | ยังไม่มี | ทำแล้ว |
+| 12 | 161 | FDS | FactSet | Financials | ยังไม่มี | ทำแล้ว |
+| 12 | 162 | FIS | Fidelity National Information Services | Financials | ยังไม่มี | ทำแล้ว |
+| 12 | 163 | FISV | Fiserv | Financials | ยังไม่มี | ทำแล้ว |
+| 12 | 164 | FITB | Fifth Third Bancorp | Financials | ยังไม่มี | ทำแล้ว |
+| 12 | 165 | GL | Globe Life | Financials | ยังไม่มี | ทำแล้ว |
 | 13 | 166 | GPN | Global Payments | Financials | ยังไม่มี | รอ |
 | 13 | 167 | HBAN | Huntington Bancshares | Financials | ยังไม่มี | รอ |
 | 13 | 168 | HIG | Hartford (The) | Financials | ยังไม่มี | รอ |
