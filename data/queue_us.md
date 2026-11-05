@@ -11,21 +11,21 @@
 
 | ชุด | ลำดับ | คีย์ | ชื่อบริษัท | กลุ่ม | ลำดับมูลค่า | สถานะ |
 |---|---|---|---|---|---|---|
-| 2 | 1 | MA | Mastercard | Financials | จาก CSV | รอ |
-| 2 | 2 | ABBV | AbbVie | Health Care | จาก CSV | รอ |
-| 2 | 3 | COST | Costco | Consumer Staples | จาก CSV | รอ |
-| 2 | 4 | CVX | Chevron Corporation | Energy | จาก CSV | รอ |
-| 2 | 5 | KO | Coca-Cola Company (The) | Consumer Staples | จาก CSV | รอ |
-| 2 | 6 | CSCO | Cisco | Information Technology | จาก CSV | รอ |
-| 2 | 7 | PG | Procter & Gamble | Consumer Staples | จาก CSV | รอ |
-| 2 | 8 | MRK | Merck & Co. | Health Care | จาก CSV | รอ |
-| 2 | 9 | UNH | UnitedHealth Group | Health Care | จาก CSV | รอ |
-| 2 | 10 | BAC | Bank of America | Financials | จาก CSV | รอ |
-| 2 | 11 | HD | Home Depot (The) | Consumer Discretionary | จาก CSV | รอ |
-| 2 | 12 | GE | GE Aerospace | Industrials | จาก CSV | รอ |
-| 2 | 13 | PM | Philip Morris International | Consumer Staples | จาก CSV | รอ |
-| 2 | 14 | INTC | Intel | Information Technology | จาก CSV | รอ |
-| 2 | 15 | MS | Morgan Stanley | Financials | จาก CSV | รอ |
+| 2 | 1 | MA | Mastercard | Financials | จาก CSV | ทำแล้ว |
+| 2 | 2 | ABBV | AbbVie | Health Care | จาก CSV | ทำแล้ว |
+| 2 | 3 | COST | Costco | Consumer Staples | จาก CSV | ทำแล้ว |
+| 2 | 4 | CVX | Chevron Corporation | Energy | จาก CSV | ทำแล้ว |
+| 2 | 5 | KO | Coca-Cola Company (The) | Consumer Staples | จาก CSV | ทำแล้ว |
+| 2 | 6 | CSCO | Cisco | Information Technology | จาก CSV | ทำแล้ว |
+| 2 | 7 | PG | Procter & Gamble | Consumer Staples | จาก CSV | ทำแล้ว |
+| 2 | 8 | MRK | Merck & Co. | Health Care | จาก CSV | ทำแล้ว |
+| 2 | 9 | UNH | UnitedHealth Group | Health Care | จาก CSV | ทำแล้ว |
+| 2 | 10 | BAC | Bank of America | Financials | จาก CSV | ทำแล้ว |
+| 2 | 11 | HD | Home Depot (The) | Consumer Discretionary | จาก CSV | ทำแล้ว |
+| 2 | 12 | GE | GE Aerospace | Industrials | จาก CSV | ทำแล้ว |
+| 2 | 13 | PM | Philip Morris International | Consumer Staples | จาก CSV | ทำแล้ว |
+| 2 | 14 | INTC | Intel | Information Technology | จาก CSV | ทำแล้ว |
+| 2 | 15 | MS | Morgan Stanley | Financials | จาก CSV | ทำแล้ว |
 | 3 | 16 | AMAT | Applied Materials | Information Technology | จาก CSV | รอ |
 | 3 | 17 | PANW | Palo Alto Networks | Information Technology | จาก CSV | รอ |
 | 3 | 18 | TXN | Texas Instruments | Information Technology | จาก CSV | รอ |
