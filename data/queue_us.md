@@ -146,21 +146,21 @@
 | 10 | 133 | TRGP | Targa Resources | Energy | ยังไม่มี | ทำแล้ว |
 | 10 | 134 | VLO | Valero Energy | Energy | ยังไม่มี | ทำแล้ว |
 | 10 | 135 | WMB | Williams Companies | Energy | ยังไม่มี | ทำแล้ว |
-| 11 | 136 | ACGL | Arch Capital Group | Financials | ยังไม่มี | รอ |
-| 11 | 137 | AFL | Aflac | Financials | ยังไม่มี | รอ |
-| 11 | 138 | AIG | American International Group | Financials | ยังไม่มี | รอ |
-| 11 | 139 | AIZ | Assurant | Financials | ยังไม่มี | รอ |
-| 11 | 140 | AJG | Arthur J. Gallagher & Co. | Financials | ยังไม่มี | รอ |
-| 11 | 141 | ALL | Allstate | Financials | ยังไม่มี | รอ |
-| 11 | 142 | AMP | Ameriprise Financial | Financials | ยังไม่มี | รอ |
-| 11 | 143 | AON | Aon plc | Financials | ยังไม่มี | รอ |
-| 11 | 144 | APO | Apollo Global Management | Financials | ยังไม่มี | รอ |
-| 11 | 145 | ARES | Ares Management | Financials | ยังไม่มี | รอ |
-| 11 | 146 | BEN | Franklin Resources | Financials | ยังไม่มี | รอ |
-| 11 | 147 | BLK | BlackRock | Financials | ยังไม่มี | รอ |
-| 11 | 148 | BNY | BNY Mellon | Financials | ยังไม่มี | รอ |
-| 11 | 149 | BRO | Brown & Brown | Financials | ยังไม่มี | รอ |
-| 11 | 150 | BX | Blackstone Inc. | Financials | ยังไม่มี | รอ |
+| 11 | 136 | ACGL | Arch Capital Group | Financials | ยังไม่มี | ทำแล้ว |
+| 11 | 137 | AFL | Aflac | Financials | ยังไม่มี | ทำแล้ว |
+| 11 | 138 | AIG | American International Group | Financials | ยังไม่มี | ทำแล้ว |
+| 11 | 139 | AIZ | Assurant | Financials | ยังไม่มี | ทำแล้ว |
+| 11 | 140 | AJG | Arthur J. Gallagher & Co. | Financials | ยังไม่มี | ทำแล้ว |
+| 11 | 141 | ALL | Allstate | Financials | ยังไม่มี | ทำแล้ว |
+| 11 | 142 | AMP | Ameriprise Financial | Financials | ยังไม่มี | ทำแล้ว |
+| 11 | 143 | AON | Aon plc | Financials | ยังไม่มี | ทำแล้ว |
+| 11 | 144 | APO | Apollo Global Management | Financials | ยังไม่มี | ทำแล้ว |
+| 11 | 145 | ARES | Ares Management | Financials | ยังไม่มี | ทำแล้ว |
+| 11 | 146 | BEN | Franklin Resources | Financials | ยังไม่มี | ทำแล้ว |
+| 11 | 147 | BLK | BlackRock | Financials | ยังไม่มี | ทำแล้ว |
+| 11 | 148 | BNY | BNY Mellon | Financials | ยังไม่มี | ทำแล้ว |
+| 11 | 149 | BRO | Brown & Brown | Financials | ยังไม่มี | ทำแล้ว |
+| 11 | 150 | BX | Blackstone Inc. | Financials | ยังไม่มี | ทำแล้ว |
 | 12 | 151 | CB | Chubb Limited | Financials | ยังไม่มี | รอ |
 | 12 | 152 | CBOE | Cboe Global Markets | Financials | ยังไม่มี | รอ |
 | 12 | 153 | CFG | Citizens Financial Group | Financials | ยังไม่มี | รอ |

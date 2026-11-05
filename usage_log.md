@@ -52,3 +52,4 @@
 | 73 | 2026-11-06 | 82 | 31 | 66,147 | 60,151 | 126,298 | +9% | หลัง compact | 0 | หุ้นสหรัฐชุดที่ 8 (ADM BF.B BG CASY CHD CL CLX DG DLTR EL GIS HRL HSY KDP KHC) เป็น 215 ตัว ต้นทุน ~0.6% ของโควต้าต่อตัว |
 | 74 | 2026-11-06 | 88 | 32 | 163,904 | 60,151 | 224,055 | +6% | +97,757 | 0 | หุ้นสหรัฐชุดที่ 9 (KMB KR MDLZ MKC MNST MO SJM STZ SYY TGT TSN APA BKR DVN) เป็น 229 ตัว ต้นทุน ~0.4% ของโควต้าต่อตัว |
 | 75 | 2026-11-06 | 6 | 33 | 130,166 | 64,065 | 194,231 | หน้าต่าง 5 ชม. รีเซ็ตแล้ว | หลัง compact | +3,914 | หุ้นสหรัฐชุดที่ 10 (EOG EQT EXE FANG HAL KMI MPC OKE OXY PSX SLB TPL TRGP VLO WMB) เป็น 244 ตัว |
+| 76 | 2026-11-06 | 14 | 34 | 64,383 | 60,301 | 124,684 | +8% | หลัง compact | -3,764 | หุ้นสหรัฐชุดที่ 11 (ACGL AFL AIG AIZ AJG ALL AMP AON APO ARES BEN BLK BNY BRO BX) เป็น 259 ตัว |
