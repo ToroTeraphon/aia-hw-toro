@@ -38,7 +38,7 @@ def main():
         date, acc = m.groups()
         target = folder / f"8-K_{date}_{acc}_TEXTGIF.htm"
         text = f.read_text(encoding="utf-8", errors="ignore")
-        if target.exists() or "2.02" not in text or "Results of Operations" not in text:
+        if target.exists() or "2.02" not in text or "results of operations" not in text.lower():
             continue
         base = f"https://www.sec.gov/Archives/edgar/data/{cik}/{acc}/"
         items = json.loads(get(base + "index.json", contact))["directory"]["item"]
