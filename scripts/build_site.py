@@ -96,7 +96,17 @@ TEMPLATE = r"""<!doctype html>
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 system-ui,-apple-system,"Segoe UI","Noto Sans Thai",sans-serif}
 main{max-width:1100px;margin:0 auto;padding:24px 16px 64px}
-h1{font-size:26px;margin:0 0 4px}
+h1{font-size:26px;margin:0}
+.titlebar{display:flex;align-items:center;gap:10px;margin:0 0 4px;position:relative}
+.tip{position:relative}
+.tip>button{width:26px;height:26px;border-radius:50%;border:1.5px solid var(--acc);background:var(--card);color:var(--acc);font:700 15px/1 Georgia,serif;font-style:italic;cursor:pointer;padding:0}
+.tip>button:hover,.tip>button[aria-expanded=true]{background:var(--acc);color:var(--bg)}
+.pop{display:none;position:absolute;left:0;top:34px;z-index:10;width:min(460px,calc(100vw - 32px));background:var(--card);border:1px solid var(--line);border-top:3px solid var(--acc);border-radius:10px;padding:12px 16px;box-shadow:0 8px 24px rgba(0,0,0,.18);font-size:14px;line-height:1.55}
+.tip:hover .pop,.tip:focus-within .pop,.tip.open .pop{display:block}
+.pop h2{font-size:14px;margin:10px 0 4px}.pop h2:first-child{margin-top:0}
+.pop p{margin:0 0 6px}.pop ol,.pop ul{margin:0 0 6px;padding-left:20px}
+.pop .warn{color:var(--ch)}
+@media (max-width:560px){.tip{position:static}.pop{left:0;right:0;width:auto}}
 .sub{color:var(--muted);margin:0 0 16px}
 .note{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--acc);border-radius:8px;padding:12px 14px;margin:0 0 20px}
 .controls{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:0 0 12px}
@@ -155,7 +165,25 @@ footer{margin-top:24px;color:var(--muted);font-size:13px}
 </head>
 <body>
 <main>
-<h1>Catalyst Tracker 2027</h1>
+<div class="titlebar"><h1>Catalyst Tracker 2027</h1>
+<div class="tip" id="tip"><button type="button" id="tip-btn" aria-expanded="false" aria-controls="tip-pop" aria-label="ภาพรวมและวิธีใช้เว็บนี้">i</button>
+<div class="pop" id="tip-pop" role="region" aria-label="ภาพรวมและวิธีใช้เว็บนี้">
+<h2>เว็บนี้ทำอะไร</h2>
+<p id="tip-sum"></p>
+<p class="warn"><b>คะแนนวัดความแน่นของหลักฐาน ไม่ใช่การทำนายราคา และไม่ใช่คำแนะนำซื้อหรือขาย</b></p>
+<h2>เป้าหมาย 3 ขั้น</h2>
+<ol>
+<li><b>คัดหุ้น:</b> คัดจากหลักฐานและจัดระดับ Watchlist T1–T3 (ผลงานในหน้านี้อยู่ที่ขั้นนี้)</li>
+<li><b>Deep Dive รายตัว:</b> เริ่มจาก T1 ถ้าหมดแล้วค่อยทำ T2 ส่วน T3 ยังไม่ทำ</li>
+<li><b>เก็บ metric:</b> รายได้ กำไร จำนวนห้อง ฯลฯ ของแต่ละหุ้นว่าดีขึ้นอย่างไรใน 1 ปีข้างหน้า เก็บเองจากเอกสารที่บริษัทยื่น เพราะหุ้นไทยไม่มีเว็บที่รายงานตัวเลขเหล่านี้ให้</li>
+</ol>
+<h2>วิธีใช้หน้านี้</h2>
+<ul>
+<li>กรองด้วยปุ่ม Watchlist · ธีม · คะแนน · ขนาด Catalyst แล้วเลือกการเรียงลำดับ</li>
+<li>กดที่การ์ดหุ้นเพื่อดูหลักฐานหนุน/ค้านทีละแถว พร้อมลิงก์ไปเอกสารต้นทาง</li>
+<li>ตัวเลขที่ไม่มีในเอกสารเว้นว่างไว้ ไม่ได้เดา</li>
+</ul>
+</div></div></div>
 <p class="sub" id="sub">หุ้นไทย + สหรัฐ · ตัวจุดประกายปี 2027 จากเอกสารที่บริษัทยื่นเอง</p>
 <div class="note"><b>คะแนนวัดความแน่นของหลักฐาน ไม่ใช่การทำนายราคา และไม่ใช่คำแนะนำซื้อหรือขาย</b><br>
 กดที่หุ้นเพื่อดูหลักฐานหนุน/ค้านทีละแถว และลิงก์ไปเอกสารต้นทาง ตัวเลขที่ไม่มีในเอกสารเว้นว่างไว้ ไม่ได้เดา</div>
@@ -224,6 +252,13 @@ async function loadData() {
   }
 }
 
+// ปุ่ม i: ชี้หรือโฟกัสแล้วแสดงเอง · กดเพื่อค้างไว้ (มือถือไม่มี hover) · Esc หรือกดที่อื่นเพื่อปิด
+const tip = document.getElementById('tip'), tipBtn = document.getElementById('tip-btn');
+const setTip = open => { tip.classList.toggle('open', open); tipBtn.setAttribute('aria-expanded', open); };
+tipBtn.onclick = () => setTip(!tip.classList.contains('open'));
+document.addEventListener('click', e => { if (!tip.contains(e.target)) setTip(false); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { setTip(false); tipBtn.blur(); } });
+
 let D, byTicker;
 loadData().then(d => { D = d; start(); });
 
@@ -279,6 +314,10 @@ function start() {
   chips('f-score', 'score', [[ALL, ALL], ...[5, 4, 3, 2, 1].map(n => [n, `${n} คะแนน · ${scoreCount(n)} ตัว`, !scoreCount(n)])]);
   chips('f-sort', 'sort', [['desc', 'คะแนนมาก → น้อย'], ['asc', 'คะแนนน้อย → มาก'], ['size', 'ขนาด Catalyst มาก → น้อย']]);
   chips('f-basis', 'type', [[ALL, ALL], ...[...Object.keys(TYPES), NONE].map(t => [t, `${typeLabel(t)} · ${typeCount(t)} ตัว`, !typeCount(t)])]);
+  document.getElementById('tip-sum').textContent =
+    'รวบรวมหุ้นไทยและสหรัฐที่มีตัวจุดประกายปี 2027 พร้อมหลักฐานจากเอกสารที่บริษัทยื่นเอง (SEC EDGAR และ ก.ล.ต. iDisc) ' +
+    'กดย้อนไปเอกสารต้นทางได้ทุกแถว แต่ละตัวมีคะแนนความแน่นของหลักฐาน 1–5 เงื่อนไขตัดทิ้ง ขนาด Catalyst เทียบกับบริษัท ' +
+    'และระดับ Watchlist (T1 ติด Watchlist · T2 รอข้อมูล · T3 ยังไม่ติด)';
   render();
   document.getElementById('sub').textContent = `หุ้นไทย + สหรัฐ ${D.stocks.length} ตัว · ตัวจุดประกายปี 2027 จากเอกสารที่บริษัทยื่นเอง`;
   document.getElementById('foot').textContent =
