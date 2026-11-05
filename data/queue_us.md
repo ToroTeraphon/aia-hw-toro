@@ -116,21 +116,21 @@
 | 8 | 103 | HSY | Hershey Company (The) | Consumer Staples | ยังไม่มี | ทำแล้ว |
 | 8 | 104 | KDP | Keurig Dr Pepper | Consumer Staples | ยังไม่มี | ทำแล้ว |
 | 8 | 105 | KHC | Kraft Heinz | Consumer Staples | ยังไม่มี | ทำแล้ว |
-| 9 | 106 | KMB | Kimberly-Clark | Consumer Staples | ยังไม่มี | รอ |
-| 9 | 107 | KR | Kroger | Consumer Staples | ยังไม่มี | รอ |
-| 9 | 108 | MDLZ | Mondelez International | Consumer Staples | ยังไม่มี | รอ |
-| 9 | 109 | MKC | McCormick & Company | Consumer Staples | ยังไม่มี | รอ |
-| 9 | 110 | MNST | Monster Beverage | Consumer Staples | ยังไม่มี | รอ |
-| 9 | 111 | MO | Altria | Consumer Staples | ยังไม่มี | รอ |
-| 9 | 112 | SJM | J.M. Smucker Company (The) | Consumer Staples | ยังไม่มี | รอ |
-| 9 | 113 | STZ | Constellation Brands | Consumer Staples | ยังไม่มี | รอ |
-| 9 | 114 | SYY | Sysco | Consumer Staples | ยังไม่มี | รอ |
-| 9 | 115 | TGT | Target Corporation | Consumer Staples | ยังไม่มี | รอ |
-| 9 | 116 | TSN | Tyson Foods | Consumer Staples | ยังไม่มี | รอ |
-| 9 | 117 | VYLR | Vylor | Consumer Staples | ยังไม่มี | รอ |
-| 9 | 118 | APA | APA Corporation | Energy | ยังไม่มี | รอ |
-| 9 | 119 | BKR | Baker Hughes | Energy | ยังไม่มี | รอ |
-| 9 | 120 | DVN | Devon Energy | Energy | ยังไม่มี | รอ |
+| 9 | 106 | KMB | Kimberly-Clark | Consumer Staples | ยังไม่มี | ทำแล้ว |
+| 9 | 107 | KR | Kroger | Consumer Staples | ยังไม่มี | ทำแล้ว |
+| 9 | 108 | MDLZ | Mondelez International | Consumer Staples | ยังไม่มี | ทำแล้ว |
+| 9 | 109 | MKC | McCormick & Company | Consumer Staples | ยังไม่มี | ทำแล้ว |
+| 9 | 110 | MNST | Monster Beverage | Consumer Staples | ยังไม่มี | ทำแล้ว |
+| 9 | 111 | MO | Altria | Consumer Staples | ยังไม่มี | ทำแล้ว |
+| 9 | 112 | SJM | J.M. Smucker Company (The) | Consumer Staples | ยังไม่มี | ทำแล้ว |
+| 9 | 113 | STZ | Constellation Brands | Consumer Staples | ยังไม่มี | ทำแล้ว |
+| 9 | 114 | SYY | Sysco | Consumer Staples | ยังไม่มี | ทำแล้ว |
+| 9 | 115 | TGT | Target Corporation | Consumer Staples | ยังไม่มี | ทำแล้ว |
+| 9 | 116 | TSN | Tyson Foods | Consumer Staples | ยังไม่มี | ทำแล้ว |
+| 9 | 117 | VYLR | Vylor | Consumer Staples | ยังไม่มี | ข้าม (ไม่มีเอกสารใน SEC) |
+| 9 | 118 | APA | APA Corporation | Energy | ยังไม่มี | ทำแล้ว |
+| 9 | 119 | BKR | Baker Hughes | Energy | ยังไม่มี | ทำแล้ว |
+| 9 | 120 | DVN | Devon Energy | Energy | ยังไม่มี | ทำแล้ว |
 | 10 | 121 | EOG | EOG Resources | Energy | ยังไม่มี | รอ |
 | 10 | 122 | EQT | EQT Corporation | Energy | ยังไม่มี | รอ |
 | 10 | 123 | EXE | Expand Energy | Energy | ยังไม่มี | รอ |
