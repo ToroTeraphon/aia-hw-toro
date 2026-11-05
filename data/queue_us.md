@@ -191,21 +191,21 @@
 | 13 | 178 | MET | MetLife | Financials | ยังไม่มี | ทำแล้ว |
 | 13 | 179 | MRSH | Marsh McLennan | Financials | ยังไม่มี | ทำแล้ว |
 | 13 | 180 | MSCI | MSCI | Financials | ยังไม่มี | ทำแล้ว |
-| 14 | 181 | MTB | M&T Bank | Financials | ยังไม่มี | รอ |
-| 14 | 182 | NDAQ | Nasdaq, Inc. | Financials | ยังไม่มี | รอ |
-| 14 | 183 | NTRS | Northern Trust | Financials | ยังไม่มี | รอ |
-| 14 | 184 | PFG | Principal Financial Group | Financials | ยังไม่มี | รอ |
-| 14 | 185 | PGR | Progressive Corporation | Financials | ยังไม่มี | รอ |
-| 14 | 186 | PNC | PNC Financial Services | Financials | ยังไม่มี | รอ |
-| 14 | 187 | PRU | Prudential Financial | Financials | ยังไม่มี | รอ |
-| 14 | 188 | PYPL | PayPal | Financials | ยังไม่มี | รอ |
-| 14 | 189 | RF | Regions Financial Corporation | Financials | ยังไม่มี | รอ |
-| 14 | 190 | RJF | Raymond James Financial | Financials | ยังไม่มี | รอ |
-| 14 | 191 | SCHW | Charles Schwab Corporation | Financials | ยังไม่มี | รอ |
-| 14 | 192 | SPGI | S&P Global | Financials | ยังไม่มี | รอ |
-| 14 | 193 | STT | State Street Corporation | Financials | ยังไม่มี | รอ |
-| 14 | 194 | SYF | Synchrony Financial | Financials | ยังไม่มี | รอ |
-| 14 | 195 | TFC | Truist Financial | Financials | ยังไม่มี | รอ |
+| 14 | 181 | MTB | M&T Bank | Financials | ยังไม่มี | ทำแล้ว |
+| 14 | 182 | NDAQ | Nasdaq, Inc. | Financials | ยังไม่มี | ทำแล้ว |
+| 14 | 183 | NTRS | Northern Trust | Financials | ยังไม่มี | ทำแล้ว |
+| 14 | 184 | PFG | Principal Financial Group | Financials | ยังไม่มี | ทำแล้ว |
+| 14 | 185 | PGR | Progressive Corporation | Financials | ยังไม่มี | ทำแล้ว |
+| 14 | 186 | PNC | PNC Financial Services | Financials | ยังไม่มี | ทำแล้ว |
+| 14 | 187 | PRU | Prudential Financial | Financials | ยังไม่มี | ทำแล้ว |
+| 14 | 188 | PYPL | PayPal | Financials | ยังไม่มี | ทำแล้ว |
+| 14 | 189 | RF | Regions Financial Corporation | Financials | ยังไม่มี | ทำแล้ว |
+| 14 | 190 | RJF | Raymond James Financial | Financials | ยังไม่มี | ทำแล้ว |
+| 14 | 191 | SCHW | Charles Schwab Corporation | Financials | ยังไม่มี | ทำแล้ว |
+| 14 | 192 | SPGI | S&P Global | Financials | ยังไม่มี | ทำแล้ว |
+| 14 | 193 | STT | State Street Corporation | Financials | ยังไม่มี | ทำแล้ว |
+| 14 | 194 | SYF | Synchrony Financial | Financials | ยังไม่มี | ทำแล้ว |
+| 14 | 195 | TFC | Truist Financial | Financials | ยังไม่มี | ทำแล้ว |
 | 15 | 196 | TROW | T. Rowe Price | Financials | ยังไม่มี | รอ |
 | 15 | 197 | TRV | Travelers Companies (The) | Financials | ยังไม่มี | รอ |
 | 15 | 198 | USB | U.S. Bancorp | Financials | ยังไม่มี | รอ |
