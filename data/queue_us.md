@@ -56,21 +56,21 @@
 | 4 | 43 | T | AT&T | Communication Services | จาก CSV | ทำแล้ว |
 | 4 | 44 | UBER | Uber | Industrials | จาก CSV | ทำแล้ว |
 | 4 | 45 | BA.US | Boeing (US:BA) | Industrials | จาก CSV | ทำแล้ว |
-| 5 | 46 | LMT | Lockheed Martin | Industrials | จาก CSV | รอ |
-| 5 | 47 | APP | AppLovin | Communication Services | ยังไม่มี | รอ |
-| 5 | 48 | CHTR | Charter Communications | Communication Services | ยังไม่มี | รอ |
-| 5 | 49 | CMCSA | Comcast | Communication Services | ยังไม่มี | รอ |
-| 5 | 50 | ECHO | EchoStar | Communication Services | ยังไม่มี | รอ |
-| 5 | 51 | FOXA | Fox Corporation (Class A) | Communication Services | ยังไม่มี | รอ |
-| 5 | 52 | LYV | Live Nation Entertainment | Communication Services | ยังไม่มี | รอ |
-| 5 | 53 | NWSA | News Corp (Class A) | Communication Services | ยังไม่มี | รอ |
-| 5 | 54 | OMC | Omnicom Group | Communication Services | ยังไม่มี | รอ |
-| 5 | 55 | RDDT | Reddit | Communication Services | ยังไม่มี | รอ |
-| 5 | 56 | SKYD | Skydance | Communication Services | ยังไม่มี | รอ |
-| 5 | 57 | TKO | TKO Group Holdings | Communication Services | ยังไม่มี | รอ |
-| 5 | 58 | TTWO | Take-Two Interactive | Communication Services | ยังไม่มี | รอ |
-| 5 | 59 | APTV | Aptiv | Consumer Discretionary | ยังไม่มี | รอ |
-| 5 | 60 | AZO | AutoZone | Consumer Discretionary | ยังไม่มี | รอ |
+| 5 | 46 | LMT | Lockheed Martin | Industrials | จาก CSV | ทำแล้ว |
+| 5 | 47 | APP | AppLovin | Communication Services | ยังไม่มี | ทำแล้ว |
+| 5 | 48 | CHTR | Charter Communications | Communication Services | ยังไม่มี | ทำแล้ว |
+| 5 | 49 | CMCSA | Comcast | Communication Services | ยังไม่มี | ทำแล้ว |
+| 5 | 50 | ECHO | EchoStar | Communication Services | ยังไม่มี | ทำแล้ว |
+| 5 | 51 | FOXA | Fox Corporation (Class A) | Communication Services | ยังไม่มี | ทำแล้ว |
+| 5 | 52 | LYV | Live Nation Entertainment | Communication Services | ยังไม่มี | ทำแล้ว |
+| 5 | 53 | NWSA | News Corp (Class A) | Communication Services | ยังไม่มี | ทำแล้ว |
+| 5 | 54 | OMC | Omnicom Group | Communication Services | ยังไม่มี | ทำแล้ว |
+| 5 | 55 | RDDT | Reddit | Communication Services | ยังไม่มี | ทำแล้ว |
+| 5 | 56 | SKYD | Skydance | Communication Services | ยังไม่มี | ทำแล้ว |
+| 5 | 57 | TKO | TKO Group Holdings | Communication Services | ยังไม่มี | ทำแล้ว |
+| 5 | 58 | TTWO | Take-Two Interactive | Communication Services | ยังไม่มี | ทำแล้ว |
+| 5 | 59 | APTV | Aptiv | Consumer Discretionary | ยังไม่มี | ทำแล้ว |
+| 5 | 60 | AZO | AutoZone | Consumer Discretionary | ยังไม่มี | ทำแล้ว |
 | 6 | 61 | BBY | Best Buy | Consumer Discretionary | ยังไม่มี | รอ |
 | 6 | 62 | CMG | Chipotle Mexican Grill | Consumer Discretionary | ยังไม่มี | รอ |
 | 6 | 63 | CVNA | Carvana | Consumer Discretionary | ยังไม่มี | รอ |

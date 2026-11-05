@@ -46,3 +46,4 @@
 | 67 | 2026-11-05 | 37 | 25 | 89,059 | 60,151 | 149,210 | +13% | หลัง compact | 0 | หุ้นสหรัฐชุดที่ 2 (MA ABBV COST CVX KO CSCO PG MRK UNH BAC HD GE PM INTC MS) เป็น 125 ตัว ต้นทุน ~0.9% ของโควต้าต่อตัว |
 | 68 | 2026-11-05 | 43 | 26 | 201,398 | 60,151 | 261,549 | +6% | +112,339 | 0 | หุ้นสหรัฐชุดที่ 3 (AMAT PANW TXN LRCX NFLX CAT GS RTX WFC TMO AMGN CRWD LIN AXP GILD) เป็น 140 ตัว ต้นทุน ~0.4% ของโควต้าต่อตัว |
 | 69 | 2026-11-05 | 52 | 27 | 163,571 | 60,151 | 223,722 | +9% | หลัง compact | 0 | หุ้นสหรัฐชุดที่ 4 (C DIS MCD PEP VZ CRM UNP DE WELL TMUS COP TJX T UBER BA.US) เป็น 155 ตัว ต้นทุน ~0.6% ของโควต้าต่อตัว |
+| 70 | 2026-11-05 | 59 | 28 | 107,281 | 60,151 | 167,432 | +7% | หลัง compact | 0 | หุ้นสหรัฐชุดที่ 5 (LMT APP CHTR CMCSA ECHO FOXA LYV NWSA OMC RDDT SKYD TKO TTWO APTV AZO) เป็น 170 ตัว ต้นทุน ~0.5% ของโควต้าต่อตัว |
