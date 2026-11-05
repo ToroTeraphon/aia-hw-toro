@@ -57,3 +57,4 @@
 | 78 | 2026-11-06 | 21 | 35 | 185,577 | 60,301 | 245,878 | +3% | +51,701 | 0 | หุ้นสหรัฐชุดที่ 13 (GPN HBAN HIG HOOD IBKR ICE IVZ JKHY KEY KKR L MCO MET MRSH MSCI) เป็น 289 ตัว Messages ใกล้ 250k จะ compact อัตโนมัติ |
 | 79 | 2026-11-06 | 25 | 35 | 76,417 | 60,301 | 136,718 | +4% | หลัง compact | 0 | หุ้นสหรัฐชุดที่ 14 (MTB NDAQ NTRS PFG PGR PNC PRU PYPL RF RJF SCHW SPGI STT SYF TFC) เป็น 304 ตัว |
 | 80 | 2026-11-06 | 3 | 36 | 126,932 | 60,301 | 187,233 | โควต้ารีเซ็ตแล้ว เทียบไม่ได้ | +50,515 | 0 | หุ้นสหรัฐชุดที่ 15 (TROW TRV USB WRB WTW XYZ A ALGN BAX BIIB BMY CAH CI CNC COO) เป็น 319 ตัว |
+| 81 | 2026-11-06 | 5 | 36 | 171,312 | 60,301 | 231,613 | +2% | +44,380 | 0 | หุ้นสหรัฐชุดที่ 16 (COR CRL CVS DGX DHR DVA ELV GEHC HSIC HUM IDXX ILMN INCY IQV LH) เป็น 334 ตัว |

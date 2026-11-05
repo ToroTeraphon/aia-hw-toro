@@ -358,3 +358,8 @@
 - **เจออะไร:** `git push` ตอบ `remote rejected ... fatal error in commit_refs` สองครั้งติด
 - **สาเหตุ:** ปัญหาฝั่งเซิร์ฟเวอร์ GitHub ไม่ใช่กฎของ repo (commit และ check_secrets ผ่านแล้ว)
 - **แก้อย่างไร:** ทำงานชุดต่อไปก่อน แล้วลอง `git push` ใหม่ผ่านเอง ครั้งถัดมาสำเร็จ ไม่ต้องแก้ไฟล์หรือ force push
+
+### รอบ 81 · ไฟล์ /tmp ของ bash กับ python ของ Windows คนละที่
+- **เจออะไร:** เขียน CIK ลง `/tmp/cik16.txt` ด้วย bash แล้วให้ python (Windows) อ่านต่อ ได้ FileNotFoundError และ build_sources เริ่มรันโดยไม่มี CIK ชุดใหม่
+- **สาเหตุ:** `/tmp` ในเชลล์ bash ไม่ใช่โฟลเดอร์เดียวกับที่ python ของ Windows มองเห็น
+- **แก้อย่างไร:** kill build เก่า เขียน dict CIK ตรงในสคริปต์ python แล้วรันใหม่ ต่อไปไม่ส่งข้อมูลระหว่าง bash กับ python ผ่านไฟล์ใน /tmp ให้ใส่ค่าในคำสั่งหรือใช้โฟลเดอร์ scratchpad

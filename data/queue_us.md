@@ -221,21 +221,21 @@
 | 15 | 208 | CI | Cigna | Health Care | ยังไม่มี | ทำแล้ว |
 | 15 | 209 | CNC | Centene Corporation | Health Care | ยังไม่มี | ทำแล้ว |
 | 15 | 210 | COO | Cooper Companies (The) | Health Care | ยังไม่มี | ทำแล้ว |
-| 16 | 211 | COR | Cencora | Health Care | ยังไม่มี | รอ |
-| 16 | 212 | CRL | Charles River Laboratories | Health Care | ยังไม่มี | รอ |
-| 16 | 213 | CVS | CVS Health | Health Care | ยังไม่มี | รอ |
-| 16 | 214 | DGX | Quest Diagnostics | Health Care | ยังไม่มี | รอ |
-| 16 | 215 | DHR | Danaher Corporation | Health Care | ยังไม่มี | รอ |
-| 16 | 216 | DVA | DaVita | Health Care | ยังไม่มี | รอ |
-| 16 | 217 | ELV | Elevance Health | Health Care | ยังไม่มี | รอ |
-| 16 | 218 | GEHC | GE HealthCare | Health Care | ยังไม่มี | รอ |
-| 16 | 219 | HSIC | Henry Schein | Health Care | ยังไม่มี | รอ |
-| 16 | 220 | HUM | Humana | Health Care | ยังไม่มี | รอ |
-| 16 | 221 | IDXX | Idexx Laboratories | Health Care | ยังไม่มี | รอ |
-| 16 | 222 | ILMN | Illumina, Inc. | Health Care | ยังไม่มี | รอ |
-| 16 | 223 | INCY | Incyte | Health Care | ยังไม่มี | รอ |
-| 16 | 224 | IQV | IQVIA | Health Care | ยังไม่มี | รอ |
-| 16 | 225 | LH | Labcorp | Health Care | ยังไม่มี | รอ |
+| 16 | 211 | COR | Cencora | Health Care | ยังไม่มี | ทำแล้ว |
+| 16 | 212 | CRL | Charles River Laboratories | Health Care | ยังไม่มี | ทำแล้ว |
+| 16 | 213 | CVS | CVS Health | Health Care | ยังไม่มี | ทำแล้ว |
+| 16 | 214 | DGX | Quest Diagnostics | Health Care | ยังไม่มี | ทำแล้ว |
+| 16 | 215 | DHR | Danaher Corporation | Health Care | ยังไม่มี | ทำแล้ว |
+| 16 | 216 | DVA | DaVita | Health Care | ยังไม่มี | ทำแล้ว |
+| 16 | 217 | ELV | Elevance Health | Health Care | ยังไม่มี | ทำแล้ว |
+| 16 | 218 | GEHC | GE HealthCare | Health Care | ยังไม่มี | ทำแล้ว |
+| 16 | 219 | HSIC | Henry Schein | Health Care | ยังไม่มี | ทำแล้ว |
+| 16 | 220 | HUM | Humana | Health Care | ยังไม่มี | ทำแล้ว |
+| 16 | 221 | IDXX | Idexx Laboratories | Health Care | ยังไม่มี | ทำแล้ว |
+| 16 | 222 | ILMN | Illumina, Inc. | Health Care | ยังไม่มี | ทำแล้ว |
+| 16 | 223 | INCY | Incyte | Health Care | ยังไม่มี | ทำแล้ว |
+| 16 | 224 | IQV | IQVIA | Health Care | ยังไม่มี | ทำแล้ว |
+| 16 | 225 | LH | Labcorp | Health Care | ยังไม่มี | ทำแล้ว |
 | 17 | 226 | MCK | McKesson | Health Care | ยังไม่มี | รอ |
 | 17 | 227 | MRNA | Moderna | Health Care | ยังไม่มี | รอ |
 | 17 | 228 | MTD | Mettler Toledo | Health Care | ยังไม่มี | รอ |
