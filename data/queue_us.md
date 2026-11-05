@@ -236,21 +236,21 @@
 | 16 | 223 | INCY | Incyte | Health Care | ยังไม่มี | ทำแล้ว |
 | 16 | 224 | IQV | IQVIA | Health Care | ยังไม่มี | ทำแล้ว |
 | 16 | 225 | LH | Labcorp | Health Care | ยังไม่มี | ทำแล้ว |
-| 17 | 226 | MCK | McKesson | Health Care | ยังไม่มี | รอ |
-| 17 | 227 | MRNA | Moderna | Health Care | ยังไม่มี | รอ |
-| 17 | 228 | MTD | Mettler Toledo | Health Care | ยังไม่มี | รอ |
-| 17 | 229 | PFE | Pfizer | Health Care | ยังไม่มี | รอ |
-| 17 | 230 | REGN | Regeneron Pharmaceuticals | Health Care | ยังไม่มี | รอ |
-| 17 | 231 | RMD | ResMed | Health Care | ยังไม่มี | รอ |
-| 17 | 232 | RVTY | Revvity | Health Care | ยังไม่มี | รอ |
-| 17 | 233 | SOLV | Solventum | Health Care | ยังไม่มี | รอ |
-| 17 | 234 | STE | Steris | Health Care | ยังไม่มี | รอ |
-| 17 | 235 | TECH | Bio-Techne | Health Care | ยังไม่มี | รอ |
-| 17 | 236 | VEEV | Veeva Systems | Health Care | ยังไม่มี | รอ |
-| 17 | 237 | VRTX | Vertex Pharmaceuticals | Health Care | ยังไม่มี | รอ |
-| 17 | 238 | VTRS | Viatris | Health Care | ยังไม่มี | รอ |
-| 17 | 239 | WAT | Waters Corporation | Health Care | ยังไม่มี | รอ |
-| 17 | 240 | WST | West Pharmaceutical Services | Health Care | ยังไม่มี | รอ |
+| 17 | 226 | MCK | McKesson | Health Care | ยังไม่มี | ทำแล้ว |
+| 17 | 227 | MRNA | Moderna | Health Care | ยังไม่มี | ทำแล้ว |
+| 17 | 228 | MTD | Mettler Toledo | Health Care | ยังไม่มี | ทำแล้ว |
+| 17 | 229 | PFE | Pfizer | Health Care | ยังไม่มี | ทำแล้ว |
+| 17 | 230 | REGN | Regeneron Pharmaceuticals | Health Care | ยังไม่มี | ทำแล้ว |
+| 17 | 231 | RMD | ResMed | Health Care | ยังไม่มี | ทำแล้ว |
+| 17 | 232 | RVTY | Revvity | Health Care | ยังไม่มี | ทำแล้ว |
+| 17 | 233 | SOLV | Solventum | Health Care | ยังไม่มี | ทำแล้ว |
+| 17 | 234 | STE | Steris | Health Care | ยังไม่มี | ทำแล้ว |
+| 17 | 235 | TECH | Bio-Techne | Health Care | ยังไม่มี | ทำแล้ว |
+| 17 | 236 | VEEV | Veeva Systems | Health Care | ยังไม่มี | ทำแล้ว |
+| 17 | 237 | VRTX | Vertex Pharmaceuticals | Health Care | ยังไม่มี | ทำแล้ว |
+| 17 | 238 | VTRS | Viatris | Health Care | ยังไม่มี | ทำแล้ว |
+| 17 | 239 | WAT | Waters Corporation | Health Care | ยังไม่มี | ทำแล้ว |
+| 17 | 240 | WST | West Pharmaceutical Services | Health Care | ยังไม่มี | ทำแล้ว |
 | 18 | 241 | ZTS | Zoetis | Health Care | ยังไม่มี | รอ |
 | 18 | 242 | ADP | Automatic Data Processing | Industrials | ยังไม่มี | รอ |
 | 18 | 243 | ALLE | Allegion | Industrials | ยังไม่มี | รอ |
