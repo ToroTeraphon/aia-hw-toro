@@ -281,21 +281,21 @@
 | 19 | 268 | GWW | W. W. Grainger | Industrials | ยังไม่มี | ทำแล้ว |
 | 19 | 269 | HII | Huntington Ingalls Industries | Industrials | ยังไม่มี | ทำแล้ว |
 | 19 | 270 | HON | Honeywell Technologies | Industrials | ยังไม่มี | ทำแล้ว |
-| 20 | 271 | HONA | Honeywell Aerospace | Industrials | ยังไม่มี | รอ |
-| 20 | 272 | HUBB | Hubbell Incorporated | Industrials | ยังไม่มี | รอ |
-| 20 | 273 | HWM | Howmet Aerospace | Industrials | ยังไม่มี | รอ |
-| 20 | 274 | IEX | IDEX Corporation | Industrials | ยังไม่มี | รอ |
-| 20 | 275 | IR | Ingersoll Rand | Industrials | ยังไม่มี | รอ |
-| 20 | 276 | ITW | Illinois Tool Works | Industrials | ยังไม่มี | รอ |
-| 20 | 277 | J | Jacobs Solutions | Industrials | ยังไม่มี | รอ |
-| 20 | 278 | JBHT | J.B. Hunt | Industrials | ยังไม่มี | รอ |
-| 20 | 279 | JCI | Johnson Controls | Industrials | ยังไม่มี | รอ |
-| 20 | 280 | LDOS | Leidos | Industrials | ยังไม่มี | รอ |
-| 20 | 281 | LHX | L3Harris | Industrials | ยังไม่มี | รอ |
-| 20 | 282 | LII | Lennox International | Industrials | ยังไม่มี | รอ |
-| 20 | 283 | LUV | Southwest Airlines | Industrials | ยังไม่มี | รอ |
-| 20 | 284 | MAS | Masco | Industrials | ยังไม่มี | รอ |
-| 20 | 285 | MMM | 3M | Industrials | ยังไม่มี | รอ |
+| 20 | 271 | HONA | Honeywell Aerospace | Industrials | ยังไม่มี | ทำแล้ว |
+| 20 | 272 | HUBB | Hubbell Incorporated | Industrials | ยังไม่มี | ทำแล้ว |
+| 20 | 273 | HWM | Howmet Aerospace | Industrials | ยังไม่มี | ทำแล้ว |
+| 20 | 274 | IEX | IDEX Corporation | Industrials | ยังไม่มี | ทำแล้ว |
+| 20 | 275 | IR | Ingersoll Rand | Industrials | ยังไม่มี | ทำแล้ว |
+| 20 | 276 | ITW | Illinois Tool Works | Industrials | ยังไม่มี | ทำแล้ว |
+| 20 | 277 | J | Jacobs Solutions | Industrials | ยังไม่มี | ทำแล้ว |
+| 20 | 278 | JBHT | J.B. Hunt | Industrials | ยังไม่มี | ทำแล้ว |
+| 20 | 279 | JCI | Johnson Controls | Industrials | ยังไม่มี | ทำแล้ว |
+| 20 | 280 | LDOS | Leidos | Industrials | ยังไม่มี | ทำแล้ว |
+| 20 | 281 | LHX | L3Harris | Industrials | ยังไม่มี | ทำแล้ว |
+| 20 | 282 | LII | Lennox International | Industrials | ยังไม่มี | ทำแล้ว |
+| 20 | 283 | LUV | Southwest Airlines | Industrials | ยังไม่มี | ทำแล้ว |
+| 20 | 284 | MAS | Masco | Industrials | ยังไม่มี | ทำแล้ว |
+| 20 | 285 | MMM | 3M | Industrials | ยังไม่มี | ทำแล้ว |
 | 21 | 286 | NDSN | Nordson Corporation | Industrials | ยังไม่มี | รอ |
 | 21 | 287 | NOC | Northrop Grumman | Industrials | ยังไม่มี | รอ |
 | 21 | 288 | NSC | Norfolk Southern | Industrials | ยังไม่มี | รอ |

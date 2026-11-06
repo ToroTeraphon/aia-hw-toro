@@ -61,3 +61,4 @@
 | 82 | 2026-11-06 | 9 | 36 | 67,819 | 60,301 | 128,120 | +4% | หลัง compact | 0 | หุ้นสหรัฐชุดที่ 17 (MCK MRNA MTD PFE REGN RMD RVTY SOLV STE TECH VEEV VRTX VTRS WAT WST) เป็น 349 ตัว |
 | 83 | 2026-11-06 | 12 | 37 | 130,279 | 60,301 | 190,580 | +3% | +62,460 | 0 | หุ้นสหรัฐชุดที่ 18 (ZTS ADP ALLE AME AOS AXON BR CARR CHRW CMI CPRT CSX CTAS DD DOV) เป็น 364 ตัว |
 | 84 | 2026-11-06 | 14 | 37 | 176,163 | 60,301 | 236,464 | +2% | +45,884 | 0 | หุ้นสหรัฐชุดที่ 19 (EFX EME EMR EXPD FAST FDX FDXF FERG FIX FTV GD GNRC GWW HII HON) เป็น 379 ตัว |
+| 85 | 2026-11-06 | 18 | 38 | 64,865 | 60,301 | 125,166 | +4% | หลัง compact | 0 | หุ้นสหรัฐชุดที่ 20 (HONA HUBB HWM IEX IR ITW J JBHT JCI LDOS LHX LII LUV MAS MMM) เป็น 394 ตัว |
