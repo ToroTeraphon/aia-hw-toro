@@ -30,6 +30,9 @@ MAX_SCORE_T3 = 2   # คะแนนไม่เกินนี้ = T3
 
 
 # ประเภทฐานที่ใช้เทียบขนาด Catalyst (ค่าที่ catalyst_size_type ใช้ได้) · หน้าเว็บมีตารางป้ายชื่อชุดเดียวกัน
+# ธีมหลัก 10 ธีม (ใช้ซ้ำใน add_stock.py ตรวจค่า) ธีมรอง theme_sub เป็นข้อความอิสระ 1 ค่าต่อหุ้น ใช้ชื่อที่มีอยู่แล้วก่อนสร้างใหม่
+THEME_MAIN = ["AI / Data center", "เทคโนโลยีและซอฟต์แวร์", "พลังงานและไฟฟ้า", "สุขภาพ", "การเงินและประกัน",
+              "อุตสาหกรรมและวัสดุ", "ผู้บริโภคและค้าปลีก", "ท่องเที่ยวและบริการ", "อสังหาริมทรัพย์", "สื่อและโทรคมนาคม"]
 SIZE_TYPES = ["revenue", "assets", "units_rooms", "units_beds", "units_mw", "units_aircraft",
               "units_sites", "profit", "progress"]
 
@@ -77,7 +80,11 @@ def main():
 
     payload = json.dumps({"stocks": stocks, "sources": sources,
                           "built": date.today().isoformat()}, ensure_ascii=False)
-    OUT.write_text(TEMPLATE.replace("__DATA__", payload.replace("</", "<\\/")), "utf-8")
+    bad_theme = [s["ticker"] for s in stocks if s["theme_main"] not in THEME_MAIN]
+    if bad_theme:
+        raise SystemExit(f"theme_main ต้องเป็นหนึ่งใน {THEME_MAIN}: {bad_theme}")
+    page = TEMPLATE.replace("__MAINS__", json.dumps(THEME_MAIN, ensure_ascii=False))
+    OUT.write_text(page.replace("__DATA__", payload.replace("</", "<\\/")), "utf-8")
     n_ev = sum(len(s["evidence"]) for s in stocks)
     print(f"เขียน {OUT.relative_to(ROOT)} · หุ้น {len(stocks)} ตัว · หลักฐาน {n_ev} แถว · เอกสาร {len(sources)} ฉบับ")
 
@@ -189,7 +196,8 @@ footer{margin-top:24px;color:var(--muted);font-size:13px}
 กดที่หุ้นเพื่อดูหลักฐานหนุน/ค้านทีละแถว และลิงก์ไปเอกสารต้นทาง ตัวเลขที่ไม่มีในเอกสารเว้นว่างไว้ ไม่ได้เดา</div>
 <div class="controls">
   <div class="group"><span class="label" id="lb-tier">Watchlist</span><div class="chips" id="f-tier" role="group" aria-labelledby="lb-tier"></div></div>
-  <div class="group"><span class="label" id="lb-theme">ธีม</span><div class="chips" id="f-theme" role="group" aria-labelledby="lb-theme"></div></div>
+  <div class="group"><span class="label" id="lb-theme">ธีมหลัก</span><div class="chips" id="f-theme" role="group" aria-labelledby="lb-theme"></div></div>
+  <div class="group" id="g-sub" hidden><span class="label" id="lb-sub">ธีมรอง</span><div class="chips" id="f-sub" role="group" aria-labelledby="lb-sub"></div></div>
   <div class="group"><span class="label" id="lb-score">กรองตามคะแนน</span><div class="chips" id="f-score" role="group" aria-labelledby="lb-score"></div></div>
   <div class="group"><span class="label" id="lb-basis">ขนาด Catalyst เทียบกับ</span><div class="chips" id="f-basis" role="group" aria-labelledby="lb-basis"></div></div>
   <div class="group"><span class="label" id="lb-sort">เรียงลำดับ</span><div class="chips" id="f-sort" role="group" aria-labelledby="lb-sort"></div></div>
@@ -230,7 +238,7 @@ function shape(stocks, sources, built) {
     const ev = s.evidence || [];
     ev.forEach(e => evidence.push({ticker: s.ticker, ...e}));
     const n = sig => ev.filter(e => e.signal === sig).length;
-    return {...s, theme: s.themes.join('|'),
+    return {...s,
       catalyst_size_pct: s.catalyst_size_pct ?? '', catalyst_size_basis: s.catalyst_size_basis ?? '',
       catalyst_size_type: s.catalyst_size_type ?? '',
       support_count: n('support'), challenge_count: n('challenge')};
@@ -266,21 +274,24 @@ const SIG = {support:'หนุน', challenge:'ค้าน', neutral:'กล�
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const order = {support:0, challenge:1, neutral:2};
 
+const THEME_MAIN = __MAINS__;
 const ALL = 'ทั้งหมด';
 const NONE = 'คำนวณไม่ได้';
-const state = {tier: ALL, theme: ALL, score: ALL, type: ALL, sort: 'desc'};
+const state = {tier: ALL, theme: ALL, sub: ALL, score: ALL, type: ALL, sort: 'desc'};
 const TIERS = {T1: 'ติด Watchlist', T2: 'รอข้อมูล', T3: 'ยังไม่ติด'};
 const tierCount = t => D.stocks.filter(s => s.tier === t).length;
 
 // สร้างปุ่มกลุ่มหนึ่ง: options = [[ค่า, ข้อความ, ปิดใช้ไหม]]
 function chips(id, key, options) {
   const box = document.getElementById(id);
+  box.replaceChildren();
   options.forEach(([value, label, disabled]) => {
     const b = document.createElement('button');
     b.textContent = label; b.disabled = !!disabled;
     b.setAttribute('aria-pressed', state[key] === value);
     b.onclick = () => {
       state[key] = value;
+      if (key === 'theme') { state.sub = ALL; drawSub(); }
       [...box.children].forEach(x => x.setAttribute('aria-pressed', x === b));
       render();
     };
@@ -288,8 +299,16 @@ function chips(id, key, options) {
   });
 }
 const scoreCount = n => D.stocks.filter(s => +s.evidence_score === n).length;
-// หุ้นหนึ่งตัวอยู่ได้หลายธีม (themes เป็นรายการใน data.json)
-const themesOf = s => s.theme.split('|');
+// หุ้นหนึ่งตัวมีธีมหลัก 1 ค่า (theme_main) และธีมรอง 1 ค่า (theme_sub) ใน data.json
+const mainCount = t => D.stocks.filter(s => s.theme_main === t).length;
+const subsOf = t => [...new Set(D.stocks.filter(s => s.theme_main === t).map(s => s.theme_sub))]
+  .sort((a, b) => D.stocks.filter(s => s.theme_main === t && s.theme_sub === b).length - D.stocks.filter(s => s.theme_main === t && s.theme_sub === a).length);
+const subCount = (t, u) => D.stocks.filter(s => s.theme_main === t && s.theme_sub === u).length;
+function drawSub() {
+  const g = document.getElementById('g-sub');
+  g.hidden = state.theme === ALL;
+  if (state.theme !== ALL) chips('f-sub', 'sub', [[ALL, ALL], ...subsOf(state.theme).map(u => [u, `${u} · ${subCount(state.theme, u)}`])]);
+}
 const size = s => s.catalyst_size_pct === '' ? null : +s.catalyst_size_pct;
 // ประเภทฐานที่ใช้เทียบ (ชุดเดียวกับ SIZE_TYPES ใน build_site.py) · ฐานจริงของแต่ละตัวอยู่ในข้อความ catalyst_size_basis
 const TYPES = {
@@ -310,7 +329,8 @@ function start() {
   byTicker = {};
   D.evidence.forEach(e => (byTicker[e.ticker] ||= []).push(e));
   chips('f-tier', 'tier', [[ALL, ALL], ...Object.entries(TIERS).map(([t, label]) => [t, `${t} · ${label} · ${tierCount(t)} ตัว`, !tierCount(t)])]);
-  chips('f-theme', 'theme', [[ALL, ALL], ...[...new Set(D.stocks.flatMap(themesOf))].map(t => [t, t])]);
+  chips('f-theme', 'theme', [[ALL, ALL], ...THEME_MAIN.map(t => [t, `${t} · ${mainCount(t)}`, !mainCount(t)])]);
+  drawSub();
   chips('f-score', 'score', [[ALL, ALL], ...[5, 4, 3, 2, 1].map(n => [n, `${n} คะแนน · ${scoreCount(n)} ตัว`, !scoreCount(n)])]);
   chips('f-sort', 'sort', [['desc', 'คะแนนมาก → น้อย'], ['asc', 'คะแนนน้อย → มาก'], ['size', 'ขนาด Catalyst มาก → น้อย']]);
   chips('f-basis', 'type', [[ALL, ALL], ...[...Object.keys(TYPES), NONE].map(t => [t, `${typeLabel(t)} · ${typeCount(t)} ตัว`, !typeCount(t)])]);
@@ -345,7 +365,8 @@ function render() {
   const bySize = (a, b) => (size(a) === null) - (size(b) === null) || (size(b) ?? 0) - (size(a) ?? 0);
   const rows = D.stocks
     .filter(s => state.tier === ALL || s.tier === state.tier)
-    .filter(s => state.theme === ALL || themesOf(s).includes(state.theme))
+    .filter(s => state.theme === ALL || s.theme_main === state.theme)
+    .filter(s => state.sub === ALL || s.theme_sub === state.sub)
     .filter(s => state.score === ALL || +s.evidence_score === state.score)
     .filter(s => state.type === ALL || typeOf(s) === state.type)
     .sort((a, b) => (state.sort === 'size' ? bySize(a, b) : dir * (a.evidence_score - b.evidence_score))
@@ -390,7 +411,7 @@ function card(s) {
     }).join('');
     return `<article class="stock" id="s-${esc(s.ticker)}">
       <button class="head" aria-expanded="false">
-        <div class="tk">${esc(s.ticker)}<small>${s.market === 'TH' ? 'ไทย' : 'สหรัฐ'} · ${themesOf(s).map(esc).join(' + ')}</small>${s.status.startsWith('ตัวสำรอง') ? '<span class="tag neutral">ตัวสำรอง</span>' : ''}<span class="tag tier ${s.tier === 'T1' ? 'support' : 'neutral'}" title="${esc(TIERS[s.tier])}">${esc(s.tier)}</span></div>
+        <div class="tk">${esc(s.ticker)}<small>${s.market === 'TH' ? 'ไทย' : 'สหรัฐ'} · ${esc(s.theme_main)} · ${esc(s.theme_sub)}</small>${s.status.startsWith('ตัวสำรอง') ? '<span class="tag neutral">ตัวสำรอง</span>' : ''}<span class="tag tier ${s.tier === 'T1' ? 'support' : 'neutral'}" title="${esc(TIERS[s.tier])}">${esc(s.tier)}</span></div>
         <div class="cat"><b>${esc(s.catalyst)}</b><span>${esc(s.catalyst_timing)}</span>${sizeRow(s)}</div>
         <div class="score"><div class="dots" aria-label="คะแนน ${n} จาก 5">${'●'.repeat(n)}${'○'.repeat(5 - n)}</div>
           <small>${n}/5 · หนุน ${esc(s.support_count)} · ค้าน ${esc(s.challenge_count)} · จาก ${docIds.length} เอกสาร</small></div>

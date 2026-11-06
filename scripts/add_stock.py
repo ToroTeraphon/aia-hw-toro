@@ -18,7 +18,7 @@ import build_site  # noqa: E402  (ใช้เกณฑ์ tier ที่เด�
 
 ROOT = build_site.ROOT
 DATA = ROOT / "output" / "data.json"
-STOCK_KEYS = ["ticker", "market", "themes", "catalyst", "catalyst_timing", "evidence_score",
+STOCK_KEYS = ["ticker", "market", "theme_main", "theme_sub", "catalyst", "catalyst_timing", "evidence_score",
               "catalyst_size_pct", "catalyst_size_basis", "catalyst_size_type", "catalyst_size_formula",
               "rejection_condition", "status", "tier", "tier_reason", "note", "evidence"]
 EVIDENCE_KEYS = ["evidence_id", "finding", "signal", "doc_id", "location", "doc_date", "fetched_at", "note"]
@@ -31,6 +31,10 @@ def check(stock, sources):
     if errors:
         return errors
     t = stock["ticker"]
+    if stock["theme_main"] not in build_site.THEME_MAIN:
+        errors.append(f"theme_main ต้องเป็นหนึ่งใน {build_site.THEME_MAIN}")
+    if not isinstance(stock["theme_sub"], str) or not stock["theme_sub"].strip():
+        errors.append("theme_sub ต้องเป็นข้อความ 1 ค่า (ธีมรองของธีมหลักนั้น)")
     if stock["market"] not in ("US", "TH"):
         errors.append("market ต้องเป็น US หรือ TH")
     if not isinstance(stock["evidence_score"], int) or not 1 <= stock["evidence_score"] <= 5:
