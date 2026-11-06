@@ -431,21 +431,21 @@
 | 29 | 418 | CMS | CMS Energy | Utilities | ยังไม่มี | ทำแล้ว |
 | 29 | 419 | CNP | CenterPoint Energy | Utilities | ยังไม่มี | ทำแล้ว |
 | 29 | 420 | DTE | DTE Energy | Utilities | ยังไม่มี | ทำแล้ว |
-| 30 | 421 | ED | Consolidated Edison | Utilities | ยังไม่มี | รอ |
-| 30 | 422 | EIX | Edison International | Utilities | ยังไม่มี | รอ |
-| 30 | 423 | ES | Eversource Energy | Utilities | ยังไม่มี | รอ |
-| 30 | 424 | EVRG | Evergy | Utilities | ยังไม่มี | รอ |
-| 30 | 425 | EXC | Exelon | Utilities | ยังไม่มี | รอ |
-| 30 | 426 | FE | FirstEnergy | Utilities | ยังไม่มี | รอ |
-| 30 | 427 | LNT | Alliant Energy | Utilities | ยังไม่มี | รอ |
-| 30 | 428 | NI | NiSource | Utilities | ยังไม่มี | รอ |
-| 30 | 429 | PEG | Public Service Enterprise Group | Utilities | ยังไม่มี | รอ |
-| 30 | 430 | PNW | Pinnacle West Capital | Utilities | ยังไม่มี | รอ |
-| 30 | 431 | PPL | PPL Corporation | Utilities | ยังไม่มี | รอ |
-| 30 | 432 | WEC | WEC Energy Group | Utilities | ยังไม่มี | รอ |
-| 30 | 433 | ALAB | Astera Labs | Nasdaq-100 ที่ไม่อยู่ใน S&P 500 | ยังไม่มี | รอ |
-| 30 | 434 | ALNY | Alnylam Pharmaceuticals | Nasdaq-100 ที่ไม่อยู่ใน S&P 500 | ยังไม่มี | รอ |
-| 30 | 435 | ARM | Arm Holdings | Nasdaq-100 ที่ไม่อยู่ใน S&P 500 | ยังไม่มี | รอ |
+| 30 | 421 | ED | Consolidated Edison | Utilities | ยังไม่มี | ทำแล้ว |
+| 30 | 422 | EIX | Edison International | Utilities | ยังไม่มี | ทำแล้ว |
+| 30 | 423 | ES | Eversource Energy | Utilities | ยังไม่มี | ทำแล้ว |
+| 30 | 424 | EVRG | Evergy | Utilities | ยังไม่มี | ทำแล้ว |
+| 30 | 425 | EXC | Exelon | Utilities | ยังไม่มี | ทำแล้ว |
+| 30 | 426 | FE | FirstEnergy | Utilities | ยังไม่มี | ทำแล้ว |
+| 30 | 427 | LNT | Alliant Energy | Utilities | ยังไม่มี | ทำแล้ว |
+| 30 | 428 | NI | NiSource | Utilities | ยังไม่มี | ทำแล้ว |
+| 30 | 429 | PEG | Public Service Enterprise Group | Utilities | ยังไม่มี | ทำแล้ว |
+| 30 | 430 | PNW | Pinnacle West Capital | Utilities | ยังไม่มี | ทำแล้ว |
+| 30 | 431 | PPL | PPL Corporation | Utilities | ยังไม่มี | ทำแล้ว |
+| 30 | 432 | WEC | WEC Energy Group | Utilities | ยังไม่มี | ทำแล้ว |
+| 30 | 433 | ALAB | Astera Labs | Nasdaq-100 ที่ไม่อยู่ใน S&P 500 | ยังไม่มี | ทำแล้ว |
+| 30 | 434 | ALNY | Alnylam Pharmaceuticals | Nasdaq-100 ที่ไม่อยู่ใน S&P 500 | ยังไม่มี | ทำแล้ว |
+| 30 | 435 | ARM | Arm Holdings | Nasdaq-100 ที่ไม่อยู่ใน S&P 500 | ยังไม่มี | ทำแล้ว |
 | 31 | 436 | ASML | ASML Holding | Nasdaq-100 ที่ไม่อยู่ใน S&P 500 | ยังไม่มี | รอ |
 | 31 | 437 | CCEP | Coca-Cola Europacific Partners | Nasdaq-100 ที่ไม่อยู่ใน S&P 500 | ยังไม่มี | รอ |
 | 31 | 438 | CRWV | CoreWeave | Nasdaq-100 ที่ไม่อยู่ใน S&P 500 | ยังไม่มี | รอ |
