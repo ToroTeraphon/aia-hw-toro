@@ -311,21 +311,21 @@
 | 21 | 298 | RSG | Republic Services | Industrials | ยังไม่มี | ทำแล้ว |
 | 21 | 299 | SNA | Snap-on | Industrials | ยังไม่มี | ทำแล้ว |
 | 21 | 300 | SWK | Stanley Black & Decker | Industrials | ยังไม่มี | ทำแล้ว |
-| 22 | 301 | TDG | TransDigm Group | Industrials | ยังไม่มี | รอ |
-| 22 | 302 | TT | Trane Technologies | Industrials | ยังไม่มี | รอ |
-| 22 | 303 | TXT | Textron | Industrials | ยังไม่มี | รอ |
-| 22 | 304 | UPS | United Parcel Service | Industrials | ยังไม่มี | รอ |
-| 22 | 305 | URI | United Rentals | Industrials | ยังไม่มี | รอ |
-| 22 | 306 | VLTO | Veralto | Industrials | ยังไม่มี | รอ |
-| 22 | 307 | VRSK | Verisk Analytics | Industrials | ยังไม่มี | รอ |
-| 22 | 308 | WAB | Wabtec | Industrials | ยังไม่มี | รอ |
-| 22 | 309 | WM | Waste Management | Industrials | ยังไม่มี | รอ |
-| 22 | 310 | XYL | Xylem Inc. | Industrials | ยังไม่มี | รอ |
-| 22 | 311 | ACN | Accenture | Information Technology | ยังไม่มี | รอ |
-| 22 | 312 | ADBE | Adobe Inc. | Information Technology | ยังไม่มี | รอ |
-| 22 | 313 | ADI | Analog Devices | Information Technology | ยังไม่มี | รอ |
-| 22 | 314 | ADSK | Autodesk | Information Technology | ยังไม่มี | รอ |
-| 22 | 315 | AKAM | Akamai Technologies | Information Technology | ยังไม่มี | รอ |
+| 22 | 301 | TDG | TransDigm Group | Industrials | ยังไม่มี | ทำแล้ว |
+| 22 | 302 | TT | Trane Technologies | Industrials | ยังไม่มี | ทำแล้ว |
+| 22 | 303 | TXT | Textron | Industrials | ยังไม่มี | ทำแล้ว |
+| 22 | 304 | UPS | United Parcel Service | Industrials | ยังไม่มี | ทำแล้ว |
+| 22 | 305 | URI | United Rentals | Industrials | ยังไม่มี | ทำแล้ว |
+| 22 | 306 | VLTO | Veralto | Industrials | ยังไม่มี | ทำแล้ว |
+| 22 | 307 | VRSK | Verisk Analytics | Industrials | ยังไม่มี | ทำแล้ว |
+| 22 | 308 | WAB | Wabtec | Industrials | ยังไม่มี | ทำแล้ว |
+| 22 | 309 | WM | Waste Management | Industrials | ยังไม่มี | ทำแล้ว |
+| 22 | 310 | XYL | Xylem Inc. | Industrials | ยังไม่มี | ทำแล้ว |
+| 22 | 311 | ACN | Accenture | Information Technology | ยังไม่มี | ทำแล้ว |
+| 22 | 312 | ADBE | Adobe Inc. | Information Technology | ยังไม่มี | ทำแล้ว |
+| 22 | 313 | ADI | Analog Devices | Information Technology | ยังไม่มี | ทำแล้ว |
+| 22 | 314 | ADSK | Autodesk | Information Technology | ยังไม่มี | ทำแล้ว |
+| 22 | 315 | AKAM | Akamai Technologies | Information Technology | ยังไม่มี | ทำแล้ว |
 | 23 | 316 | CDNS | Cadence Design Systems | Information Technology | ยังไม่มี | รอ |
 | 23 | 317 | CDW | CDW Corporation | Information Technology | ยังไม่มี | รอ |
 | 23 | 318 | CTSH | Cognizant | Information Technology | ยังไม่มี | รอ |

@@ -63,3 +63,4 @@
 | 84 | 2026-11-06 | 14 | 37 | 176,163 | 60,301 | 236,464 | +2% | +45,884 | 0 | หุ้นสหรัฐชุดที่ 19 (EFX EME EMR EXPD FAST FDX FDXF FERG FIX FTV GD GNRC GWW HII HON) เป็น 379 ตัว |
 | 85 | 2026-11-06 | 18 | 38 | 64,865 | 60,301 | 125,166 | +4% | หลัง compact | 0 | หุ้นสหรัฐชุดที่ 20 (HONA HUBB HWM IEX IR ITW J JBHT JCI LDOS LHX LII LUV MAS MMM) เป็น 394 ตัว |
 | 86 | 2026-11-06 | 21 | 38 | 125,234 | 60,301 | 185,535 | +3% | +60,369 | 0 | หุ้นสหรัฐชุดที่ 21 (NDSN NOC NSC ODFL OTIS PAYX PCAR PH PNR PWR ROK ROL RSG SNA SWK) เป็น 409 ตัว |
+| 87 | 2026-11-06 | 23 | 38 | 178,186 | 60,301 | 238,487 | +2% | +52,952 | 0 | หุ้นสหรัฐชุดที่ 22 (TDG TT TXT UPS URI VLTO VRSK WAB WM XYL ACN ADBE ADI ADSK AKAM) เป็น 424 ตัว |
