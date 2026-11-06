@@ -326,21 +326,21 @@
 | 22 | 313 | ADI | Analog Devices | Information Technology | ยังไม่มี | ทำแล้ว |
 | 22 | 314 | ADSK | Autodesk | Information Technology | ยังไม่มี | ทำแล้ว |
 | 22 | 315 | AKAM | Akamai Technologies | Information Technology | ยังไม่มี | ทำแล้ว |
-| 23 | 316 | CDNS | Cadence Design Systems | Information Technology | ยังไม่มี | รอ |
-| 23 | 317 | CDW | CDW Corporation | Information Technology | ยังไม่มี | รอ |
-| 23 | 318 | CTSH | Cognizant | Information Technology | ยังไม่มี | รอ |
-| 23 | 319 | DDOG | Datadog | Information Technology | ยังไม่มี | รอ |
-| 23 | 320 | FFIV | F5, Inc. | Information Technology | ยังไม่มี | รอ |
-| 23 | 321 | FICO | Fair Isaac | Information Technology | ยังไม่มี | รอ |
-| 23 | 322 | FLEX | Flex Ltd. | Information Technology | ยังไม่มี | รอ |
-| 23 | 323 | FTNT | Fortinet | Information Technology | ยังไม่มี | รอ |
-| 23 | 324 | GDDY | GoDaddy | Information Technology | ยังไม่มี | รอ |
-| 23 | 325 | GEN | Gen Digital | Information Technology | ยังไม่มี | รอ |
-| 23 | 326 | GLW | Corning Inc. | Information Technology | ยังไม่มี | รอ |
-| 23 | 327 | HPE | Hewlett Packard Enterprise | Information Technology | ยังไม่มี | รอ |
-| 23 | 328 | HPQ | HP Inc. | Information Technology | ยังไม่มี | รอ |
-| 23 | 329 | IBM | IBM | Information Technology | ยังไม่มี | รอ |
-| 23 | 330 | INTU | Intuit | Information Technology | ยังไม่มี | รอ |
+| 23 | 316 | CDNS | Cadence Design Systems | Information Technology | ยังไม่มี | ทำแล้ว |
+| 23 | 317 | CDW | CDW Corporation | Information Technology | ยังไม่มี | ทำแล้ว |
+| 23 | 318 | CTSH | Cognizant | Information Technology | ยังไม่มี | ทำแล้ว |
+| 23 | 319 | DDOG | Datadog | Information Technology | ยังไม่มี | ทำแล้ว |
+| 23 | 320 | FFIV | F5, Inc. | Information Technology | ยังไม่มี | ทำแล้ว |
+| 23 | 321 | FICO | Fair Isaac | Information Technology | ยังไม่มี | ทำแล้ว |
+| 23 | 322 | FLEX | Flex Ltd. | Information Technology | ยังไม่มี | ทำแล้ว |
+| 23 | 323 | FTNT | Fortinet | Information Technology | ยังไม่มี | ทำแล้ว |
+| 23 | 324 | GDDY | GoDaddy | Information Technology | ยังไม่มี | ทำแล้ว |
+| 23 | 325 | GEN | Gen Digital | Information Technology | ยังไม่มี | ทำแล้ว |
+| 23 | 326 | GLW | Corning Inc. | Information Technology | ยังไม่มี | ทำแล้ว |
+| 23 | 327 | HPE | Hewlett Packard Enterprise | Information Technology | ยังไม่มี | ทำแล้ว |
+| 23 | 328 | HPQ | HP Inc. | Information Technology | ยังไม่มี | ทำแล้ว |
+| 23 | 329 | IBM | IBM | Information Technology | ยังไม่มี | ทำแล้ว |
+| 23 | 330 | INTU | Intuit | Information Technology | ยังไม่มี | ทำแล้ว |
 | 24 | 331 | IT | Gartner | Information Technology | ยังไม่มี | รอ |
 | 24 | 332 | JBL | Jabil | Information Technology | ยังไม่มี | รอ |
 | 24 | 333 | KEYS | Keysight Technologies | Information Technology | ยังไม่มี | รอ |
