@@ -296,21 +296,21 @@
 | 20 | 283 | LUV | Southwest Airlines | Industrials | ยังไม่มี | ทำแล้ว |
 | 20 | 284 | MAS | Masco | Industrials | ยังไม่มี | ทำแล้ว |
 | 20 | 285 | MMM | 3M | Industrials | ยังไม่มี | ทำแล้ว |
-| 21 | 286 | NDSN | Nordson Corporation | Industrials | ยังไม่มี | รอ |
-| 21 | 287 | NOC | Northrop Grumman | Industrials | ยังไม่มี | รอ |
-| 21 | 288 | NSC | Norfolk Southern | Industrials | ยังไม่มี | รอ |
-| 21 | 289 | ODFL | Old Dominion | Industrials | ยังไม่มี | รอ |
-| 21 | 290 | OTIS | Otis Worldwide | Industrials | ยังไม่มี | รอ |
-| 21 | 291 | PAYX | Paychex | Industrials | ยังไม่มี | รอ |
-| 21 | 292 | PCAR | Paccar | Industrials | ยังไม่มี | รอ |
-| 21 | 293 | PH | Parker Hannifin | Industrials | ยังไม่มี | รอ |
-| 21 | 294 | PNR | Pentair | Industrials | ยังไม่มี | รอ |
-| 21 | 295 | PWR | Quanta Services | Industrials | ยังไม่มี | รอ |
-| 21 | 296 | ROK | Rockwell Automation | Industrials | ยังไม่มี | รอ |
-| 21 | 297 | ROL | Rollins, Inc. | Industrials | ยังไม่มี | รอ |
-| 21 | 298 | RSG | Republic Services | Industrials | ยังไม่มี | รอ |
-| 21 | 299 | SNA | Snap-on | Industrials | ยังไม่มี | รอ |
-| 21 | 300 | SWK | Stanley Black & Decker | Industrials | ยังไม่มี | รอ |
+| 21 | 286 | NDSN | Nordson Corporation | Industrials | ยังไม่มี | ทำแล้ว |
+| 21 | 287 | NOC | Northrop Grumman | Industrials | ยังไม่มี | ทำแล้ว |
+| 21 | 288 | NSC | Norfolk Southern | Industrials | ยังไม่มี | ทำแล้ว |
+| 21 | 289 | ODFL | Old Dominion | Industrials | ยังไม่มี | ทำแล้ว |
+| 21 | 290 | OTIS | Otis Worldwide | Industrials | ยังไม่มี | ทำแล้ว |
+| 21 | 291 | PAYX | Paychex | Industrials | ยังไม่มี | ทำแล้ว |
+| 21 | 292 | PCAR | Paccar | Industrials | ยังไม่มี | ทำแล้ว |
+| 21 | 293 | PH | Parker Hannifin | Industrials | ยังไม่มี | ทำแล้ว |
+| 21 | 294 | PNR | Pentair | Industrials | ยังไม่มี | ทำแล้ว |
+| 21 | 295 | PWR | Quanta Services | Industrials | ยังไม่มี | ทำแล้ว |
+| 21 | 296 | ROK | Rockwell Automation | Industrials | ยังไม่มี | ทำแล้ว |
+| 21 | 297 | ROL | Rollins, Inc. | Industrials | ยังไม่มี | ทำแล้ว |
+| 21 | 298 | RSG | Republic Services | Industrials | ยังไม่มี | ทำแล้ว |
+| 21 | 299 | SNA | Snap-on | Industrials | ยังไม่มี | ทำแล้ว |
+| 21 | 300 | SWK | Stanley Black & Decker | Industrials | ยังไม่มี | ทำแล้ว |
 | 22 | 301 | TDG | TransDigm Group | Industrials | ยังไม่มี | รอ |
 | 22 | 302 | TT | Trane Technologies | Industrials | ยังไม่มี | รอ |
 | 22 | 303 | TXT | Textron | Industrials | ยังไม่มี | รอ |
