@@ -70,7 +70,14 @@ def main():
                 or (s.get("catalyst_size_type") is not None and s["catalyst_size_type"] not in SIZE_TYPES)]
     if bad_type:
         raise SystemExit(f"catalyst_size_type ต้องเป็น null พร้อม basis หรือเป็นหนึ่งใน {SIZE_TYPES}:\n  " + "\n  ".join(bad_type))
-    used = {e["doc_id"] for s in stocks for e in s["evidence"]}
+    partial = [s["ticker"] for s in stocks
+               if len({s.get("company_name") is None, s.get("business_brief") is None, s.get("brief_doc_id") is None}) > 1]
+    if partial:
+        raise SystemExit(f"company_name, business_brief, brief_doc_id ต้องว่างพร้อมกันหรือมีครบ: {partial}")
+    no_brief = [s["ticker"] for s in stocks if s.get("business_brief") is None]
+    if no_brief:
+        print(f"คำเตือน: ยังไม่มีชื่อบริษัทและ brief {len(no_brief)} ตัว: {no_brief[:10]}")
+    used = {e["doc_id"] for s in stocks for e in s["evidence"]} | {s["brief_doc_id"] for s in stocks if s.get("brief_doc_id")}
     # ฝังเฉพาะเอกสารที่หลักฐานอ้างถึง เพื่อให้สำเนาที่ฝังไม่ใหญ่เกินจำเป็น
     sources = {s["doc_id"]: {k: s[k] for k in ("title", "url", "doc_type", "doc_date")}
                for s in read("data/sources.json") if s["doc_id"] in used}
@@ -130,19 +137,26 @@ h1{font-size:26px;margin:0}
 .empty{color:var(--muted);padding:20px;text-align:center;background:var(--card);border:1px dashed var(--line);border-radius:10px}
 @media (max-width:560px){.group{grid-template-columns:1fr;gap:4px}}
 .stock{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:0 0 10px;overflow:hidden}
-.head{display:grid;grid-template-columns:72px 1fr auto;gap:12px;align-items:center;padding:12px 14px;cursor:pointer;width:100%;border:0;background:none;color:inherit;font:inherit;text-align:left}
+.head{display:grid;grid-template-columns:110px 1fr;grid-template-areas:"tk cat" "score cat";grid-template-rows:auto 1fr;row-gap:6px;gap:12px;align-items:start;padding:12px 14px;cursor:pointer;width:100%;border:0;background:none;color:inherit;font:inherit;text-align:left}
 .tk{font-weight:700;font-size:17px}
 .tk small{display:block;font-weight:400;font-size:12px;color:var(--muted)}
 .cat{min-width:0}
 .cat b{display:block}
 .cat span{color:var(--muted);font-size:13px}
+.cat .sec{display:block;margin-top:8px;padding:4px 10px;border-left:3px solid var(--line);border-radius:6px}
+.cat .sec:first-child{margin-top:0}
+.cat .sec>.sh{display:block;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.cat .sec.biz{border-left-color:var(--muted)}
+.cat .sec.biz .brief{display:block;color:var(--ink);font-size:13px}
+.cat .sec.cx{border-left-color:var(--acc)}
+.cat .sec.cx>.sh{color:var(--acc)}
 .cat .size{display:flex;flex-wrap:wrap;gap:4px 8px;align-items:baseline;margin-top:6px;padding:4px 10px;background:var(--bg);border-left:3px solid var(--acc);border-radius:6px}
 .cat .size .lab{font-size:12px;font-weight:600}
 .cat .size .pct{font-size:18px;font-weight:700;color:var(--acc)}
 .cat .size .of{color:var(--ink)}
 .cat .size.none{border-left-color:var(--line)}
 .cat .size .tag{margin:0}
-.score{text-align:center}
+.score{text-align:left}
 .dots{letter-spacing:2px;font-size:14px;color:var(--acc)}
 .score small{display:block;color:var(--muted);font-size:12px}
 .body{display:none;border-top:1px solid var(--line);padding:12px 14px}
@@ -167,7 +181,7 @@ h1{font-size:26px;margin:0}
 .legend table{border-collapse:collapse;width:100%;background:var(--card)}
 .legend td{border:1px solid var(--line);padding:6px 10px;vertical-align:top}
 footer{margin-top:24px;color:var(--muted);font-size:13px}
-@media (max-width:560px){.head{grid-template-columns:56px 1fr;}.score{grid-column:1/-1;text-align:left;display:flex;gap:8px;align-items:center}.score small{display:inline}}
+.head .tk{grid-area:tk}.head .cat{grid-area:cat;grid-row:1/3}.head .score{grid-area:score;text-align:left}.score small span{display:block}
 </style>
 </head>
 <body>
@@ -398,6 +412,11 @@ function grouped(rows) {
   }).join('');
 }
 
+function briefSrc(id) {
+  const d = D.sources[id] || {};
+  const label = esc(d.title || id);
+  return (d.url ? `<a href="${esc(d.url)}" target="_blank" rel="noopener">${label}</a>` : label) + ` · ${esc(d.doc_type || '')} · ยื่น ${esc(d.doc_date || '')}`;
+}
 function card(s) {
     const n = +s.evidence_score;
     const ev = (byTicker[s.ticker] || []).sort((a, b) => order[a.signal] - order[b.signal]);
@@ -411,13 +430,14 @@ function card(s) {
     }).join('');
     return `<article class="stock" id="s-${esc(s.ticker)}">
       <button class="head" aria-expanded="false">
-        <div class="tk">${esc(s.ticker)}<small>${s.market === 'TH' ? 'ไทย' : 'สหรัฐ'} · ${esc(s.theme_main)} · ${esc(s.theme_sub)}</small>${s.status.startsWith('ตัวสำรอง') ? '<span class="tag neutral">ตัวสำรอง</span>' : ''}<span class="tag tier ${s.tier === 'T1' ? 'support' : 'neutral'}" title="${esc(TIERS[s.tier])}">${esc(s.tier)}</span></div>
-        <div class="cat"><b>${esc(s.catalyst)}</b><span>${esc(s.catalyst_timing)}</span>${sizeRow(s)}</div>
+        <div class="tk">${esc(s.ticker)}<small>${s.company_name ? esc(s.company_name) + ' · ' : ''}${s.market === 'TH' ? 'ไทย' : 'สหรัฐ'} · ${esc(s.theme_main)} · ${esc(s.theme_sub)}</small>${s.status.startsWith('ตัวสำรอง') ? '<span class="tag neutral">ตัวสำรอง</span>' : ''}<span class="tag tier ${s.tier === 'T1' ? 'support' : 'neutral'}" title="${esc(TIERS[s.tier])}">${esc(s.tier)}</span></div>
+        <div class="cat">${s.business_brief ? `<div class="sec biz"><span class="sh">Business</span><span class="brief">${esc(s.business_brief)}</span></div>` : ''}<div class="sec cx"><span class="sh">Catalyst 2027</span><b>${esc(s.catalyst)}</b><span>${esc(s.catalyst_timing)}</span></div>${sizeRow(s)}</div>
         <div class="score"><div class="dots" aria-label="คะแนน ${n} จาก 5">${'●'.repeat(n)}${'○'.repeat(5 - n)}</div>
-          <small>${n}/5 · หนุน ${esc(s.support_count)} · ค้าน ${esc(s.challenge_count)} · จาก ${docIds.length} เอกสาร</small></div>
+          <small><span>${n}/5</span><span>หนุน ${esc(s.support_count)}</span><span>ค้าน ${esc(s.challenge_count)}</span><span>จาก ${docIds.length} เอกสาร</span></small></div>
       </button>
       <div class="body">
         <dl class="meta">
+          ${s.brief_doc_id ? `<div><dt>ที่มาของ brief</dt><dd>${briefSrc(s.brief_doc_id)}</dd></div>` : ''}
           <div><dt>เงื่อนไขตัดทิ้ง</dt><dd>${esc(s.rejection_condition)}</dd></div>
           <div><dt>Watchlist</dt><dd><b>${esc(s.tier)} · ${esc(TIERS[s.tier])}</b><br>${esc(s.tier_reason)}</dd></div>
           <div><dt>สถานะ</dt><dd>${esc(s.status)}</dd></div>

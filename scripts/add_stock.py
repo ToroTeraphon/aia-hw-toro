@@ -18,7 +18,7 @@ import build_site  # noqa: E402  (ใช้เกณฑ์ tier ที่เด�
 
 ROOT = build_site.ROOT
 DATA = ROOT / "output" / "data.json"
-STOCK_KEYS = ["ticker", "market", "theme_main", "theme_sub", "catalyst", "catalyst_timing", "evidence_score",
+STOCK_KEYS = ["ticker", "market", "theme_main", "theme_sub", "company_name", "business_brief", "brief_doc_id", "catalyst", "catalyst_timing", "evidence_score",
               "catalyst_size_pct", "catalyst_size_basis", "catalyst_size_type", "catalyst_size_formula",
               "rejection_condition", "status", "tier", "tier_reason", "note", "evidence"]
 EVIDENCE_KEYS = ["evidence_id", "finding", "signal", "doc_id", "location", "doc_date", "fetched_at", "note"]
@@ -35,6 +35,11 @@ def check(stock, sources):
         errors.append(f"theme_main ต้องเป็นหนึ่งใน {build_site.THEME_MAIN}")
     if not isinstance(stock["theme_sub"], str) or not stock["theme_sub"].strip():
         errors.append("theme_sub ต้องเป็นข้อความ 1 ค่า (ธีมรองของธีมหลักนั้น)")
+    triple = [stock["company_name"], stock["business_brief"], stock["brief_doc_id"]]
+    if any(v is None for v in triple) and not all(v is None for v in triple):
+        errors.append("company_name, business_brief, brief_doc_id ต้องเป็น null พร้อมกันหรือมีครบทั้งสามช่อง")
+    if stock["brief_doc_id"] is not None and stock["brief_doc_id"] not in sources:
+        errors.append(f"brief_doc_id {stock['brief_doc_id']} ไม่มีใน sources.json")
     if stock["market"] not in ("US", "TH"):
         errors.append("market ต้องเป็น US หรือ TH")
     if not isinstance(stock["evidence_score"], int) or not 1 <= stock["evidence_score"] <= 5:
