@@ -35,6 +35,14 @@ THEME_MAIN = ["AI / Data center", "เทคโนโลยีและซอฟ
               "อุตสาหกรรมและวัสดุ", "ผู้บริโภคและค้าปลีก", "ท่องเที่ยวและบริการ", "อสังหาริมทรัพย์", "สื่อและโทรคมนาคม"]
 SIZE_TYPES = ["revenue", "assets", "units_rooms", "units_beds", "units_mw", "units_aircraft",
               "units_sites", "profit", "progress"]
+# เหตุผลที่ catalyst_size_pct ว่าง (ค่าของ catalyst_size_reason) · หน้าเว็บมีตารางป้ายชื่อชุดเดียวกัน
+SIZE_REASONS = {
+    "no_target": "เอกสารไม่ระบุตัวเลขขนาดหรือเป้าของตัวเร่ง",
+    "quarterly_only": "บริษัทให้เป้ารายไตรมาสอย่างเดียว",
+    "no_base": "มีตัวเลขแต่ไม่มีฐานเทียบที่ตรงชนิด",
+    "not_read": "ยังอ่านเอกสารไม่ครบ (งานค้าง)",
+    "no_catalyst": "ตัวเร่งไม่ผูกกับตัวเลข",
+}
 
 
 def tier_numbers(s):
@@ -70,6 +78,11 @@ def main():
                 or (s.get("catalyst_size_type") is not None and s["catalyst_size_type"] not in SIZE_TYPES)]
     if bad_type:
         raise SystemExit(f"catalyst_size_type ต้องเป็น null พร้อม basis หรือเป็นหนึ่งใน {SIZE_TYPES}:\n  " + "\n  ".join(bad_type))
+    bad_reason = [f"{s['ticker']}: catalyst_size_reason = {s.get('catalyst_size_reason')!r}" for s in stocks
+                  if (s.get("catalyst_size_pct") is None) == (s.get("catalyst_size_reason") is None)
+                  or (s.get("catalyst_size_reason") is not None and s["catalyst_size_reason"] not in SIZE_REASONS)]
+    if bad_reason:
+        raise SystemExit("catalyst_size_reason ต้องเป็น null เมื่อมีขนาด และเป็นหนึ่งใน " + str(list(SIZE_REASONS)) + " เมื่อไม่มีขนาด:"+chr(10)+"  " + (chr(10)+"  ").join(bad_reason))
     partial = [s["ticker"] for s in stocks
                if len({s.get("company_name") is None, s.get("business_brief") is None, s.get("brief_doc_id") is None}) > 1]
     if partial:
@@ -90,7 +103,7 @@ def main():
     bad_theme = [s["ticker"] for s in stocks if s["theme_main"] not in THEME_MAIN]
     if bad_theme:
         raise SystemExit(f"theme_main ต้องเป็นหนึ่งใน {THEME_MAIN}: {bad_theme}")
-    page = TEMPLATE.replace("__MAINS__", json.dumps(THEME_MAIN, ensure_ascii=False))
+    page = TEMPLATE.replace("__MAINS__", json.dumps(THEME_MAIN, ensure_ascii=False)).replace("__REASONS__", json.dumps(SIZE_REASONS, ensure_ascii=False))
     OUT.write_text(page.replace("__DATA__", payload.replace("</", "<\\/")), "utf-8")
     n_ev = sum(len(s["evidence"]) for s in stocks)
     print(f"เขียน {OUT.relative_to(ROOT)} · หุ้น {len(stocks)} ตัว · หลักฐาน {n_ev} แถว · เอกสาร {len(sources)} ฉบับ")
@@ -131,6 +144,8 @@ h1{font-size:26px;margin:0}
 .chips button{border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:999px;padding:4px 12px;cursor:pointer;font:inherit;font-size:14px}
 .chips button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .chips button:disabled{opacity:.35;cursor:default}
+.chips .sg{flex-basis:100%;display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:6px 10px;border-left:3px solid var(--line);border-radius:6px}
+.chips .gl{font-size:12px;color:var(--muted);margin-right:2px}
 .sbox{position:relative}
 .sbox input{width:100%;box-sizing:border-box;font:inherit;font-size:15px;padding:8px 36px 8px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
 .sbox .clr{position:absolute;right:4px;top:50%;transform:translateY(-50%);border:0;background:none;color:var(--muted);font-size:18px;cursor:pointer;min-width:32px;min-height:32px}
@@ -247,6 +262,7 @@ footer{margin-top:24px;color:var(--muted);font-size:13px}
 <h2>ขนาด Catalyst</h2>
 <p>ขนาดของสิ่งที่ตัวเร่งจะเพิ่มให้ คิดเป็น % ของฐานเดิมของบริษัท คำนวณจากตัวเลขในเอกสารเท่านั้น แต่ละตัวเทียบกับฐานต่างกันตามธุรกิจ แบ่งเป็น 5 กลุ่มคือ รายได้/ยอดขาย · สินทรัพย์รวม · จำนวนหน่วยที่สร้างรายได้ (ห้อง เตียง MW เครื่องบิน สาขา) · กำไร/EBITDA/ปันผล · ความคืบหน้าโครงการ เทียบขนาดกันได้เฉพาะในกลุ่มเดียวกัน ไม่ควรเทียบข้ามกลุ่ม กลุ่มกำไรและความคืบหน้าวัดสิ่งอื่นที่ไม่ใช่ขนาดของ Catalyst โดยตรง ตัวที่เอกสารไม่มีตัวเลขพอจะเว้นว่าง ตัวเลขนี้ไม่ได้มาจากผลประกอบการย้อนหลัง</p>
 <p>ตัวเลขนี้เป็นเพียงตัวบอกขนาดคร่าว ๆ (scale proxy) ไม่ใช่รายได้หรือกำไรที่จะเพิ่มขึ้น เช่น MSFT เทียบรายได้ตามสัญญาที่รอรับรู้ภายใน 12 เดือนกับรายได้ทั้งปีที่ผ่านมา ซึ่งไม่ได้บอกว่ารายได้จะโต 61% และไม่ได้บอกผลต่อกำไรต่อหุ้นหรือกระแสเงินสด</p>
+<p>ถ้าหุ้นมีตัวเลขหลายตัว เลือกตามลำดับ รายได้ &gt; กำไร/EBITDA &gt; สินทรัพย์ &gt; หน่วย (ห้อง เตียง MW เครื่องบิน สาขา) &gt; ความคืบหน้า ถ้าไม่มีตัวเลขเลยจะบอกเหตุผลแทน ตัวเลขที่ไม่ได้เลือกยังอยู่ในสูตรของการ์ด ลำดับนี้ใช้กับการคัดแยกตั้งแต่รอบ 102 หุ้นที่ทำไว้ก่อนหน้านี้ยังไม่ได้เลือกใหม่ตามลำดับนี้</p>
 </section>
 <footer id="foot"></footer>
 </main>
@@ -300,6 +316,15 @@ const order = {support:0, challenge:1, neutral:2};
 const THEME_MAIN = __MAINS__;
 const ALL = 'ทั้งหมด';
 const NONE = 'คำนวณไม่ได้';
+// เหตุผลที่ขนาดว่าง (ชุดเดียวกับ SIZE_REASONS ใน build_site.py) · not_read คืองานค้าง ที่เหลือคือเอกสารไม่มีตัวเลขจริง
+const REASONS = __REASONS__;
+const REASON_HINT = {
+  not_read: 'งานค้าง: ยังอ่านเอกสารไม่ครบ จะกลับไปอ่านเพิ่ม',
+  quarterly_only: 'บริษัทให้เป้าเป็นรายไตรมาสเท่านั้น ไม่คูณเป็นรายปีเอง รอเป้ารายปีในรอบถัดไป',
+  no_target: 'อ่านแล้ว เอกสารไม่ระบุตัวเลขขนาดหรือเป้าของตัวเร่ง จึงไม่เดา',
+  no_base: 'มีตัวเลขของตัวเร่ง แต่ไม่มีฐานเดิมที่ชนิดตรงกันให้หาร',
+  no_catalyst: 'ตัวเร่งเป็นเหตุการณ์ ไม่มีขนาดเป็นตัวเลขโดยธรรมชาติ เช่น เปลี่ยนผู้บริหาร'};
+const isReason = t => t in REASONS;
 const state = {tier: ALL, theme: ALL, sub: ALL, score: ALL, type: ALL, market: ALL, q: '', pick: '', sort: 'desc'};
 const MARKETS = {US: 'สหรัฐ', TH: 'ไทย'};
 const marketCount = m => D.stocks.filter(s => s.market === m).length;
@@ -370,20 +395,27 @@ const TIERS = {T1: 'ติด Watchlist', T2: 'รอข้อมูล', T3: '�
 const tierCount = t => D.stocks.filter(s => s.tier === t).length;
 
 // สร้างปุ่มกลุ่มหนึ่ง: options = [[ค่า, ข้อความ, ปิดใช้ไหม]]
+const GROUP = '__group__';
 function chips(id, key, options) {
   const box = document.getElementById(id);
   box.replaceChildren();
+  let into = box;
   options.forEach(([value, label, disabled]) => {
+    if (value === GROUP) {
+      into = document.createElement('div'); into.className = 'sg';
+      const h = document.createElement('div'); h.className = 'gl'; h.textContent = label + ':';
+      into.append(h); box.append(into); return;
+    }
     const b = document.createElement('button');
     b.textContent = label; b.disabled = !!disabled;
     b.setAttribute('aria-pressed', state[key] === value);
     b.onclick = () => {
       state[key] = value;
       if (key === 'theme') { state.sub = ALL; drawSub(); }
-      [...box.children].forEach(x => x.setAttribute('aria-pressed', x === b));
+      box.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b));
       render();
     };
-    box.appendChild(b);
+    into.appendChild(b);
   });
 }
 const scoreCount = n => D.stocks.filter(s => +s.evidence_score === n).length;
@@ -408,8 +440,8 @@ const TYPE_HINT = {
   revenue: 'ช่วงเวลาของฐานต่างกัน (ทั้งปี ไตรมาส ครึ่งปี) ดูฐานของแต่ละตัวก่อนเทียบ',
   profit: 'ไม่ใช่ขนาดของ Catalyst โดยตรง วัดผลต่อกำไรหรือผู้ถือหุ้น เทียบกับกลุ่มอื่นไม่ได้',
   progress: 'ไม่ใช่ขนาดของ Catalyst วัดว่าโครงการคืบหน้าไปแค่ไหน เทียบกับกลุ่มอื่นไม่ได้'};
-const typeOf = s => size(s) === null ? NONE : s.catalyst_size_type;
-const typeLabel = t => t === NONE ? NONE : TYPES[t] || t;
+const typeOf = s => size(s) === null ? (s.catalyst_size_reason || NONE) : s.catalyst_size_type;
+const typeLabel = t => t === NONE ? NONE : REASONS[t] || TYPES[t] || t;
 const typeCount = t => D.stocks.filter(s => typeOf(s) === t).length;
 
 function redrawChips() {
@@ -419,7 +451,12 @@ function redrawChips() {
   drawSub();
   chips('f-score', 'score', [[ALL, ALL], ...[5, 4, 3, 2, 1].map(n => [n, `${n} คะแนน · ${scoreCount(n)} ตัว`, !scoreCount(n)])]);
   chips('f-sort', 'sort', [['desc', 'คะแนนมาก → น้อย'], ['asc', 'คะแนนน้อย → มาก'], ['size', 'ขนาด Catalyst มาก → น้อย']]);
-  chips('f-basis', 'type', [[ALL, ALL], ...[...Object.keys(TYPES), NONE].map(t => [t, `${typeLabel(t)} · ${typeCount(t)} ตัว`, !typeCount(t)])]);
+  const bchip = t => [t, `${typeLabel(t).replace('หน่วย: ', '')} · ${typeCount(t)} ตัว`, !typeCount(t)];
+  chips('f-basis', 'type', [[ALL, ALL],
+    [GROUP, 'เทียบเป็นเงิน'], ...['revenue', 'assets', 'profit'].map(bchip),
+    [GROUP, 'นับเป็นหน่วย'], ...['units_rooms', 'units_beds', 'units_mw', 'units_aircraft', 'units_sites'].map(bchip),
+    [GROUP, 'ความคืบหน้า'], bchip('progress'),
+    [GROUP, 'ไม่มีขนาด (บอกเหตุผล)'], ...Object.keys(REASONS).map(bchip)]);
 }
 // สร้างปุ่มตัวกรองจากข้อมูล เรียกครั้งเดียวหลังโหลดข้อมูลเสร็จ
 function start() {
@@ -450,7 +487,7 @@ function start() {
 }
 // แถวขนาด Catalyst ในการ์ด: ตัวเลขเด่น + ฐานที่เทียบ + ป้ายกลุ่ม (กลุ่มกำไรและความคืบหน้าติดป้ายเตือนว่าไม่ใช่ขนาดโดยตรง)
 const sizeRow = s => size(s) === null
-  ? '<div class="size none"><span class="lab">ขนาด Catalyst</span><span>คำนวณไม่ได้ ดูเหตุผลในรายละเอียด</span></div>'
+  ? `<div class="size none"><span class="lab">ขนาด Catalyst</span><span class="tag ${s.catalyst_size_reason === 'not_read' ? 'challenge' : 'neutral'}">${esc(REASONS[s.catalyst_size_reason] || NONE)}</span></div>`
   : `<div class="size"><span class="lab">ขนาด Catalyst</span><span class="pct">${esc(s.catalyst_size_pct)}%</span>
       <span class="of">${esc(s.catalyst_size_basis)}</span><span class="tag neutral">${esc(typeLabel(s.catalyst_size_type))}</span>
       ${TYPE_HINT[s.catalyst_size_type] && s.catalyst_size_type !== 'revenue' ? '<span class="tag challenge">ไม่ใช่ขนาดโดยตรง</span>' : ''}</div>`;
@@ -494,12 +531,12 @@ function grouped(rows) {
   const groups = {};
   rows.forEach(s => (groups[typeOf(s)] ||= []).push(s));
   const keys = Object.keys(groups).sort((a, b) =>
-    (a === NONE) - (b === NONE) || groups[b].length - groups[a].length || a.localeCompare(b));
+    (isReason(a) || a === NONE) - (isReason(b) || b === NONE) || groups[b].length - groups[a].length || a.localeCompare(b));
   return keys.map(k => {
     const n = groups[k].length;
-    const hint = k === NONE ? 'เอกสารไม่มีตัวเลขพอให้คำนวณ ดูเหตุผลในรายละเอียดของแต่ละตัว'
+    const hint = isReason(k) ? REASON_HINT[k] : k === NONE ? 'เอกสารไม่มีตัวเลขพอให้คำนวณ ดูเหตุผลในรายละเอียดของแต่ละตัว'
       : n === 1 ? 'มีตัวเดียวในกลุ่มนี้ จึงไม่มีตัวให้เทียบ' : (TYPE_HINT[k] || 'เทียบขนาดกันได้ในกลุ่มนี้');
-    return `<h3 class="grp">${k === NONE ? NONE : 'เทียบกับ ' + esc(typeLabel(k))} · ${n} ตัว<small>${hint}</small></h3>` +
+    return `<h3 class="grp">${isReason(k) ? 'ขนาดว่าง: ' + esc(typeLabel(k)) : k === NONE ? NONE : 'เทียบกับ ' + esc(typeLabel(k))} · ${n} ตัว<small>${hint}</small></h3>` +
       groups[k].map(card).join('');
   }).join('');
 }
