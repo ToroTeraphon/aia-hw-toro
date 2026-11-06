@@ -266,21 +266,21 @@
 | 18 | 253 | CTAS | Cintas | Industrials | ยังไม่มี | ทำแล้ว |
 | 18 | 254 | DD | DuPont | Industrials | ยังไม่มี | ทำแล้ว |
 | 18 | 255 | DOV | Dover Corporation | Industrials | ยังไม่มี | ทำแล้ว |
-| 19 | 256 | EFX | Equifax | Industrials | ยังไม่มี | รอ |
-| 19 | 257 | EME | Emcor | Industrials | ยังไม่มี | รอ |
-| 19 | 258 | EMR | Emerson Electric | Industrials | ยังไม่มี | รอ |
-| 19 | 259 | EXPD | Expeditors International | Industrials | ยังไม่มี | รอ |
-| 19 | 260 | FAST | Fastenal | Industrials | ยังไม่มี | รอ |
-| 19 | 261 | FDX | FedEx | Industrials | ยังไม่มี | รอ |
-| 19 | 262 | FDXF | FedEx Freight | Industrials | ยังไม่มี | รอ |
-| 19 | 263 | FERG | Ferguson Enterprises | Industrials | ยังไม่มี | รอ |
-| 19 | 264 | FIX | Comfort Systems USA | Industrials | ยังไม่มี | รอ |
-| 19 | 265 | FTV | Fortive | Industrials | ยังไม่มี | รอ |
-| 19 | 266 | GD | General Dynamics | Industrials | ยังไม่มี | รอ |
-| 19 | 267 | GNRC | Generac | Industrials | ยังไม่มี | รอ |
-| 19 | 268 | GWW | W. W. Grainger | Industrials | ยังไม่มี | รอ |
-| 19 | 269 | HII | Huntington Ingalls Industries | Industrials | ยังไม่มี | รอ |
-| 19 | 270 | HON | Honeywell Technologies | Industrials | ยังไม่มี | รอ |
+| 19 | 256 | EFX | Equifax | Industrials | ยังไม่มี | ทำแล้ว |
+| 19 | 257 | EME | Emcor | Industrials | ยังไม่มี | ทำแล้ว |
+| 19 | 258 | EMR | Emerson Electric | Industrials | ยังไม่มี | ทำแล้ว |
+| 19 | 259 | EXPD | Expeditors International | Industrials | ยังไม่มี | ทำแล้ว |
+| 19 | 260 | FAST | Fastenal | Industrials | ยังไม่มี | ทำแล้ว |
+| 19 | 261 | FDX | FedEx | Industrials | ยังไม่มี | ทำแล้ว |
+| 19 | 262 | FDXF | FedEx Freight | Industrials | ยังไม่มี | ทำแล้ว |
+| 19 | 263 | FERG | Ferguson Enterprises | Industrials | ยังไม่มี | ทำแล้ว |
+| 19 | 264 | FIX | Comfort Systems USA | Industrials | ยังไม่มี | ทำแล้ว |
+| 19 | 265 | FTV | Fortive | Industrials | ยังไม่มี | ทำแล้ว |
+| 19 | 266 | GD | General Dynamics | Industrials | ยังไม่มี | ทำแล้ว |
+| 19 | 267 | GNRC | Generac | Industrials | ยังไม่มี | ทำแล้ว |
+| 19 | 268 | GWW | W. W. Grainger | Industrials | ยังไม่มี | ทำแล้ว |
+| 19 | 269 | HII | Huntington Ingalls Industries | Industrials | ยังไม่มี | ทำแล้ว |
+| 19 | 270 | HON | Honeywell Technologies | Industrials | ยังไม่มี | ทำแล้ว |
 | 20 | 271 | HONA | Honeywell Aerospace | Industrials | ยังไม่มี | รอ |
 | 20 | 272 | HUBB | Hubbell Incorporated | Industrials | ยังไม่มี | รอ |
 | 20 | 273 | HWM | Howmet Aerospace | Industrials | ยังไม่มี | รอ |
