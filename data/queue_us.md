@@ -386,21 +386,21 @@
 | 26 | 373 | FCX | Freeport-McMoRan | Materials | ยังไม่มี | ทำแล้ว |
 | 26 | 374 | IFF | International Flavors & Fragrances | Materials | ยังไม่มี | ทำแล้ว |
 | 26 | 375 | IP | International Paper | Materials | ยังไม่มี | ทำแล้ว |
-| 27 | 376 | LYB | LyondellBasell | Materials | ยังไม่มี | รอ |
-| 27 | 377 | MLM | Martin Marietta Materials | Materials | ยังไม่มี | รอ |
-| 27 | 378 | MOS | Mosaic Company (The) | Materials | ยังไม่มี | รอ |
-| 27 | 379 | NEM | Newmont | Materials | ยังไม่มี | รอ |
-| 27 | 380 | NUE | Nucor | Materials | ยังไม่มี | รอ |
-| 27 | 381 | PKG | Packaging Corporation of America | Materials | ยังไม่มี | รอ |
-| 27 | 382 | PPG | PPG Industries | Materials | ยังไม่มี | รอ |
-| 27 | 383 | SHW | Sherwin-Williams | Materials | ยังไม่มี | รอ |
-| 27 | 384 | STLD | Steel Dynamics | Materials | ยังไม่มี | รอ |
-| 27 | 385 | SW | Smurfit Westrock | Materials | ยังไม่มี | รอ |
-| 27 | 386 | VMC | Vulcan Materials Company | Materials | ยังไม่มี | รอ |
-| 27 | 387 | AMT | American Tower | Real Estate | ยังไม่มี | รอ |
-| 27 | 388 | ARE | Alexandria Real Estate Equities | Real Estate | ยังไม่มี | รอ |
-| 27 | 389 | BXP | BXP, Inc. | Real Estate | ยังไม่มี | รอ |
-| 27 | 390 | CBRE | CBRE Group | Real Estate | ยังไม่มี | รอ |
+| 27 | 376 | LYB | LyondellBasell | Materials | ยังไม่มี | ทำแล้ว |
+| 27 | 377 | MLM | Martin Marietta Materials | Materials | ยังไม่มี | ทำแล้ว |
+| 27 | 378 | MOS | Mosaic Company (The) | Materials | ยังไม่มี | ทำแล้ว |
+| 27 | 379 | NEM | Newmont | Materials | ยังไม่มี | ทำแล้ว |
+| 27 | 380 | NUE | Nucor | Materials | ยังไม่มี | ทำแล้ว |
+| 27 | 381 | PKG | Packaging Corporation of America | Materials | ยังไม่มี | ทำแล้ว |
+| 27 | 382 | PPG | PPG Industries | Materials | ยังไม่มี | ทำแล้ว |
+| 27 | 383 | SHW | Sherwin-Williams | Materials | ยังไม่มี | ทำแล้ว |
+| 27 | 384 | STLD | Steel Dynamics | Materials | ยังไม่มี | ทำแล้ว |
+| 27 | 385 | SW | Smurfit Westrock | Materials | ยังไม่มี | ทำแล้ว |
+| 27 | 386 | VMC | Vulcan Materials Company | Materials | ยังไม่มี | ทำแล้ว |
+| 27 | 387 | AMT | American Tower | Real Estate | ยังไม่มี | ทำแล้ว |
+| 27 | 388 | ARE | Alexandria Real Estate Equities | Real Estate | ยังไม่มี | ทำแล้ว |
+| 27 | 389 | BXP | BXP, Inc. | Real Estate | ยังไม่มี | ทำแล้ว |
+| 27 | 390 | CBRE | CBRE Group | Real Estate | ยังไม่มี | ทำแล้ว |
 | 28 | 391 | CCI | Crown Castle | Real Estate | ยังไม่มี | รอ |
 | 28 | 392 | CPT | Camden Property Trust | Real Estate | ยังไม่มี | รอ |
 | 28 | 393 | CSGP | CoStar Group | Real Estate | ยังไม่มี | รอ |
