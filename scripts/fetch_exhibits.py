@@ -31,14 +31,19 @@ def main():
     facts = json.loads((folder / "companyfacts.json").read_text(encoding="utf-8-sig"))
     cik = int(facts["cik"])
     done = 0
-    for f in sorted(folder.glob("8-K_*.htm")):
-        m = re.match(r"8-K_(\d{4}-\d{2}-\d{2})_(\d{18})\.htm$", f.name)
+    for f in sorted(list(folder.glob("8-K_*.htm")) + list(folder.glob("6-K_*.htm"))):
+        m = re.match(r"(8-K|6-K)_(\d{4}-\d{2}-\d{2})_(\d{18})\.htm$", f.name)
         if not m:
             continue  # ข้ามไฟล์ใบแนบที่ดึงมาแล้ว
-        date, acc = m.groups()
-        target = folder / f"8-K_{date}_{acc}_TEXTGIF.htm"
+        form, date, acc = m.groups()
+        target = folder / f"{form}_{date}_{acc}_TEXTGIF.htm"
         text = f.read_text(encoding="utf-8", errors="ignore")
-        if target.exists() or "2.02" not in text or "results of operations" not in text.lower():
+        if form == "8-K":
+            ok = "2.02" in text and "results of operations" in text.lower()
+        else:  # 6-K ของผู้ออกต่างประเทศไม่มี Item 2.02 ใช้ดูว่ามีใบแนบ 99.1 ที่เป็นข่าวผลประกอบการ
+            low = text.lower()
+            ok = "99.1" in text and any(k in low for k in ("results", "earnings", "quarter", "half-year", "full year", "financial"))
+        if target.exists() or not ok:
             continue
         base = f"https://www.sec.gov/Archives/edgar/data/{cik}/{acc}/"
         items = json.loads(get(base + "index.json", contact))["directory"]["item"]
