@@ -401,21 +401,21 @@
 | 27 | 388 | ARE | Alexandria Real Estate Equities | Real Estate | ยังไม่มี | ทำแล้ว |
 | 27 | 389 | BXP | BXP, Inc. | Real Estate | ยังไม่มี | ทำแล้ว |
 | 27 | 390 | CBRE | CBRE Group | Real Estate | ยังไม่มี | ทำแล้ว |
-| 28 | 391 | CCI | Crown Castle | Real Estate | ยังไม่มี | รอ |
-| 28 | 392 | CPT | Camden Property Trust | Real Estate | ยังไม่มี | รอ |
-| 28 | 393 | CSGP | CoStar Group | Real Estate | ยังไม่มี | รอ |
-| 28 | 394 | DOC | Healthpeak Properties | Real Estate | ยังไม่มี | รอ |
-| 28 | 395 | ESS | Essex Property Trust | Real Estate | ยังไม่มี | รอ |
-| 28 | 396 | EXR | Extra Space Storage | Real Estate | ยังไม่มี | รอ |
-| 28 | 397 | FRT | Federal Realty Investment Trust | Real Estate | ยังไม่มี | รอ |
-| 28 | 398 | HST | Host Hotels & Resorts | Real Estate | ยังไม่มี | รอ |
-| 28 | 399 | INVH | Invitation Homes | Real Estate | ยังไม่มี | รอ |
-| 28 | 400 | IRM | Iron Mountain | Real Estate | ยังไม่มี | รอ |
-| 28 | 401 | KIM | Kimco Realty | Real Estate | ยังไม่มี | รอ |
-| 28 | 402 | MAA | Mid-America Apartment Communities | Real Estate | ยังไม่มี | รอ |
-| 28 | 403 | O | Realty Income | Real Estate | ยังไม่มี | รอ |
-| 28 | 404 | PLD | Prologis | Real Estate | ยังไม่มี | รอ |
-| 28 | 405 | PSA | Public Storage | Real Estate | ยังไม่มี | รอ |
+| 28 | 391 | CCI | Crown Castle | Real Estate | ยังไม่มี | ทำแล้ว |
+| 28 | 392 | CPT | Camden Property Trust | Real Estate | ยังไม่มี | ทำแล้ว |
+| 28 | 393 | CSGP | CoStar Group | Real Estate | ยังไม่มี | ทำแล้ว |
+| 28 | 394 | DOC | Healthpeak Properties | Real Estate | ยังไม่มี | ทำแล้ว |
+| 28 | 395 | ESS | Essex Property Trust | Real Estate | ยังไม่มี | ทำแล้ว |
+| 28 | 396 | EXR | Extra Space Storage | Real Estate | ยังไม่มี | ทำแล้ว |
+| 28 | 397 | FRT | Federal Realty Investment Trust | Real Estate | ยังไม่มี | ทำแล้ว |
+| 28 | 398 | HST | Host Hotels & Resorts | Real Estate | ยังไม่มี | ทำแล้ว |
+| 28 | 399 | INVH | Invitation Homes | Real Estate | ยังไม่มี | ทำแล้ว |
+| 28 | 400 | IRM | Iron Mountain | Real Estate | ยังไม่มี | ทำแล้ว |
+| 28 | 401 | KIM | Kimco Realty | Real Estate | ยังไม่มี | ทำแล้ว |
+| 28 | 402 | MAA | Mid-America Apartment Communities | Real Estate | ยังไม่มี | ทำแล้ว |
+| 28 | 403 | O | Realty Income | Real Estate | ยังไม่มี | ทำแล้ว |
+| 28 | 404 | PLD | Prologis | Real Estate | ยังไม่มี | ทำแล้ว |
+| 28 | 405 | PSA | Public Storage | Real Estate | ยังไม่มี | ทำแล้ว |
 | 29 | 406 | REG | Regency Centers | Real Estate | ยังไม่มี | รอ |
 | 29 | 407 | SBAC | SBA Communications | Real Estate | ยังไม่มี | รอ |
 | 29 | 408 | SPG | Simon Property Group | Real Estate | ยังไม่มี | รอ |
