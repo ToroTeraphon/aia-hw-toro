@@ -12,7 +12,7 @@
 
 - เว็บออนไลน์: https://toroteraphon.github.io/aia-hw-toro/output/ (GitHub Pages อัปเดตตามทุกครั้งที่ push)
 - [index.html](index.html): เว็บ Catalyst Tracker 2027 ดาวน์โหลดแล้วเปิดในเบราว์เซอร์ได้เลย ไม่ต้องมี server (เปิดผ่านเว็บจะดึง `data.json` สด เปิดจากไฟล์ในเครื่องจะใช้สำเนาที่ฝังไว้)
-- [data.json](data.json): ข้อมูลหุ้นทั้งหมด แต่ละตัวมีตัวจุดประกาย คะแนน เงื่อนไขตัดทิ้ง สถานะ และหลักฐานซ้อนอยู่ข้างใน (อ้าง doc_id ใน [../data/sources.json](../data/sources.json))
+- [data.json](data.json): ข้อมูลหุ้นทั้งหมด แต่ละตัวมีตัวเร่ง คะแนน เงื่อนไขตัดทิ้ง สถานะ และหลักฐานซ้อนอยู่ข้างใน (อ้าง doc_id ใน [../data/sources.json](../data/sources.json))
 
 ![ภาพหน้าจอ Catalyst Tracker 2027](dashboard.png)
 

@@ -131,6 +131,15 @@ h1{font-size:26px;margin:0}
 .chips button{border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:999px;padding:4px 12px;cursor:pointer;font:inherit;font-size:14px}
 .chips button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .chips button:disabled{opacity:.35;cursor:default}
+.sbox{position:relative}
+.sbox input{width:100%;box-sizing:border-box;font:inherit;font-size:15px;padding:8px 36px 8px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
+.sbox .clr{position:absolute;right:4px;top:50%;transform:translateY(-50%);border:0;background:none;color:var(--muted);font-size:18px;cursor:pointer;min-width:32px;min-height:32px}
+.sug{position:absolute;left:0;right:0;top:calc(100% + 4px);z-index:20;margin:0;padding:4px;list-style:none;background:var(--card);border:1px solid var(--line);border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,.18)}
+.sug li{display:flex;flex-wrap:wrap;gap:2px 8px;align-items:baseline;padding:8px 10px;min-height:24px;border-radius:6px;cursor:pointer}
+.sug li[aria-selected=true],.sug li:hover{background:var(--bg)}
+.sug .t{font-weight:700}.sug .n{color:var(--ink);font-size:14px}.sug .m{color:var(--muted);font-size:12px}
+.sug mark{background:var(--neu-bg);color:inherit;border-radius:2px}
+.sug .none{color:var(--muted);cursor:default}
 .count{color:var(--muted);font-size:13px;margin:0 0 10px}
 .grp{font-size:15px;margin:18px 0 8px;padding-bottom:4px;border-bottom:2px solid var(--line)}
 .grp small{display:block;font-weight:400;font-size:13px;color:var(--muted)}
@@ -200,15 +209,15 @@ footer{margin-top:24px;color:var(--muted);font-size:13px}
 </ol>
 <h2>วิธีใช้หน้านี้</h2>
 <ul>
-<li>กรองด้วยปุ่ม Watchlist · ธีม · คะแนน · ขนาด Catalyst แล้วเลือกการเรียงลำดับ</li>
+<li>ค้นหาด้วย ticker หรือชื่อบริษัท แล้วกรองด้วยปุ่มตลาด · Watchlist · ธีม · คะแนน · ขนาด Catalyst และเลือกการเรียงลำดับ</li>
 <li>กดที่การ์ดหุ้นเพื่อดูหลักฐานหนุน/ค้านทีละแถว พร้อมลิงก์ไปเอกสารต้นทาง</li>
 <li>ตัวเลขที่ไม่มีในเอกสารเว้นว่างไว้ ไม่ได้เดา</li>
 </ul>
 </div></div></div>
-<p class="sub" id="sub">หุ้นไทย + สหรัฐ · ตัวจุดประกายปี 2027 จากเอกสารที่บริษัทยื่นเอง</p>
-<div class="note"><b>คะแนนวัดความแน่นของหลักฐาน ไม่ใช่การทำนายราคา และไม่ใช่คำแนะนำซื้อหรือขาย</b><br>
-กดที่หุ้นเพื่อดูหลักฐานหนุน/ค้านทีละแถว และลิงก์ไปเอกสารต้นทาง ตัวเลขที่ไม่มีในเอกสารเว้นว่างไว้ ไม่ได้เดา</div>
+<p class="sub" id="sub">หุ้นไทย + สหรัฐ · ตัวเร่งปี 2027 จากเอกสารที่บริษัทยื่นเอง</p>
 <div class="controls">
+  <div class="group"><label class="label" for="q">ค้นหาหุ้น</label><div class="sbox"><input id="q" type="search" autocomplete="off" placeholder="พิมพ์ ticker หรือชื่อบริษัท เช่น nvda, coca, ptt" role="combobox" aria-expanded="false" aria-controls="sug" aria-autocomplete="list"><button type="button" class="clr" id="q-clr" aria-label="ล้างคำค้น" hidden>×</button><ul class="sug" id="sug" role="listbox" hidden></ul></div></div>
+  <div class="group"><span class="label" id="lb-market">ตลาด</span><div class="chips" id="f-market" role="group" aria-labelledby="lb-market"></div></div>
   <div class="group"><span class="label" id="lb-tier">Watchlist</span><div class="chips" id="f-tier" role="group" aria-labelledby="lb-tier"></div></div>
   <div class="group"><span class="label" id="lb-theme">ธีมหลัก</span><div class="chips" id="f-theme" role="group" aria-labelledby="lb-theme"></div></div>
   <div class="group" id="g-sub" hidden><span class="label" id="lb-sub">ธีมรอง</span><div class="chips" id="f-sub" role="group" aria-labelledby="lb-sub"></div></div>
@@ -228,15 +237,15 @@ footer{margin-top:24px;color:var(--muted);font-size:13px}
 <p>T คือระดับของหลักฐาน ไม่ใช่ระดับความน่าลงทุน ใช้เรียงลำดับว่าจะทำ Deep Dive ตัวไหนก่อน: เริ่มจาก T1 ถ้าหมดแล้วค่อยทำ T2 ส่วน T3 ยังไม่ทำ จำนวนหนุน/ค้านนับเป็นแถว ไม่ได้ถ่วงน้ำหนักว่าหลักฐานแถวไหนสำคัญกว่า</p>
 <h2>เกณฑ์คะแนน (1–5)</h2>
 <table>
-<tr><td>5</td><td>ตัวจุดประกายมีผลแล้ว หรือมีสัญญาผูกพันกับลูกค้าแล้ว</td></tr>
+<tr><td>5</td><td>ตัวเร่งมีผลแล้ว หรือมีสัญญาผูกพันกับลูกค้าแล้ว</td></tr>
 <tr><td>4</td><td>กำลังสร้างหรือดำเนินการ มีเงินที่จ่ายจริงหรือผูกพันแล้ว และมีวันที่ชัด</td></tr>
 <tr><td>3</td><td>แผนของบริษัทที่มีวันที่ในหรือก่อนปี 2027 และมีตัวเลขรองรับบางส่วน หรือแนวโน้มต่อเนื่องที่มีตัวเลขในงบรองรับ</td></tr>
 <tr><td>2</td><td>แผนที่ยังไม่มีหลักฐานแข็ง หรือยังต้องรออนุมัติจากหน่วยงานภายนอก</td></tr>
-<tr><td>1</td><td>ไม่พบตัวจุดประกายที่ระบุปี 2027</td></tr>
+<tr><td>1</td><td>ไม่พบตัวเร่งที่ระบุปี 2027</td></tr>
 </table>
-<p>หัก 1 คะแนนถ้ามีหลักฐานค้านที่บริษัทเปิดเผยเอง ซึ่งทำให้ตัวจุดประกายอาจไม่เกิดหรือเลื่อนออกไป</p>
+<p>หัก 1 คะแนนถ้ามีหลักฐานค้านที่บริษัทเปิดเผยเอง ซึ่งทำให้ตัวเร่งอาจไม่เกิดหรือเลื่อนออกไป</p>
 <h2>ขนาด Catalyst</h2>
-<p>ขนาดของสิ่งที่ตัวจุดประกายจะเพิ่มให้ คิดเป็น % ของฐานเดิมของบริษัท คำนวณจากตัวเลขในเอกสารเท่านั้น แต่ละตัวเทียบกับฐานต่างกันตามธุรกิจ แบ่งเป็น 5 กลุ่มคือ รายได้/ยอดขาย · สินทรัพย์รวม · จำนวนหน่วยที่สร้างรายได้ (ห้อง เตียง MW เครื่องบิน สาขา) · กำไร/EBITDA/ปันผล · ความคืบหน้าโครงการ เทียบขนาดกันได้เฉพาะในกลุ่มเดียวกัน ไม่ควรเทียบข้ามกลุ่ม กลุ่มกำไรและความคืบหน้าวัดสิ่งอื่นที่ไม่ใช่ขนาดของ Catalyst โดยตรง ตัวที่เอกสารไม่มีตัวเลขพอจะเว้นว่าง ตัวเลขนี้ไม่ได้มาจากผลประกอบการย้อนหลัง</p>
+<p>ขนาดของสิ่งที่ตัวเร่งจะเพิ่มให้ คิดเป็น % ของฐานเดิมของบริษัท คำนวณจากตัวเลขในเอกสารเท่านั้น แต่ละตัวเทียบกับฐานต่างกันตามธุรกิจ แบ่งเป็น 5 กลุ่มคือ รายได้/ยอดขาย · สินทรัพย์รวม · จำนวนหน่วยที่สร้างรายได้ (ห้อง เตียง MW เครื่องบิน สาขา) · กำไร/EBITDA/ปันผล · ความคืบหน้าโครงการ เทียบขนาดกันได้เฉพาะในกลุ่มเดียวกัน ไม่ควรเทียบข้ามกลุ่ม กลุ่มกำไรและความคืบหน้าวัดสิ่งอื่นที่ไม่ใช่ขนาดของ Catalyst โดยตรง ตัวที่เอกสารไม่มีตัวเลขพอจะเว้นว่าง ตัวเลขนี้ไม่ได้มาจากผลประกอบการย้อนหลัง</p>
 <p>ตัวเลขนี้เป็นเพียงตัวบอกขนาดคร่าว ๆ (scale proxy) ไม่ใช่รายได้หรือกำไรที่จะเพิ่มขึ้น เช่น MSFT เทียบรายได้ตามสัญญาที่รอรับรู้ภายใน 12 เดือนกับรายได้ทั้งปีที่ผ่านมา ซึ่งไม่ได้บอกว่ารายได้จะโต 61% และไม่ได้บอกผลต่อกำไรต่อหุ้นหรือกระแสเงินสด</p>
 </section>
 <footer id="foot"></footer>
@@ -291,7 +300,72 @@ const order = {support:0, challenge:1, neutral:2};
 const THEME_MAIN = __MAINS__;
 const ALL = 'ทั้งหมด';
 const NONE = 'คำนวณไม่ได้';
-const state = {tier: ALL, theme: ALL, sub: ALL, score: ALL, type: ALL, sort: 'desc'};
+const state = {tier: ALL, theme: ALL, sub: ALL, score: ALL, type: ALL, market: ALL, q: '', pick: '', sort: 'desc'};
+const MARKETS = {US: 'สหรัฐ', TH: 'ไทย'};
+const marketCount = m => D.stocks.filter(s => s.market === m).length;
+
+// ค้นหา: ตัดตัวพิมพ์ใหญ่เล็ก จุด ช่องว่าง เครื่องหมาย (BRK.B = brkb, McDonald's = mcdonalds)
+const norm = x => String(x ?? '').toLowerCase().replace(/[^a-z0-9฀-๿]/g, '');
+// คะแนนความตรง: เลขน้อย = ตรงมาก, null = ไม่ตรง
+function matchRank(s, q) {
+  const t = norm(s.ticker), n = norm(s.company_name);
+  if (t === q) return 0;
+  if (t.startsWith(q)) return 1;
+  if (n.startsWith(q)) return 2;
+  const words = String(s.company_name ?? '').toLowerCase().split(/[^a-z0-9฀-๿]+/);
+  if (words.some(w => w && w.startsWith(q))) return 3;
+  if (n.includes(q) || t.includes(q)) return 4;
+  return null;
+}
+const tierRank = {T1: 0, T2: 1, T3: 2};
+function searchRank(raw) {
+  const q = norm(raw);
+  if (!q) return [];
+  return D.stocks.map(s => [matchRank(s, q), s]).filter(x => x[0] !== null)
+    .sort((a, b) => a[0] - b[0] || tierRank[a[1].tier] - tierRank[b[1].tier] || a[1].ticker.localeCompare(b[1].ticker))
+    .map(x => x[1]);
+}
+// ขีดเน้นตัวอักษรที่ตรง (ตามคำที่พิมพ์ตัวต่อตัว ไม่สนเครื่องหมาย)
+function hi(text, raw) {
+  const q = norm(raw), src = String(text ?? '');
+  if (!q) return esc(src);
+  const low = src.toLowerCase();
+  let flat = '', map = [];
+  for (let i = 0; i < low.length; i++) if (norm(low[i])) { flat += low[i]; map.push(i); }
+  const k = flat.indexOf(q);
+  if (k < 0) return esc(src);
+  const a = map[k], b = map[k + q.length - 1] + 1;
+  return esc(src.slice(0, a)) + '<mark>' + esc(src.slice(a, b)) + '</mark>' + esc(src.slice(b));
+}
+let sugItems = [], sugIdx = -1;
+function drawSuggest() {
+  const box = document.getElementById('sug'), inp = document.getElementById('q');
+  const raw = inp.value.trim();
+  document.getElementById('q-clr').hidden = !raw;
+  sugItems = searchRank(raw).slice(0, 8); sugIdx = -1;
+  if (!raw) { box.hidden = true; inp.setAttribute('aria-expanded', 'false'); return; }
+  box.innerHTML = sugItems.length
+    ? sugItems.map((s, i) => `<li role="option" id="sg-${i}" data-t="${esc(s.ticker)}" aria-selected="false"><span class="t">${hi(s.ticker, raw)}</span><span class="n">${hi(s.company_name || '(ยังไม่มีชื่อ)', raw)}</span><span class="m">${MARKETS[s.market] || s.market} · ${esc(s.tier)}</span></li>`).join('')
+    : '<li class="none">ไม่พบหุ้นที่ตรงกับคำนี้</li>';
+  box.hidden = false; inp.setAttribute('aria-expanded', 'true');
+}
+function moveSug(d) {
+  if (!sugItems.length) return;
+  sugIdx = (sugIdx + d + sugItems.length) % sugItems.length;
+  [...document.getElementById('sug').children].forEach((li, i) => li.setAttribute('aria-selected', i === sugIdx));
+  document.getElementById('q').setAttribute('aria-activedescendant', 'sg-' + sugIdx);
+}
+function closeSug() { document.getElementById('sug').hidden = true; document.getElementById('q').setAttribute('aria-expanded', 'false'); }
+// เลือกหุ้นจากเมนู: ล้างตัวกรองอื่น เหลือเฉพาะตัวนี้ แล้วเลื่อนไปที่การ์ดและเปิดให้
+function pickStock(t) {
+  const s = D.stocks.find(x => x.ticker === t); if (!s) return;
+  Object.assign(state, {tier: ALL, theme: ALL, sub: ALL, score: ALL, type: ALL, market: ALL, q: t, pick: t});
+  document.getElementById('q').value = t;
+  document.getElementById('q-clr').hidden = false;
+  closeSug(); redrawChips(); render();
+  const el = document.getElementById('s-' + t);
+  if (el) { el.classList.add('open'); el.querySelector('.head').setAttribute('aria-expanded', 'true'); el.scrollIntoView({behavior: 'smooth', block: 'start'}); }
+}
 const TIERS = {T1: 'ติด Watchlist', T2: 'รอข้อมูล', T3: 'ยังไม่ติด'};
 const tierCount = t => D.stocks.filter(s => s.tier === t).length;
 
@@ -338,22 +412,38 @@ const typeOf = s => size(s) === null ? NONE : s.catalyst_size_type;
 const typeLabel = t => t === NONE ? NONE : TYPES[t] || t;
 const typeCount = t => D.stocks.filter(s => typeOf(s) === t).length;
 
-// สร้างปุ่มตัวกรองจากข้อมูล เรียกครั้งเดียวหลังโหลดข้อมูลเสร็จ
-function start() {
-  byTicker = {};
-  D.evidence.forEach(e => (byTicker[e.ticker] ||= []).push(e));
+function redrawChips() {
+  chips('f-market', 'market', [[ALL, ALL], ...Object.entries(MARKETS).map(([m, label]) => [m, `${label} · ${marketCount(m)} ตัว`, !marketCount(m)])]);
   chips('f-tier', 'tier', [[ALL, ALL], ...Object.entries(TIERS).map(([t, label]) => [t, `${t} · ${label} · ${tierCount(t)} ตัว`, !tierCount(t)])]);
   chips('f-theme', 'theme', [[ALL, ALL], ...THEME_MAIN.map(t => [t, `${t} · ${mainCount(t)}`, !mainCount(t)])]);
   drawSub();
   chips('f-score', 'score', [[ALL, ALL], ...[5, 4, 3, 2, 1].map(n => [n, `${n} คะแนน · ${scoreCount(n)} ตัว`, !scoreCount(n)])]);
   chips('f-sort', 'sort', [['desc', 'คะแนนมาก → น้อย'], ['asc', 'คะแนนน้อย → มาก'], ['size', 'ขนาด Catalyst มาก → น้อย']]);
   chips('f-basis', 'type', [[ALL, ALL], ...[...Object.keys(TYPES), NONE].map(t => [t, `${typeLabel(t)} · ${typeCount(t)} ตัว`, !typeCount(t)])]);
+}
+// สร้างปุ่มตัวกรองจากข้อมูล เรียกครั้งเดียวหลังโหลดข้อมูลเสร็จ
+function start() {
+  byTicker = {};
+  D.evidence.forEach(e => (byTicker[e.ticker] ||= []).push(e));
+  redrawChips();
+  const q = document.getElementById('q'), sg = document.getElementById('sug');
+  q.addEventListener('input', () => { state.q = q.value.trim(); state.pick = ''; drawSuggest(); render(); });
+  q.addEventListener('focus', () => { if (q.value.trim()) drawSuggest(); });
+  q.addEventListener('keydown', e => {
+    if (e.key === 'ArrowDown') { e.preventDefault(); if (sg.hidden) drawSuggest(); moveSug(1); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); moveSug(-1); }
+    else if (e.key === 'Enter') { e.preventDefault(); const s = sugItems[sugIdx >= 0 ? sugIdx : 0]; if (s) pickStock(s.ticker); }
+    else if (e.key === 'Escape') closeSug();
+  });
+  sg.addEventListener('mousedown', e => { const li = e.target.closest('li[data-t]'); if (li) { e.preventDefault(); pickStock(li.dataset.t); } });
+  document.addEventListener('click', e => { if (!e.target.closest('.sbox')) closeSug(); });
+  document.getElementById('q-clr').onclick = () => { q.value = ''; state.q = ''; state.pick = ''; drawSuggest(); render(); q.focus(); };
   document.getElementById('tip-sum').textContent =
-    'รวบรวมหุ้นไทยและสหรัฐที่มีตัวจุดประกายปี 2027 พร้อมหลักฐานจากเอกสารที่บริษัทยื่นเอง (SEC EDGAR และ ก.ล.ต. iDisc) ' +
+    'รวบรวมหุ้นไทยและสหรัฐที่มีตัวเร่งปี 2027 พร้อมหลักฐานจากเอกสารที่บริษัทยื่นเอง (SEC EDGAR และ ก.ล.ต. iDisc) ' +
     'กดย้อนไปเอกสารต้นทางได้ทุกแถว แต่ละตัวมีคะแนนความแน่นของหลักฐาน 1–5 เงื่อนไขตัดทิ้ง ขนาด Catalyst เทียบกับบริษัท ' +
     'และระดับ Watchlist (T1 ติด Watchlist · T2 รอข้อมูล · T3 ยังไม่ติด)';
   render();
-  document.getElementById('sub').textContent = `หุ้นไทย + สหรัฐ ${D.stocks.length} ตัว · ตัวจุดประกายปี 2027 จากเอกสารที่บริษัทยื่นเอง`;
+  document.getElementById('sub').textContent = `หุ้นไทย + สหรัฐ ${D.stocks.length} ตัว · ตัวเร่งปี 2027 จากเอกสารที่บริษัทยื่นเอง · คะแนนวัดความแน่นของหลักฐาน ไม่ใช่การทำนายราคา ไม่ใช่คำแนะนำซื้อหรือขาย`;
   document.getElementById('foot').textContent =
     `ข้อมูลจาก output/data.json และ data/sources.json${D.live ? '' : ' (สำเนาที่ฝังไว้ สร้างเมื่อ ' + D.built + ')'} · ` +
     `หุ้น ${D.stocks.length} ตัว · หลักฐาน ${D.evidence.length} แถว · เอกสารที่อ้างถึง ${Object.keys(D.sources).length} ฉบับ`;
@@ -378,6 +468,8 @@ function render() {
   // เรียงตามขนาด: ตัวที่คำนวณไม่ได้อยู่ท้ายเสมอ
   const bySize = (a, b) => (size(a) === null) - (size(b) === null) || (size(b) ?? 0) - (size(a) ?? 0);
   const rows = D.stocks
+    .filter(s => state.market === ALL || s.market === state.market)
+    .filter(s => state.pick ? s.ticker === state.pick : (!norm(state.q) || matchRank(s, norm(state.q)) !== null))
     .filter(s => state.tier === ALL || s.tier === state.tier)
     .filter(s => state.theme === ALL || s.theme_main === state.theme)
     .filter(s => state.sub === ALL || s.theme_sub === state.sub)
@@ -388,7 +480,7 @@ function render() {
   document.getElementById('count').textContent = `แสดง ${rows.length} จาก ${D.stocks.length} ตัว` +
     (state.sort === 'size' ? ' · แยกกลุ่มตามฐานที่ใช้เทียบ เทียบขนาดกันได้เฉพาะในกลุ่มเดียวกัน' : '');
   if (!rows.length) {
-    document.getElementById('list').innerHTML = '<div class="empty">ไม่มีหุ้นที่ตรงกับตัวกรองนี้ ลองเลือกธีมหรือคะแนนอื่น</div>';
+    document.getElementById('list').innerHTML = '<div class="empty">ไม่มีหุ้นที่ตรงกับตัวกรองนี้ ลองเปลี่ยนคำค้นหรือเลือกตลาด ธีม คะแนนอื่น</div>';
     return;
   }
   document.getElementById('list').innerHTML = state.sort === 'size' ? grouped(rows) : rows.map(card).join('');
