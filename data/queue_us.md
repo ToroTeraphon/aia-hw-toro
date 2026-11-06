@@ -416,21 +416,21 @@
 | 28 | 403 | O | Realty Income | Real Estate | ยังไม่มี | ทำแล้ว |
 | 28 | 404 | PLD | Prologis | Real Estate | ยังไม่มี | ทำแล้ว |
 | 28 | 405 | PSA | Public Storage | Real Estate | ยังไม่มี | ทำแล้ว |
-| 29 | 406 | REG | Regency Centers | Real Estate | ยังไม่มี | รอ |
-| 29 | 407 | SBAC | SBA Communications | Real Estate | ยังไม่มี | รอ |
-| 29 | 408 | SPG | Simon Property Group | Real Estate | ยังไม่มี | รอ |
-| 29 | 409 | UDR | UDR, Inc. | Real Estate | ยังไม่มี | รอ |
-| 29 | 410 | VICI | Vici Properties | Real Estate | ยังไม่มี | รอ |
-| 29 | 411 | VMRK | Vivmark Residential | Real Estate | ยังไม่มี | รอ |
-| 29 | 412 | VTR | Ventas | Real Estate | ยังไม่มี | รอ |
-| 29 | 413 | WY | Weyerhaeuser | Real Estate | ยังไม่มี | รอ |
-| 29 | 414 | AEE | Ameren | Utilities | ยังไม่มี | รอ |
-| 29 | 415 | AES | AES Corporation | Utilities | ยังไม่มี | รอ |
-| 29 | 416 | ATO | Atmos Energy | Utilities | ยังไม่มี | รอ |
-| 29 | 417 | AWK | American Water Works | Utilities | ยังไม่มี | รอ |
-| 29 | 418 | CMS | CMS Energy | Utilities | ยังไม่มี | รอ |
-| 29 | 419 | CNP | CenterPoint Energy | Utilities | ยังไม่มี | รอ |
-| 29 | 420 | DTE | DTE Energy | Utilities | ยังไม่มี | รอ |
+| 29 | 406 | REG | Regency Centers | Real Estate | ยังไม่มี | ทำแล้ว |
+| 29 | 407 | SBAC | SBA Communications | Real Estate | ยังไม่มี | ทำแล้ว |
+| 29 | 408 | SPG | Simon Property Group | Real Estate | ยังไม่มี | ทำแล้ว |
+| 29 | 409 | UDR | UDR, Inc. | Real Estate | ยังไม่มี | ทำแล้ว |
+| 29 | 410 | VICI | Vici Properties | Real Estate | ยังไม่มี | ทำแล้ว |
+| 29 | 411 | VMRK | Vivmark Residential | Real Estate | ยังไม่มี | ทำแล้ว |
+| 29 | 412 | VTR | Ventas | Real Estate | ยังไม่มี | ทำแล้ว |
+| 29 | 413 | WY | Weyerhaeuser | Real Estate | ยังไม่มี | ทำแล้ว |
+| 29 | 414 | AEE | Ameren | Utilities | ยังไม่มี | ทำแล้ว |
+| 29 | 415 | AES | AES Corporation | Utilities | ยังไม่มี | ทำแล้ว |
+| 29 | 416 | ATO | Atmos Energy | Utilities | ยังไม่มี | ทำแล้ว |
+| 29 | 417 | AWK | American Water Works | Utilities | ยังไม่มี | ทำแล้ว |
+| 29 | 418 | CMS | CMS Energy | Utilities | ยังไม่มี | ทำแล้ว |
+| 29 | 419 | CNP | CenterPoint Energy | Utilities | ยังไม่มี | ทำแล้ว |
+| 29 | 420 | DTE | DTE Energy | Utilities | ยังไม่มี | ทำแล้ว |
 | 30 | 421 | ED | Consolidated Edison | Utilities | ยังไม่มี | รอ |
 | 30 | 422 | EIX | Edison International | Utilities | ยังไม่มี | รอ |
 | 30 | 423 | ES | Eversource Energy | Utilities | ยังไม่มี | รอ |

@@ -70,3 +70,4 @@
 | 91 | 2026-11-06 | 33 | 40 | 190,146 | 60,301 | 250,447 | +2% | +38,089 | 0 | หุ้นสหรัฐชุดที่ 26 (WDAY WDC ZBRA ALB AMCR APD AVY BALL CF CRH DOW ECL FCX IFF IP) เป็น 484 ตัว |
 | 92 | 2026-11-06 | 37 | 40 | 75,770 | 60,301 | 136,071 | +4% | หลัง compact | 0 | หุ้นสหรัฐชุดที่ 27 (LYB MLM MOS NEM NUE PKG PPG SHW STLD SW VMC AMT ARE BXP CBRE) เป็น 499 ตัว หลัง compact |
 | 93 | 2026-11-06 | 38 | 40 | 108,633 | 60,301 | 168,934 | +1% | +32,863 | 0 | หุ้นสหรัฐชุดที่ 28 (CCI CPT CSGP DOC ESS EXR FRT HST INVH IRM KIM MAA O PLD PSA) เป็น 514 ตัว |
+| 94 | 2026-11-06 | 40 | 41 | 143,963 | 60,301 | 204,264 | +2% | +35,330 | 0 | หุ้นสหรัฐชุดที่ 29 (REG SBAC SPG UDR VICI VMRK VTR WY AEE AES ATO AWK CMS CNP DTE) เป็น 529 ตัว |
