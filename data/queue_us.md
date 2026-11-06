@@ -356,21 +356,21 @@
 | 24 | 343 | ON | ON Semiconductor | Information Technology | ยังไม่มี | ทำแล้ว |
 | 24 | 344 | P | Everpure | Information Technology | ยังไม่มี | ทำแล้ว |
 | 24 | 345 | PLTR | Palantir Technologies | Information Technology | ยังไม่มี | ทำแล้ว |
-| 25 | 346 | PTC | PTC Inc. | Information Technology | ยังไม่มี | รอ |
-| 25 | 347 | Q | Qnity Electronics | Information Technology | ยังไม่มี | รอ |
-| 25 | 348 | QCOM | Qualcomm | Information Technology | ยังไม่มี | รอ |
-| 25 | 349 | ROP | Roper Technologies | Information Technology | ยังไม่มี | รอ |
-| 25 | 350 | SNDK | Sandisk | Information Technology | ยังไม่มี | รอ |
-| 25 | 351 | SNPS | Synopsys | Information Technology | ยังไม่มี | รอ |
-| 25 | 352 | STX | Seagate Technology | Information Technology | ยังไม่มี | รอ |
-| 25 | 353 | SWKS | Skyworks Solutions | Information Technology | ยังไม่มี | รอ |
-| 25 | 354 | TDY | Teledyne Technologies | Information Technology | ยังไม่มี | รอ |
-| 25 | 355 | TEL | TE Connectivity | Information Technology | ยังไม่มี | รอ |
-| 25 | 356 | TER | Teradyne | Information Technology | ยังไม่มี | รอ |
-| 25 | 357 | TRMB | Trimble Inc. | Information Technology | ยังไม่มี | รอ |
-| 25 | 358 | TWLO | Twilio | Information Technology | ยังไม่มี | รอ |
-| 25 | 359 | TYL | Tyler Technologies | Information Technology | ยังไม่มี | รอ |
-| 25 | 360 | VRSN | Verisign | Information Technology | ยังไม่มี | รอ |
+| 25 | 346 | PTC | PTC Inc. | Information Technology | ยังไม่มี | ทำแล้ว |
+| 25 | 347 | Q | Qnity Electronics | Information Technology | ยังไม่มี | ทำแล้ว |
+| 25 | 348 | QCOM | Qualcomm | Information Technology | ยังไม่มี | ทำแล้ว |
+| 25 | 349 | ROP | Roper Technologies | Information Technology | ยังไม่มี | ทำแล้ว |
+| 25 | 350 | SNDK | Sandisk | Information Technology | ยังไม่มี | ทำแล้ว |
+| 25 | 351 | SNPS | Synopsys | Information Technology | ยังไม่มี | ทำแล้ว |
+| 25 | 352 | STX | Seagate Technology | Information Technology | ยังไม่มี | ทำแล้ว |
+| 25 | 353 | SWKS | Skyworks Solutions | Information Technology | ยังไม่มี | ทำแล้ว |
+| 25 | 354 | TDY | Teledyne Technologies | Information Technology | ยังไม่มี | ทำแล้ว |
+| 25 | 355 | TEL | TE Connectivity | Information Technology | ยังไม่มี | ทำแล้ว |
+| 25 | 356 | TER | Teradyne | Information Technology | ยังไม่มี | ทำแล้ว |
+| 25 | 357 | TRMB | Trimble Inc. | Information Technology | ยังไม่มี | ทำแล้ว |
+| 25 | 358 | TWLO | Twilio | Information Technology | ยังไม่มี | ทำแล้ว |
+| 25 | 359 | TYL | Tyler Technologies | Information Technology | ยังไม่มี | ทำแล้ว |
+| 25 | 360 | VRSN | Verisign | Information Technology | ยังไม่มี | ทำแล้ว |
 | 26 | 361 | WDAY | Workday, Inc. | Information Technology | ยังไม่มี | รอ |
 | 26 | 362 | WDC | Western Digital | Information Technology | ยังไม่มี | รอ |
 | 26 | 363 | ZBRA | Zebra Technologies | Information Technology | ยังไม่มี | รอ |
