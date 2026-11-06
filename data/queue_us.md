@@ -371,21 +371,21 @@
 | 25 | 358 | TWLO | Twilio | Information Technology | ยังไม่มี | ทำแล้ว |
 | 25 | 359 | TYL | Tyler Technologies | Information Technology | ยังไม่มี | ทำแล้ว |
 | 25 | 360 | VRSN | Verisign | Information Technology | ยังไม่มี | ทำแล้ว |
-| 26 | 361 | WDAY | Workday, Inc. | Information Technology | ยังไม่มี | รอ |
-| 26 | 362 | WDC | Western Digital | Information Technology | ยังไม่มี | รอ |
-| 26 | 363 | ZBRA | Zebra Technologies | Information Technology | ยังไม่มี | รอ |
-| 26 | 364 | ALB | Albemarle Corporation | Materials | ยังไม่มี | รอ |
-| 26 | 365 | AMCR | Amcor | Materials | ยังไม่มี | รอ |
-| 26 | 366 | APD | Air Products | Materials | ยังไม่มี | รอ |
-| 26 | 367 | AVY | Avery Dennison | Materials | ยังไม่มี | รอ |
-| 26 | 368 | BALL | Ball Corporation | Materials | ยังไม่มี | รอ |
-| 26 | 369 | CF | CF Industries | Materials | ยังไม่มี | รอ |
-| 26 | 370 | CRH | CRH plc | Materials | ยังไม่มี | รอ |
-| 26 | 371 | DOW | Dow Inc. | Materials | ยังไม่มี | รอ |
-| 26 | 372 | ECL | Ecolab | Materials | ยังไม่มี | รอ |
-| 26 | 373 | FCX | Freeport-McMoRan | Materials | ยังไม่มี | รอ |
-| 26 | 374 | IFF | International Flavors & Fragrances | Materials | ยังไม่มี | รอ |
-| 26 | 375 | IP | International Paper | Materials | ยังไม่มี | รอ |
+| 26 | 361 | WDAY | Workday, Inc. | Information Technology | ยังไม่มี | ทำแล้ว |
+| 26 | 362 | WDC | Western Digital | Information Technology | ยังไม่มี | ทำแล้ว |
+| 26 | 363 | ZBRA | Zebra Technologies | Information Technology | ยังไม่มี | ทำแล้ว |
+| 26 | 364 | ALB | Albemarle Corporation | Materials | ยังไม่มี | ทำแล้ว |
+| 26 | 365 | AMCR | Amcor | Materials | ยังไม่มี | ทำแล้ว |
+| 26 | 366 | APD | Air Products | Materials | ยังไม่มี | ทำแล้ว |
+| 26 | 367 | AVY | Avery Dennison | Materials | ยังไม่มี | ทำแล้ว |
+| 26 | 368 | BALL | Ball Corporation | Materials | ยังไม่มี | ทำแล้ว |
+| 26 | 369 | CF | CF Industries | Materials | ยังไม่มี | ทำแล้ว |
+| 26 | 370 | CRH | CRH plc | Materials | ยังไม่มี | ทำแล้ว |
+| 26 | 371 | DOW | Dow Inc. | Materials | ยังไม่มี | ทำแล้ว |
+| 26 | 372 | ECL | Ecolab | Materials | ยังไม่มี | ทำแล้ว |
+| 26 | 373 | FCX | Freeport-McMoRan | Materials | ยังไม่มี | ทำแล้ว |
+| 26 | 374 | IFF | International Flavors & Fragrances | Materials | ยังไม่มี | ทำแล้ว |
+| 26 | 375 | IP | International Paper | Materials | ยังไม่มี | ทำแล้ว |
 | 27 | 376 | LYB | LyondellBasell | Materials | ยังไม่มี | รอ |
 | 27 | 377 | MLM | Martin Marietta Materials | Materials | ยังไม่มี | รอ |
 | 27 | 378 | MOS | Mosaic Company (The) | Materials | ยังไม่มี | รอ |

@@ -67,3 +67,4 @@
 | 88 | 2026-11-06 | 26 | 39 | 65,213 | 60,301 | 125,514 | +3% | หลัง compact | 0 | หุ้นสหรัฐชุดที่ 23 (CDNS CDW CTSH DDOG FFIV FICO FLEX FTNT GDDY GEN GLW HPE HPQ IBM INTU) เป็น 439 ตัว |
 | 89 | 2026-11-06 | 29 | 39 | 109,653 | 60,301 | 169,954 | +3% | +44,440 | 0 | หุ้นสหรัฐชุดที่ 24 (IT JBL KEYS KLAC LITE MCHP MPWR MSI NOW NTAP NXPI OKTA ON P PLTR) เป็น 454 ตัว |
 | 90 | 2026-11-06 | 31 | 39 | 152,057 | 60,301 | 212,358 | +2% | +42,404 | 0 | หุ้นสหรัฐชุดที่ 25 (PTC Q QCOM ROP SNDK SNPS STX SWKS TDY TEL TER TRMB TWLO TYL VRSN) เป็น 469 ตัว |
+| 91 | 2026-11-06 | 33 | 40 | 190,146 | 60,301 | 250,447 | +2% | +38,089 | 0 | หุ้นสหรัฐชุดที่ 26 (WDAY WDC ZBRA ALB AMCR APD AVY BALL CF CRH DOW ECL FCX IFF IP) เป็น 484 ตัว |
