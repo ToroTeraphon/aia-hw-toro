@@ -341,21 +341,21 @@
 | 23 | 328 | HPQ | HP Inc. | Information Technology | ยังไม่มี | ทำแล้ว |
 | 23 | 329 | IBM | IBM | Information Technology | ยังไม่มี | ทำแล้ว |
 | 23 | 330 | INTU | Intuit | Information Technology | ยังไม่มี | ทำแล้ว |
-| 24 | 331 | IT | Gartner | Information Technology | ยังไม่มี | รอ |
-| 24 | 332 | JBL | Jabil | Information Technology | ยังไม่มี | รอ |
-| 24 | 333 | KEYS | Keysight Technologies | Information Technology | ยังไม่มี | รอ |
-| 24 | 334 | KLAC | KLA Corporation | Information Technology | ยังไม่มี | รอ |
-| 24 | 335 | LITE | Lumentum | Information Technology | ยังไม่มี | รอ |
-| 24 | 336 | MCHP | Microchip Technology | Information Technology | ยังไม่มี | รอ |
-| 24 | 337 | MPWR | Monolithic Power Systems | Information Technology | ยังไม่มี | รอ |
-| 24 | 338 | MSI | Motorola Solutions | Information Technology | ยังไม่มี | รอ |
-| 24 | 339 | NOW | ServiceNow | Information Technology | ยังไม่มี | รอ |
-| 24 | 340 | NTAP | NetApp | Information Technology | ยังไม่มี | รอ |
-| 24 | 341 | NXPI | NXP Semiconductors | Information Technology | ยังไม่มี | รอ |
-| 24 | 342 | OKTA | Okta, Inc. | Information Technology | ยังไม่มี | รอ |
-| 24 | 343 | ON | ON Semiconductor | Information Technology | ยังไม่มี | รอ |
-| 24 | 344 | P | Everpure | Information Technology | ยังไม่มี | รอ |
-| 24 | 345 | PLTR | Palantir Technologies | Information Technology | ยังไม่มี | รอ |
+| 24 | 331 | IT | Gartner | Information Technology | ยังไม่มี | ทำแล้ว |
+| 24 | 332 | JBL | Jabil | Information Technology | ยังไม่มี | ทำแล้ว |
+| 24 | 333 | KEYS | Keysight Technologies | Information Technology | ยังไม่มี | ทำแล้ว |
+| 24 | 334 | KLAC | KLA Corporation | Information Technology | ยังไม่มี | ทำแล้ว |
+| 24 | 335 | LITE | Lumentum | Information Technology | ยังไม่มี | ทำแล้ว |
+| 24 | 336 | MCHP | Microchip Technology | Information Technology | ยังไม่มี | ทำแล้ว |
+| 24 | 337 | MPWR | Monolithic Power Systems | Information Technology | ยังไม่มี | ทำแล้ว |
+| 24 | 338 | MSI | Motorola Solutions | Information Technology | ยังไม่มี | ทำแล้ว |
+| 24 | 339 | NOW | ServiceNow | Information Technology | ยังไม่มี | ทำแล้ว |
+| 24 | 340 | NTAP | NetApp | Information Technology | ยังไม่มี | ทำแล้ว |
+| 24 | 341 | NXPI | NXP Semiconductors | Information Technology | ยังไม่มี | ทำแล้ว |
+| 24 | 342 | OKTA | Okta, Inc. | Information Technology | ยังไม่มี | ทำแล้ว |
+| 24 | 343 | ON | ON Semiconductor | Information Technology | ยังไม่มี | ทำแล้ว |
+| 24 | 344 | P | Everpure | Information Technology | ยังไม่มี | ทำแล้ว |
+| 24 | 345 | PLTR | Palantir Technologies | Information Technology | ยังไม่มี | ทำแล้ว |
 | 25 | 346 | PTC | PTC Inc. | Information Technology | ยังไม่มี | รอ |
 | 25 | 347 | Q | Qnity Electronics | Information Technology | ยังไม่มี | รอ |
 | 25 | 348 | QCOM | Qualcomm | Information Technology | ยังไม่มี | รอ |
